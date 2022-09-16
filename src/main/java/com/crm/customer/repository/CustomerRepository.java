@@ -6,17 +6,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.crm.customer.model.Customer;
-public interface CustomerRepository extends JpaRepository<Customer, Long>,PagingAndSortingRepository<Customer, Long>{
+
+public interface CustomerRepository extends JpaRepository<Customer, Long>, PagingAndSortingRepository<Customer, Long> {
+
+	Page<Customer> findByFirstNameLikeIgnoreCaseOrEmailAddressLikeIgnoreCaseOrMobileNumberLikeIgnoreCase(String string,
+			String string2, String string3, Pageable p);
 
 	
 
 	
-
-	
-
-	Page<Customer> findByCustomerNameLikeIgnoreCaseOrCustomerEmailLikeIgnoreCaseOrCustomerPhoneLikeIgnoreCase(
-			String string, String string2, String string3, Pageable p);
-
-
 
 }

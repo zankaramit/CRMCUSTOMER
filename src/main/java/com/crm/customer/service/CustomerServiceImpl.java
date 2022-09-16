@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
 				Sort.by(Sort.Direction.DESC, searchDataTable.getSortby()));
 
 		Page<Customer> list = customerRepository
-				.findByCustomerNameLikeIgnoreCaseOrCustomerEmailLikeIgnoreCaseOrCustomerPhoneLikeIgnoreCase(
+				.findByFirstNameLikeIgnoreCaseOrEmailAddressLikeIgnoreCaseOrMobileNumberLikeIgnoreCase(
 						"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
 						"%" + searchDataTable.getSearchField() + "%", p);
 		return list;
@@ -45,7 +45,8 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Status save(Customer customer) {
 		Status status = new Status();
-		customerRepository.save(customer);
+		Customer result = customerRepository.save(customer);
+		status.setData(result);
 		status.setMessage("Success");
 		return status;
 	}

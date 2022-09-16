@@ -9,197 +9,94 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 @Entity
+@Getter
+@Setter
+@Data
+@ToString
 @Table(name = "crm_customer")
 public class Customer {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "customer_id")
 	private Long customerId;
-	
+
 	@Column(name = "customer_type")
-	private String customerType;		
-	
+	private String customerType;
+
 	@Column(name = "customer_class")
-	private String customerClass;		
-	
-	@Column(name = "customer_name")
-	private String customerName;		
-	
-	@Column(name = "customer_email")
-	private String customerEmail;		
-	
-	@Column(name = "customer_phone")
-	private String customerPhone;		
-	
+	private String customerClass;
+
+	@Column(name = "first_name")
+	private String firstName;
+
+	@Column(name = "middel_name")
+	private String middelName;
+
+	@Column(name = "last_name")
+	private String lastName;
+
+	@Column(name = "gender")
+	private String gender;
+
+	@Column(name = "marital_status")
+	private String maritalStatus;
+
+	@Column(name = "preferred_language")
+	private String preferredLanguage;
+
+	@Column(name = "mobile_number")
+	private String mobileNumber;
+
+	@Column(name = "email_Address")
+	private String emailAddress;
+
+	@Column(name = "parent_account")
+	private String parentAccount;
+
+	@Column(name = "fax")
+	private String fax;
+
+	@Column(name = "date_of_birth")
+	private Date dateOfBirth;
+
+	@Column(name = "nationality")
+	private String nationality;
+
+	@Column(name = "place_of_birth")
+	private String placeOfBirth;
+
+	@Column(name = "religion")
+	private String religion;
+
 	@Column(name = "status")
-	private String status;		
-	
+	private String status;
+
 	@Column(name = "start_date")
-	private Date startDate;		
-	
+	private Date startDate;
+
 	@Column(name = "end_date")
-	private Date endDate;		
-	
+	private Date endDate;
+
 	@Column(name = "created_by")
-	private Long createdBy;		
-	
+	private Long createdBy;
+
 	@Column(name = "creation_date")
-	private Date creationDate;		
-	
+	private Date creationDate;
+
 	@Column(name = "last_update_login")
-	private Long lastUpdateLogin;		
-	
+	private Long lastUpdateLogin;
+
 	@Column(name = "last_updated_by")
-	private Long lastUpdatedBy;		
-	
+	private Long lastUpdatedBy;
+
 	@Column(name = "last_update_date")
 	private Date lastUpdateDate;
-	
-	public Customer() {}
-
-	public Customer(Long customerId, String customerType, String customerClass, String customerName,
-			String customerEmail, String phone, String status, Date startDate, Date endDate, Long createdBy,
-			Date creationDate, Long lastUpdateLogin, Long lastUpdatedBy, Date lastUpdateDate) {
-	
-		this.customerId = customerId;
-		this.customerType = customerType;
-		this.customerClass = customerClass;
-		this.customerName = customerName;
-		this.customerEmail = customerEmail;
-		this.customerPhone = phone;
-		this.status = status;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.createdBy = createdBy;
-		this.creationDate = creationDate;
-		this.lastUpdateLogin = lastUpdateLogin;
-		this.lastUpdatedBy = lastUpdatedBy;
-		this.lastUpdateDate = lastUpdateDate;
-	}
-
-	public Long getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
-	}
-
-	public String getCustomerType() {
-		return customerType;
-	}
-
-	public void setCustomerType(String customerType) {
-		this.customerType = customerType;
-	}
-
-	public String getCustomerClass() {
-		return customerClass;
-	}
-
-	public void setCustomerClass(String customerClass) {
-		this.customerClass = customerClass;
-	}
-
-	public String getCustomerName() {
-		return customerName;
-	}
-
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
-
-	public String getCustomerEmail() {
-		return customerEmail;
-	}
-
-	public void setCustomerEmail(String customerEmail) {
-		this.customerEmail = customerEmail;
-	}
-
-	public String getPhone() {
-		return customerPhone;
-	}
-
-	public void setPhone(String phone) {
-		this.customerPhone = phone;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
-	public Long getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(Long createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public Date getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	public Long getLastUpdateLogin() {
-		return lastUpdateLogin;
-	}
-
-	public void setLastUpdateLogin(Long lastUpdateLogin) {
-		this.lastUpdateLogin = lastUpdateLogin;
-	}
-
-	public Long getLastUpdatedBy() {
-		return lastUpdatedBy;
-	}
-
-	public void setLastUpdatedBy(Long lastUpdatedBy) {
-		this.lastUpdatedBy = lastUpdatedBy;
-	}
-
-	public Date getLastUpdateDate() {
-		return lastUpdateDate;
-	}
-
-	public void setLastUpdateDate(Date lastUpdateDate) {
-		this.lastUpdateDate = lastUpdateDate;
-	}
-
-	@Override
-	public String toString() {
-		return "Customer [customerId=" + customerId + ", customerType=" + customerType + ", customerClass="
-				+ customerClass + ", customerName=" + customerName + ", customerEmail=" + customerEmail + ", phone="
-				+ customerPhone + ", status=" + status + ", startDate=" + startDate + ", endDate=" + endDate + ", createdBy="
-				+ createdBy + ", creationDate=" + creationDate + ", lastUpdateLogin=" + lastUpdateLogin
-				+ ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdateDate=" + lastUpdateDate + "]";
-	}		
-			
-
 
 }
