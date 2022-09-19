@@ -12,7 +12,7 @@ import lombok.ToString;
 public class SearchDataTable {
 	
 	private String searchField;
-	
+	private Long customerId;
 	private int page; 
 	private int size;
 	private String sortby;

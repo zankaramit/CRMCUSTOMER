@@ -1,6 +1,8 @@
 package com.crm.customer.model;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,9 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 import lombok.Getter;
@@ -28,7 +30,6 @@ public class CompanyDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotNull
 	@Column(name = "company_details_id")
 	private Long companyDetailsId;
 	
@@ -80,7 +81,11 @@ public class CompanyDetails {
 	@Column(name = "last_update_date")
 	private Date lastUpdateDate;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "customer_id")
+	@OneToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
 	private Customer customer;
+	
+//	@OneToMany(mappedBy =  "companyDetails")
+//	private List<CompanyAddressDetails> companyAddressDetails;
+	
 }
