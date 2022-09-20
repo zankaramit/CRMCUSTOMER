@@ -49,7 +49,7 @@ public class CustomerController {
 		if (customerOptional.isPresent()) {
 			return new ResponseEntity<>(customerOptional.get(), HttpStatus.OK);
 		} else {
-			throw new ResourceNotFoundException("Number Type Definition not found.");
+			throw new ResourceNotFoundException("Customer not found.");
 		}
 
 	}
