@@ -85,7 +85,6 @@ public class CompanyDetails {
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
 	private Customer customer;
 	
-//	@OneToMany(mappedBy =  "companyDetails")
-//	private List<CompanyAddressDetails> companyAddressDetails;
+
 	
 }

@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.crm.customer.dto.SearchDataTable;
+
 import com.crm.customer.model.ContactDetails;
 import com.crm.customer.repository.ContactDetailsRepository;
 
@@ -20,24 +20,24 @@ public class ContactDetailsService {
 	@Autowired
 	ContactDetailsRepository contactDetailsRepository;
 
-	public Page<ContactDetails> contactDetailsDataTable(SearchDataTable searchDataTable) {
-		Pageable p = PageRequest.of(searchDataTable.getPage(), searchDataTable.getSize(),
-				Sort.by(Sort.Direction.DESC, searchDataTable.getSortby()));
-		Page<ContactDetails> searchResult = null;
-		if (searchDataTable.getCustomerId() != null) {
-			searchResult = contactDetailsRepository.findByCustomerCustomerId(searchDataTable.getCustomerId(), p);
-		} else {
-			searchResult = contactDetailsRepository
-					.findByFirstNameLikeIgnoreCaseOrMiddelNameLikeIgnoreCaseOrLastNameLikeIgnoreCaseOrGenderLikeIgnoreCaseOrMaritalStatusLikeIgnoreCaseOrMobileNumberLikeIgnoreCaseOrFaxLikeIgnoreCaseOrNationalityLikeIgnoreCase(
-							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
-							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
-							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
-							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
-							p);
-		}
-
-		return searchResult;
-	}
+//	public Page<ContactDetails> contactDetailsDataTable(SearchDataTable searchDataTable) {
+//		Pageable p = PageRequest.of(searchDataTable.getPage(), searchDataTable.getSize(),
+//				Sort.by(Sort.Direction.DESC, searchDataTable.getSortby()));
+//		Page<ContactDetails> searchResult = null;
+//		if (searchDataTable.getCustomerId() != null) {
+//			searchResult = contactDetailsRepository.findByCustomerCustomerId(searchDataTable.getCustomerId(), p);
+//		} else {
+//			searchResult = contactDetailsRepository
+//					.findByFirstNameLikeIgnoreCaseOrMiddelNameLikeIgnoreCaseOrLastNameLikeIgnoreCaseOrGenderLikeIgnoreCaseOrMaritalStatusLikeIgnoreCaseOrMobileNumberLikeIgnoreCaseOrFaxLikeIgnoreCaseOrNationalityLikeIgnoreCase(
+//							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
+//							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
+//							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
+//							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
+//							p);
+//		}
+//
+//		return searchResult;
+//	}
 
 	public ContactDetails save(ContactDetails contactDetails) {
 

@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.crm.customer.dto.SearchDataTable;
+
 import com.crm.customer.model.ReferenceDetails;
 import com.crm.customer.repository.ReferenceDetailsRepository;
 
@@ -20,24 +20,24 @@ public class ReferenceDetailsService {
 	@Autowired
 	ReferenceDetailsRepository referenceDetailsRepository;
 
-	public Page<ReferenceDetails> referenceDetailsDataTable(SearchDataTable searchDataTable) {
-		Pageable p = PageRequest.of(searchDataTable.getPage(), searchDataTable.getSize(),
-				Sort.by(Sort.Direction.DESC, searchDataTable.getSortby()));
-		Page<ReferenceDetails> searchResult = null;
-		if (searchDataTable.getCustomerId() != null) {
-			searchResult = referenceDetailsRepository.findByCustomerCustomerId(searchDataTable.getCustomerId(), p);
-		} else {
-			searchResult = referenceDetailsRepository
-					.findByFirstNameLikeIgnoreCaseOrMiddelNameLikeIgnoreCaseOrLastNameLikeIgnoreCaseOrAddressTypeLikeIgnoreCaseOrAddress1LikeIgnoreCaseOrAddress2LikeIgnoreCaseOrCityLikeIgnoreCaseOrProvinceStateLikeIgnoreCaseOrCountryLikeIgnoreCaseOrReferencePhoneNumberLikeIgnoreCaseOrRelationshipLikeIgnoreCase(
-							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
-							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
-							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
-							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
-							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
-							"%" + searchDataTable.getSearchField() + "%", p);
-		}
-		return searchResult;
-	}
+//	public Page<ReferenceDetails> referenceDetailsDataTable(SearchDataTable searchDataTable) {
+//		Pageable p = PageRequest.of(searchDataTable.getPage(), searchDataTable.getSize(),
+//				Sort.by(Sort.Direction.DESC, searchDataTable.getSortby()));
+//		Page<ReferenceDetails> searchResult = null;
+//		if (searchDataTable.getCustomerId() != null) {
+//			searchResult = referenceDetailsRepository.findByCustomerCustomerId(searchDataTable.getCustomerId(), p);
+//		} else {
+//			searchResult = referenceDetailsRepository
+//					.findByFirstNameLikeIgnoreCaseOrMiddelNameLikeIgnoreCaseOrLastNameLikeIgnoreCaseOrAddressTypeLikeIgnoreCaseOrAddress1LikeIgnoreCaseOrAddress2LikeIgnoreCaseOrCityLikeIgnoreCaseOrProvinceStateLikeIgnoreCaseOrCountryLikeIgnoreCaseOrReferencePhoneNumberLikeIgnoreCaseOrRelationshipLikeIgnoreCase(
+//							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
+//							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
+//							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
+//							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
+//							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
+//							"%" + searchDataTable.getSearchField() + "%", p);
+//		}
+//		return searchResult;
+//	}
 
 	public ReferenceDetails save(ReferenceDetails referenceDetails) {
 

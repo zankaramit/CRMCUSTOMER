@@ -12,7 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import com.crm.customer.dto.SearchDataTable;
+
 import com.crm.customer.model.CompanyAddressDetails;
 import com.crm.customer.repository.CompanyAddressDetailsRepository;
 
@@ -54,22 +54,22 @@ public class CompanyAddressDetailsService {
 
 	}
 
-	public Page<CompanyAddressDetails> addressDetailsDataTable(SearchDataTable searchDataTable) {
-
-		Pageable p = PageRequest.of(searchDataTable.getPage(), searchDataTable.getSize(),
-				Sort.by(Sort.Direction.DESC, searchDataTable.getSortby()));
-		Page<CompanyAddressDetails> searchResult = null;
-		if (searchDataTable.getCustomerId() != null) {
-			searchResult = companyAddressDetailsRepository.findByCustomerCustomerId(searchDataTable.getCustomerId(), p);
-		} else {
-			searchResult = companyAddressDetailsRepository
-					.findByAddress1LikeIgnoreCaseOrAddress2LikeIgnoreCaseOrAddressTypeLikeIgnoreCaseOrContactAddressLikeIgnoreCaseOrCountryLikeIgnoreCaseOrStateLikeIgnoreCase(
-							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
-							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
-							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
-							p);
-		}
-		return searchResult;
-	}
+//	public Page<CompanyAddressDetails> addressDetailsDataTable(SearchDataTable searchDataTable) {
+//
+//		Pageable p = PageRequest.of(searchDataTable.getPage(), searchDataTable.getSize(),
+//				Sort.by(Sort.Direction.DESC, searchDataTable.getSortby()));
+//		Page<CompanyAddressDetails> searchResult = null;
+//		if (searchDataTable.getCustomerId() != null) {
+//			searchResult = companyAddressDetailsRepository.findByCustomerCustomerId(searchDataTable.getCustomerId(), p);
+//		} else {
+//			searchResult = companyAddressDetailsRepository
+//					.findByAddress1LikeIgnoreCaseOrAddress2LikeIgnoreCaseOrAddressTypeLikeIgnoreCaseOrContactAddressLikeIgnoreCaseOrCountryLikeIgnoreCaseOrStateLikeIgnoreCase(
+//							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
+//							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
+//							"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
+//							p);
+//		}
+//		return searchResult;
+//	}
 
 }

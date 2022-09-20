@@ -2,70 +2,93 @@ package com.crm.customer.controller;
 
 import java.util.Optional;
 
+import javax.persistence.PersistenceException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crm.customer.dto.SearchDataTable;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.Customer;
 import com.crm.customer.service.CustomerService;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("customer")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CustomerController {
 
 	@Autowired
 	CustomerService customerService;
 
-	@PostMapping("/datatable")
-	public ResponseEntity<Page<Customer>> customerDataTable(@RequestBody SearchDataTable searchDataTable) {
+	@GetMapping("all")
+	public ResponseEntity<Page<Customer>> getByNameAndPagination(@Nullable String name, Pageable pageable) {
 
-		Page<Customer> response = customerService.findAll(searchDataTable);
-		return new ResponseEntity<Page<Customer>>(response, HttpStatus.OK);
+		Page<Customer> customerPage = customerService.getByNameCustomerAndPagination(name, pageable);
+		return new ResponseEntity<Page<Customer>>(customerPage, HttpStatus.OK);
 
 	}
 
-	@GetMapping("/findbyid/{customerId}")
-	public ResponseEntity<Customer> customerFindById(@PathVariable(value = "customerId") Long customerId)
-			 {
-		Optional<Customer> response = customerService.customerFindById(customerId);
+	@GetMapping("{id}")
+	public ResponseEntity<Customer> getById(@PathVariable(value = "id") Long id) {
+		Optional<Customer> customerOptional = customerService.getById(id);
 
-		if (response.isPresent()) {
-			return new ResponseEntity<>(response.get(), HttpStatus.OK);
+		if (customerOptional.isPresent()) {
+			return new ResponseEntity<>(customerOptional.get(), HttpStatus.OK);
 		} else {
-			throw new ResourceNotFoundException("Customer not found for this id :: " + customerId);
+			throw new ResourceNotFoundException("Number Type Definition not found.");
 		}
 
 	}
 
-	@PostMapping("/save")
-	public ResponseEntity<?> save(@RequestBody Customer customer) {
-
-		Customer response = customerService.save(customer);
-		return new ResponseEntity<>(response, HttpStatus.OK);
-
-	}
-
-	@PutMapping("/update")
-	public ResponseEntity<Customer> update(@RequestBody Customer customer)   {
+	@PostMapping(path = "create")
+	public ResponseEntity<?> create(@RequestBody Customer customer) {
 		try {
-			Customer response = customerService.update(customer);
-			return new ResponseEntity<>(response, HttpStatus.OK);
+			Customer customerSaved = customerService.save(customer);
+			return new ResponseEntity<>(customerSaved, HttpStatus.OK);
+		} catch (DataIntegrityViolationException dive) {
+			return new ResponseEntity<>(new ErrorResponse("Exception is :" + dive.getRootCause().getMessage()),
+					HttpStatus.BAD_REQUEST);
+
 		} catch (Exception e) {
-			throw new ResourceNotFoundException("Customer not found for this id :: " + customer.getCustomerId());
+			throw new PersistenceException("Failed saving customer.", e);
 		}
-		
+
+	}
+
+	@PutMapping(path = "update")
+	public ResponseEntity<Customer> update(@RequestBody Customer customer) {
+		try {
+			Customer customerUpdate = customerService.update(customer);
+			return new ResponseEntity<>(customerUpdate, HttpStatus.OK);
+		} catch (Exception e) {
+			throw new PersistenceException("Failed update customer.", e);
+		}
+
+	}
+
+	@DeleteMapping("softdelete/{id}/{updatedBy}")
+	public ResponseEntity<Customer> softDelete(@PathVariable Long id, @PathVariable String updatedBy) {
+		try {
+			Customer customer = customerService.softDelete(id, updatedBy);
+			return new ResponseEntity<>(customer, HttpStatus.OK);
+		} catch (Exception e) {
+			throw new PersistenceException("Failed deleting Customer.", e);
+
+		}
 	}
 
 }

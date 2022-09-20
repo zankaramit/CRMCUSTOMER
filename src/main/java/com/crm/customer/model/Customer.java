@@ -1,12 +1,15 @@
 package com.crm.customer.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -76,29 +79,19 @@ public class Customer {
 	@Column(name = "religion")
 	private String religion;
 
-	@Column(name = "status")
-	private String status;
-
-	@Column(name = "start_date")
-	private Date startDate;
-
-	@Column(name = "end_date")
-	private Date endDate;
+	@Column(name = "is_deleted")
+	private Boolean isDeleted;
 
 	@Column(name = "created_by")
-	private Long createdBy;
+	private String createdBy;
 
-	@Column(name = "creation_date")
-	private Date creationDate;
+	@Column(name = "created_date")
+	private Date createdDate;
 
-	@Column(name = "last_update_login")
-	private Long lastUpdateLogin;
+	@Column(name = "updated_by")
+	private String updatedBy;
 
-	@Column(name = "last_updated_by")
-	private Long lastUpdatedBy;
+	@Column(name = "updated_date")
+	private Date updatedDate;
 
-	@Column(name = "last_update_date")
-	private Date lastUpdateDate;
-	
-	
 }

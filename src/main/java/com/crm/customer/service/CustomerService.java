@@ -7,66 +7,75 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
+import org.springframework.util.ObjectUtils;
 import org.springframework.data.domain.Sort;
 
-import com.crm.customer.dto.SearchDataTable;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.Customer;
 import com.crm.customer.repository.CustomerRepository;
 
 @Service
-public class CustomerService  {
+public class CustomerService {
 
 	@Autowired
 	CustomerRepository customerRepository;
 
-	
-	public Page<Customer> findAll(SearchDataTable searchDataTable) {
-		Pageable p = PageRequest.of(searchDataTable.getPage(), searchDataTable.getSize(),
-				Sort.by(Sort.Direction.DESC, searchDataTable.getSortby()));
+	public Page<Customer> getByNameCustomerAndPagination(String name, Pageable pageable) {
 
-		return  customerRepository
-				.findByFirstNameLikeIgnoreCaseOrEmailAddressLikeIgnoreCaseOrMobileNumberLikeIgnoreCase(
-						"%" + searchDataTable.getSearchField() + "%", "%" + searchDataTable.getSearchField() + "%",
-						"%" + searchDataTable.getSearchField() + "%", p);
-		
+		Page<Customer> customer = null;
+
+		if (ObjectUtils.isEmpty(name)) {
+			customer = customerRepository.findByIsDeleted(false, pageable);
+		} else {
+			customer = customerRepository
+					.findByFirstNameLikeIgnoreCaseOrMiddelNameLikeIgnoreCaseOrLastNameLikeIgnoreCaseOrEmailAddressLikeIgnoreCaseOrMobileNumberLikeIgnoreCaseAndIsDeleted(
+							"%" + name + "%", "%" + name + "%", "%" + name + "%", "%" + name + "%", "%" + name + "%",
+							false, pageable);
+		}
+		return customer;
 	}
 
-	
-	public Optional<Customer> customerFindById(Long customerId) {
+	public Optional<Customer> getById(Long id) {
 
-		Optional<Customer> customer = customerRepository.findById(customerId);
+		Optional<Customer> customer = customerRepository.findByCustomerIdAndIsDeleted(id, false);
 
 		return customer;
 	}
 
-	
 	public Customer save(Customer customer) {
+		customer.setIsDeleted(false);
 		return customerRepository.save(customer);
 	}
 
-	
 	public Customer update(Customer customer) {
 
-		Customer ustomerUpadte = customerRepository.findById(customer.getCustomerId()).get();
-		ustomerUpadte.setCustomerType(customer.getCustomerType());
-		ustomerUpadte.setCustomerClass(customer.getCustomerClass());
-		ustomerUpadte.setFirstName(customer.getFirstName());
-		ustomerUpadte.setMiddelName(customer.getMiddelName());
-		ustomerUpadte.setLastName(customer.getLastName());
-		ustomerUpadte.setGender(customer.getGender());
-		ustomerUpadte.setMaritalStatus(customer.getMaritalStatus());
-		ustomerUpadte.setPreferredLanguage(customer.getPreferredLanguage());
-		ustomerUpadte.setMobileNumber(customer.getMobileNumber());
-		ustomerUpadte.setEmailAddress(customer.getEmailAddress());
-		ustomerUpadte.setParentAccount(customer.getParentAccount());
-		ustomerUpadte.setFax(customer.getFax());
-		ustomerUpadte.setNationality(customer.getNationality());
-		ustomerUpadte.setDateOfBirth(customer.getDateOfBirth());
-		ustomerUpadte.setPlaceOfBirth(customer.getPlaceOfBirth());
-		return customerRepository.save(ustomerUpadte);
+		Customer existingCustomer = customerRepository.findById(customer.getCustomerId()).get();
+		existingCustomer.setCustomerType(customer.getCustomerType());
+		existingCustomer.setCustomerClass(customer.getCustomerClass());
+		existingCustomer.setFirstName(customer.getFirstName());
+		existingCustomer.setMiddelName(customer.getMiddelName());
+		existingCustomer.setLastName(customer.getLastName());
+		existingCustomer.setGender(customer.getGender());
+		existingCustomer.setMaritalStatus(customer.getMaritalStatus());
+		existingCustomer.setPreferredLanguage(customer.getPreferredLanguage());
+		existingCustomer.setMobileNumber(customer.getMobileNumber());
+		existingCustomer.setEmailAddress(customer.getEmailAddress());
+		existingCustomer.setParentAccount(customer.getParentAccount());
+		existingCustomer.setFax(customer.getFax());
+		existingCustomer.setNationality(customer.getNationality());
+		existingCustomer.setDateOfBirth(customer.getDateOfBirth());
+		existingCustomer.setPlaceOfBirth(customer.getPlaceOfBirth());
+		existingCustomer.setUpdatedBy(customer.getUpdatedBy());
+		existingCustomer.setUpdatedDate(customer.getUpdatedDate());
+		return customerRepository.save(existingCustomer);
 
+	}
+
+	public Customer softDelete(Long id, String updatedBy) {
+		Customer existingCustomer = customerRepository.findById(id).get();
+		existingCustomer.setIsDeleted(true);
+		existingCustomer.setUpdatedBy(updatedBy);
+		return customerRepository.save(existingCustomer);
 	}
 
 }
