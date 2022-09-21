@@ -15,33 +15,39 @@ public class CompanyDetailsService {
 	CompanyDetailsRepository companyDetailsRepository;
 
 	public CompanyDetails save(CompanyDetails companyDetails) {
-
+		companyDetails.setIsDeleted(false);
 		return companyDetailsRepository.save(companyDetails);
 
 	}
 
-	public Optional<CompanyDetails> companyDetailsFindById(Long customerId) {
+	public Optional<CompanyDetails> getById(Long id) {
 
-		Optional<CompanyDetails> companyDetails = companyDetailsRepository.findByCustomerCustomerId(customerId);
+		Optional<CompanyDetails> companyDetails = companyDetailsRepository.findByCompanyDetailsIdAndIsDeleted(id,
+				false);
 		return companyDetails;
 	}
 
 	public CompanyDetails update(CompanyDetails companyDetails) {
-		CompanyDetails companyDetailsUpdate = companyDetailsRepository.findById(companyDetails.getCompanyDetailsId())
+		CompanyDetails existingCompanyDetails = companyDetailsRepository.findById(companyDetails.getCompanyDetailsId())
 				.get();
-		companyDetailsUpdate.setAccountName(companyDetails.getAccountName());
-		companyDetailsUpdate.setCompanyRegistrationNumber(companyDetails.getCompanyRegistrationNumber());
-		companyDetailsUpdate.setTaxRegistrationNumber(companyDetails.getTaxRegistrationNumber());
-		companyDetailsUpdate.setLineOfBusiness(companyDetails.getLineOfBusiness());
-		companyDetailsUpdate.setSizeOfCompany(companyDetails.getSizeOfCompany());
-		companyDetailsUpdate.setAnnualRevenue(companyDetails.getAnnualRevenue());
-		companyDetailsUpdate.setWebsiteDetails(companyDetails.getWebsiteDetails());
-		companyDetailsUpdate.setParentAccount(companyDetails.getParentAccount());
-		companyDetailsUpdate.setStatus("ACTIVE");
-		companyDetailsUpdate.setLastUpdateLogin(null);
-		companyDetailsUpdate.setLastUpdatedBy(null);
-		companyDetailsUpdate.setLastUpdateDate(null);
-		return companyDetailsRepository.save(companyDetailsUpdate);
+		existingCompanyDetails.setAccountName(companyDetails.getAccountName());
+		existingCompanyDetails.setCompanyRegistrationNumber(companyDetails.getCompanyRegistrationNumber());
+		existingCompanyDetails.setTaxRegistrationNumber(companyDetails.getTaxRegistrationNumber());
+		existingCompanyDetails.setLineOfBusiness(companyDetails.getLineOfBusiness());
+		existingCompanyDetails.setSizeOfCompany(companyDetails.getSizeOfCompany());
+		existingCompanyDetails.setAnnualRevenue(companyDetails.getAnnualRevenue());
+		existingCompanyDetails.setWebsiteDetails(companyDetails.getWebsiteDetails());
+		existingCompanyDetails.setParentAccount(companyDetails.getParentAccount());
+		existingCompanyDetails.setUpdatedBy(companyDetails.getUpdatedBy());
+		existingCompanyDetails.setUpdatedDate(companyDetails.getUpdatedDate());
+		return companyDetailsRepository.save(existingCompanyDetails);
+	}
+
+	public CompanyDetails softDelete(Long id, String updatedBy) {
+		CompanyDetails existingCompanyDetails = companyDetailsRepository.findById(id).get();
+		existingCompanyDetails.setIsDeleted(true);
+		existingCompanyDetails.setUpdatedBy(updatedBy);
+		return companyDetailsRepository.save(existingCompanyDetails);
 	}
 
 }

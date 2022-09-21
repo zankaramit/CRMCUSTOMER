@@ -24,9 +24,9 @@ import lombok.ToString;
 @Setter
 @Data
 @ToString
-@Table(name = "crm_company_address_details")
-public class CompanyAddressDetails {
-	
+@Table(name = "crm_address_details")
+public class AddressDetails {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "address_details_id")
@@ -62,42 +62,23 @@ public class CompanyAddressDetails {
 	@Column(name = "address_tenure_month")
 	private Long addressTenureMonth;
 
-	@Column(name = "status")
-	private String status;
-
-	@Column(name = "start_date")
-	private Date startDate;
-
-	@Column(name = "end_date")
-	private Date endDate;
+	@Column(name = "is_deleted")
+	private Boolean isDeleted;
 
 	@Column(name = "created_by")
-	private Long createdBy;
+	private String createdBy;
 
-	@Column(name = "creation_date")
-	private Date creationDate;
+	@Column(name = "created_date")
+	private Date createdDate;
 
-	@Column(name = "last_update_login")
-	private Long lastUpdateLogin;
+	@Column(name = "updated_by")
+	private String updatedBy;
 
-	@Column(name = "last_updated_by")
-	private Long lastUpdatedBy;
+	@Column(name = "updated_date")
+	private Date updatedDate;
 
-	@Column(name = "last_update_date")
-	private Date lastUpdateDate;
-	
-
-	
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
-    private Customer customer;
-	
-	
-//	@OneToOne(cascade = CascadeType.MERGE)
-//	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
-//	private Customer customer;
-	
-//	@ManyToOne
-//	@JoinColumn(name = "company_details_id")
-//    private CompanyDetails companyDetails;
+	private Customer customer;
+
 }

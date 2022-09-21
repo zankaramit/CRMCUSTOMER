@@ -28,7 +28,7 @@ public class ContactDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CONTACT_DETAILS_ID")
 	private Long contactDetailsId;
-	
+
 	@Column(name = "FIRST_NAME")
 	private String firstName;
 
@@ -37,10 +37,10 @@ public class ContactDetails {
 
 	@Column(name = "LAST_NAME")
 	private String lastName;
-	
+
 	@Column(name = "GENDER")
 	private String gender;
-	
+
 	@Column(name = "MARITAL_STATUS")
 	private String maritalStatus;
 
@@ -49,40 +49,30 @@ public class ContactDetails {
 
 	@Column(name = "MOBILE_NUMBER")
 	private String mobileNumber;
-	
+
 	@Column(name = "Fax")
 	private String fax;
-	
+
 	@Column(name = "NATIONALITY")
 	private String nationality;
-	
-	@Column(name = "STATUS")
-	private String status;
 
-	@Column(name = "START_DATE")
-	private Date startDate;
+	@Column(name = "is_deleted")
+	private Boolean isDeleted;
 
-	@Column(name = "END_DATE")
-	private Date endDate;
+	@Column(name = "created_by")
+	private String createdBy;
 
-	@Column(name = "CREATED_BY")
-	private Long createdBy;
+	@Column(name = "created_date")
+	private Date createdDate;
 
-	@Column(name = "CREATION_DATE")
-	private Date creationDate;
+	@Column(name = "updated_by")
+	private String updatedBy;
 
-	@Column(name = "LAST_UPDATE_LOGIN")
-	private Long lastUpdateLogin;
+	@Column(name = "updated_date")
+	private Date updatedDate;
 
-	@Column(name = "LAST_UPDATED_BY")
-	private Long lastUpdatedBy;
-
-	@Column(name = "LAST_UPDATE_DATE")
-	private Date lastUpdateDate;
-	
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
-    private Customer customer;
-	
-	
+	private Customer customer;
+
 }

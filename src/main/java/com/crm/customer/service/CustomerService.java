@@ -28,9 +28,9 @@ public class CustomerService {
 			customer = customerRepository.findByIsDeleted(false, pageable);
 		} else {
 			customer = customerRepository
-					.findByFirstNameLikeIgnoreCaseOrMiddelNameLikeIgnoreCaseOrLastNameLikeIgnoreCaseOrEmailAddressLikeIgnoreCaseOrMobileNumberLikeIgnoreCaseAndIsDeleted(
-							"%" + name + "%", "%" + name + "%", "%" + name + "%", "%" + name + "%", "%" + name + "%",
-							false, pageable);
+					.findByIsDeletedAndFirstNameLikeIgnoreCaseOrIsDeletedAndMiddelNameLikeIgnoreCaseOrIsDeletedAndLastNameLikeIgnoreCaseOrIsDeletedAndEmailAddressLikeIgnoreCaseOrIsDeletedAndMobileNumberLikeIgnoreCase(
+							false, "%" + name + "%", false, "%" + name + "%", false, "%" + name + "%", false,
+							"%" + name + "%", false, "%" + name + "%", pageable);
 		}
 		return customer;
 	}

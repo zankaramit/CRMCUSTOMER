@@ -10,10 +10,6 @@ import com.crm.customer.model.CompanyDetails;
 public interface CompanyDetailsRepository
 		extends JpaRepository<CompanyDetails, Long>, PagingAndSortingRepository<CompanyDetails, Long> {
 
-	
-
-	Optional<CompanyDetails> findByCustomerCustomerId(Long customerId);
-
-	
+	Optional<CompanyDetails> findByCompanyDetailsIdAndIsDeleted(Long id, boolean b);
 
 }

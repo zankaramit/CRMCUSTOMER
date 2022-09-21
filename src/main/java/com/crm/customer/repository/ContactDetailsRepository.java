@@ -1,6 +1,7 @@
 package com.crm.customer.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,14 +10,17 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.crm.customer.model.ContactDetails;
 
-public interface ContactDetailsRepository extends JpaRepository<ContactDetails, Long>, PagingAndSortingRepository<ContactDetails, Long> {
+public interface ContactDetailsRepository
+		extends JpaRepository<ContactDetails, Long>, PagingAndSortingRepository<ContactDetails, Long> {
 
-	Page<ContactDetails> findByCustomerCustomerId(Long customerId, Pageable p);
+	Optional<ContactDetails> findByContactDetailsIdAndIsDeleted(Long id, boolean b);
 
-	Page<ContactDetails> findByFirstNameLikeIgnoreCaseOrMiddelNameLikeIgnoreCaseOrLastNameLikeIgnoreCaseOrGenderLikeIgnoreCaseOrMaritalStatusLikeIgnoreCaseOrMobileNumberLikeIgnoreCaseOrFaxLikeIgnoreCaseOrNationalityLikeIgnoreCase(
-			String string, String string2, String string3, String string4, String string5, String string6,
-			String string7, String string8, Pageable p);
+	Page<ContactDetails> findByIsDeletedAndCustomerCustomerId(boolean b, Long customerId, Pageable pageable);
 
-	
+	Page<ContactDetails> findByIsDeleted(boolean b, Pageable pageable);
+
+	Page<ContactDetails> findByIsDeletedAndFirstNameLikeIgnoreCaseOrIsDeletedAndMiddelNameLikeIgnoreCaseOrIsDeletedAndLastNameLikeIgnoreCaseOrIsDeletedAndMobileNumberLikeIgnoreCaseOrIsDeletedAndFaxLikeIgnoreCaseOrIsDeletedAndNationalityLikeIgnoreCase(
+			boolean b, String string, boolean c, String string2, boolean d, String string3, boolean e, String string4,
+			boolean f, String string5, boolean g, String string6, Pageable pageable);
 
 }

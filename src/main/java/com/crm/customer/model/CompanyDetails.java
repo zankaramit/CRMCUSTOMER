@@ -25,7 +25,7 @@ import lombok.ToString;
 @Setter
 @Data
 @ToString
-@Table(name = "crm_customer_company_details")
+@Table(name = "crm_company_details")
 public class CompanyDetails {
 	
 	@Id
@@ -57,29 +57,20 @@ public class CompanyDetails {
 	@Column(name = "parent_account")
 	private String parentAccount;
 	
-	@Column(name = "status")
-	private String status;		
-	
-	@Column(name = "start_date")
-	private Date startDate;		
-	
-	@Column(name = "end_date")
-	private Date endDate;		
-	
+	@Column(name = "is_deleted")
+	private Boolean isDeleted;
+
 	@Column(name = "created_by")
-	private Long createdBy;		
-	
-	@Column(name = "creation_date")
-	private Date creationDate;		
-	
-	@Column(name = "last_update_login")
-	private Long lastUpdateLogin;		
-	
-	@Column(name = "last_updated_by")
-	private Long lastUpdatedBy;		
-	
-	@Column(name = "last_update_date")
-	private Date lastUpdateDate;
+	private String createdBy;
+
+	@Column(name = "created_date")
+	private Date createdDate;
+
+	@Column(name = "updated_by")
+	private String updatedBy;
+
+	@Column(name = "updated_date")
+	private Date updatedDate;
 
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")

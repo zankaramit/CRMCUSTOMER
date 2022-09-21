@@ -65,29 +65,20 @@ public class ReferenceDetails {
 	@Column(name = "RELATIONSHIP")
 	private String relationship;
 	
-	@Column(name = "STATUS")
-	private String status;
+	@Column(name = "is_deleted")
+	private Boolean isDeleted;
 
-	@Column(name = "START_DATE")
-	private Date startDate;
+	@Column(name = "created_by")
+	private String createdBy;
 
-	@Column(name = "END_DATE")
-	private Date endDate;
+	@Column(name = "created_date")
+	private Date createdDate;
 
-	@Column(name = "CREATED_BY")
-	private Long createdBy;
+	@Column(name = "updated_by")
+	private String updatedBy;
 
-	@Column(name = "CREATION_DATE")
-	private Date creationDate;
-
-	@Column(name = "LAST_UPDATE_LOGIN")
-	private Long lastUpdateLogin;
-
-	@Column(name = "LAST_UPDATED_BY")
-	private Long lastUpdatedBy;
-
-	@Column(name = "LAST_UPDATE_DATE")
-	private Date lastUpdateDate;
+	@Column(name = "updated_date")
+	private Date updatedDate;
 	
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
