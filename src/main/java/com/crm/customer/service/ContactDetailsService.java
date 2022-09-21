@@ -24,15 +24,16 @@ public class ContactDetailsService {
 	public Page<ContactDetails> getSearchAndPagination(String name, Long customerId, Pageable pageable) {
 
 		Page<ContactDetails> contactList = null;
-		if (customerId != null) {
-			contactList = contactDetailsRepository.findByIsDeletedAndCustomerCustomerId(false, customerId, pageable);
-		} else if (ObjectUtils.isEmpty(name)) {
-			contactList = contactDetailsRepository.findByIsDeleted(false, pageable);
-		} else {
+
+		if (!ObjectUtils.isEmpty(name)) {
 			contactList = contactDetailsRepository
-					.findByIsDeletedAndFirstNameLikeIgnoreCaseOrIsDeletedAndMiddelNameLikeIgnoreCaseOrIsDeletedAndLastNameLikeIgnoreCaseOrIsDeletedAndMobileNumberLikeIgnoreCaseOrIsDeletedAndFaxLikeIgnoreCaseOrIsDeletedAndNationalityLikeIgnoreCase(
-							false, "%" + name + "%", false, "%" + name + "%", false, "%" + name + "%", false,
-							"%" + name + "%", false, "%" + name + "%", false, "%" + name + "%", pageable);
+					.findByIsDeletedAndCustomerCustomerIdAndFirstNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndMiddelNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndLastNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndMobileNumberLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndFaxLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndNationalityLikeIgnoreCase(
+							false, customerId, "%" + name + "%", false, customerId, "%" + name + "%", false, customerId,
+							"%" + name + "%", false, customerId, "%" + name + "%", false, customerId, "%" + name + "%",
+							false, customerId, "%" + name + "%", pageable);
+
+		} else {
+			contactList = contactDetailsRepository.findByIsDeletedAndCustomerCustomerId(false, customerId, pageable);
 		}
 
 		return contactList;

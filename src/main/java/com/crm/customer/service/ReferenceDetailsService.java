@@ -23,24 +23,22 @@ public class ReferenceDetailsService {
 
 	public Page<ReferenceDetails> getSearchAndPagination(String name, Long customerId, Pageable pageable) {
 		Page<ReferenceDetails> referenceList = null;
-		if (customerId != null) {
 
+		if (!ObjectUtils.isEmpty(name)) {
+			referenceList = referenceDetailsRepository
+					.findByIsDeletedAndCustomerCustomerIdAndFirstNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndMiddelNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndLastNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCityLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndProvinceStateLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndReferencePhoneNumberLikeIgnoreCase(
+							false,customerId, "%" + name + "%", false,customerId, "%" + name + "%", false,customerId, "%" + name + "%", false,customerId,
+							"%" + name + "%", false,customerId, "%" + name + "%", false,customerId, "%" + name + "%", false,customerId, "%" + name + "%",
+							false,customerId, "%" + name + "%", false,customerId, "%" + name + "%", false, customerId,"%" + name + "%", pageable);
+
+		} else {
 			referenceList = referenceDetailsRepository.findByIsDeletedAndCustomerCustomerId(false, customerId,
 					pageable);
 
-		} else if (ObjectUtils.isEmpty(name)) {
-			referenceList = referenceDetailsRepository.findByIsDeleted(false, pageable);
-		} else {
-			referenceList = referenceDetailsRepository
-					.findByIsDeletedAndFirstNameLikeIgnoreCaseOrIsDeletedAndMiddelNameLikeIgnoreCaseOrIsDeletedAndLastNameLikeIgnoreCaseOrIsDeletedAndAddressTypeLikeIgnoreCaseOrIsDeletedAndAddress1LikeIgnoreCaseOrIsDeletedAndAddress2LikeIgnoreCaseOrIsDeletedAndCityLikeIgnoreCaseOrIsDeletedAndProvinceStateLikeIgnoreCaseOrIsDeletedAndCountryLikeIgnoreCaseOrIsDeletedAndReferencePhoneNumberLikeIgnoreCase(
-							false, "%" + name + "%", false, "%" + name + "%", false, "%" + name + "%", false,
-							"%" + name + "%", false, "%" + name + "%", false, "%" + name + "%", false, "%" + name + "%",
-							false, "%" + name + "%", false, "%" + name + "%", false, "%" + name + "%", pageable);
 		}
 
 		return referenceList;
 	}
-
 
 	public Optional<ReferenceDetails> getById(Long id) {
 

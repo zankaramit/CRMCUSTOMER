@@ -21,20 +21,18 @@ public class AddressDetailsService {
 
 	@Autowired
 	AddressDetailsRepository addressDetailsRepository;
-	
+
 	public Page<AddressDetails> getSearchAndPagination(String name, Long customerId, Pageable pageable) {
 		Page<AddressDetails> addressList = null;
-		if (customerId != null) {
-			addressList = addressDetailsRepository.findByIsDeletedAndCustomerCustomerId(false, customerId, pageable);
-
-		} else if (ObjectUtils.isEmpty(name)) {
-			addressList = addressDetailsRepository.findByIsDeleted(false, pageable);
-
-		} else {
+		if (!ObjectUtils.isEmpty(name)) {
 			addressList = addressDetailsRepository
-					.findByIsDeletedAndAddress1LikeIgnoreCaseOrIsDeletedAndAddress2LikeIgnoreCaseOrIsDeletedAndAddressTypeLikeIgnoreCaseOrIsDeletedAndContactAddressLikeIgnoreCaseOrIsDeletedAndCountryLikeIgnoreCaseOrIsDeletedAndStateLikeIgnoreCase(
-							false, "%" + name + "%", false, "%" + name + "%", false, "%" + name + "%", false,
-							"%" + name + "%", false, "%" + name + "%", false, "%" + name + "%", pageable);
+					.findByIsDeletedAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndContactAddressLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndStateLikeIgnoreCase(
+							false, customerId, "%" + name + "%", false, customerId, "%" + name + "%", false, customerId,
+							"%" + name + "%", false, customerId, "%" + name + "%", false, customerId, "%" + name + "%",
+							false, customerId, "%" + name + "%", pageable);
+		} else {
+
+			addressList = addressDetailsRepository.findByIsDeletedAndCustomerCustomerId(false, customerId, pageable);
 
 		}
 		return addressList;
@@ -80,7 +78,5 @@ public class AddressDetailsService {
 		existingAddress.setUpdatedDate(date);
 		return addressDetailsRepository.save(existingAddress);
 	}
-
-	
 
 }

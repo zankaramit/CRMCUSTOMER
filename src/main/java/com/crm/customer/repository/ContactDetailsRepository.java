@@ -17,10 +17,9 @@ public interface ContactDetailsRepository
 
 	Page<ContactDetails> findByIsDeletedAndCustomerCustomerId(boolean b, Long customerId, Pageable pageable);
 
-	Page<ContactDetails> findByIsDeleted(boolean b, Pageable pageable);
-
-	Page<ContactDetails> findByIsDeletedAndFirstNameLikeIgnoreCaseOrIsDeletedAndMiddelNameLikeIgnoreCaseOrIsDeletedAndLastNameLikeIgnoreCaseOrIsDeletedAndMobileNumberLikeIgnoreCaseOrIsDeletedAndFaxLikeIgnoreCaseOrIsDeletedAndNationalityLikeIgnoreCase(
-			boolean b, String string, boolean c, String string2, boolean d, String string3, boolean e, String string4,
-			boolean f, String string5, boolean g, String string6, Pageable pageable);
+	Page<ContactDetails> findByIsDeletedAndCustomerCustomerIdAndFirstNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndMiddelNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndLastNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndMobileNumberLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndFaxLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndNationalityLikeIgnoreCase(
+			boolean b, Long customerId, String string, boolean c, Long customerId2, String string2, boolean d,
+			Long customerId3, String string3, boolean e, Long customerId4, String string4, boolean f, Long customerId5,
+			String string5, boolean g, Long customerId6, String string6, Pageable pageable);
 
 }

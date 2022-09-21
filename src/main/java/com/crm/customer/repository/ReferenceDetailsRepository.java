@@ -17,11 +17,11 @@ public interface ReferenceDetailsRepository
 
 	Page<ReferenceDetails> findByIsDeletedAndCustomerCustomerId(boolean b, Long customerId, Pageable pageable);
 
-	Page<ReferenceDetails> findByIsDeleted(boolean b, Pageable pageable);
-
-	Page<ReferenceDetails> findByIsDeletedAndFirstNameLikeIgnoreCaseOrIsDeletedAndMiddelNameLikeIgnoreCaseOrIsDeletedAndLastNameLikeIgnoreCaseOrIsDeletedAndAddressTypeLikeIgnoreCaseOrIsDeletedAndAddress1LikeIgnoreCaseOrIsDeletedAndAddress2LikeIgnoreCaseOrIsDeletedAndCityLikeIgnoreCaseOrIsDeletedAndProvinceStateLikeIgnoreCaseOrIsDeletedAndCountryLikeIgnoreCaseOrIsDeletedAndReferencePhoneNumberLikeIgnoreCase(
-			boolean b, String string, boolean c, String string2, boolean d, String string3, boolean e, String string4,
-			boolean f, String string5, boolean g, String string6, boolean h, String string7, boolean i, String string8,
-			boolean j, String string9, boolean k, String string10, Pageable pageable);
+	Page<ReferenceDetails> findByIsDeletedAndCustomerCustomerIdAndFirstNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndMiddelNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndLastNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCityLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndProvinceStateLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndReferencePhoneNumberLikeIgnoreCase(
+			boolean b, Long customerId, String string, boolean c, Long customerId2, String string2, boolean d,
+			Long customerId3, String string3, boolean e, Long customerId4, String string4, boolean f, Long customerId5,
+			String string5, boolean g, Long customerId6, String string6, boolean h, Long customerId7, String string7,
+			boolean i, Long customerId8, String string8, boolean j, Long customerId9, String string9, boolean k,
+			Long customerId10, String string10, Pageable pageable);
 
 }
