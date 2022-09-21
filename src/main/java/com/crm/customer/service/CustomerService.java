@@ -1,5 +1,6 @@
 package com.crm.customer.service;
 
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,12 +44,14 @@ public class CustomerService {
 	}
 
 	public Customer save(Customer customer) {
+		Date date = new Date();
 		customer.setIsDeleted(false);
+		customer.setCreatedDate(date);
 		return customerRepository.save(customer);
 	}
 
 	public Customer update(Customer customer) {
-
+		Date date = new Date();
 		Customer existingCustomer = customerRepository.findById(customer.getCustomerId()).get();
 		existingCustomer.setCustomerType(customer.getCustomerType());
 		existingCustomer.setCustomerClass(customer.getCustomerClass());
@@ -66,15 +69,17 @@ public class CustomerService {
 		existingCustomer.setDateOfBirth(customer.getDateOfBirth());
 		existingCustomer.setPlaceOfBirth(customer.getPlaceOfBirth());
 		existingCustomer.setUpdatedBy(customer.getUpdatedBy());
-		existingCustomer.setUpdatedDate(customer.getUpdatedDate());
+		existingCustomer.setUpdatedDate(date);
 		return customerRepository.save(existingCustomer);
 
 	}
 
 	public Customer softDelete(Long id, String updatedBy) {
+		Date date = new Date();
 		Customer existingCustomer = customerRepository.findById(id).get();
 		existingCustomer.setIsDeleted(true);
 		existingCustomer.setUpdatedBy(updatedBy);
+		existingCustomer.setUpdatedDate(date);
 		return customerRepository.save(existingCustomer);
 	}
 

@@ -1,5 +1,6 @@
 package com.crm.customer.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,12 +44,14 @@ public class ContactDetailsService {
 	}
 
 	public ContactDetails save(ContactDetails contactDetails) {
+		Date date = new Date();
 		contactDetails.setIsDeleted(false);
+		contactDetails.setCreatedDate(date);
 		return contactDetailsRepository.save(contactDetails);
 	}
 
 	public ContactDetails update(ContactDetails contactDetails) {
-
+		Date date = new Date();
 		ContactDetails existingContact = contactDetailsRepository.findById(contactDetails.getContactDetailsId()).get();
 		existingContact.setFirstName(contactDetails.getFirstName());
 		existingContact.setMiddelName(contactDetails.getMiddelName());
@@ -60,14 +63,16 @@ public class ContactDetailsService {
 		existingContact.setFax(contactDetails.getFax());
 		existingContact.setNationality(contactDetails.getNationality());
 		existingContact.setUpdatedBy(contactDetails.getUpdatedBy());
-		existingContact.setUpdatedDate(contactDetails.getUpdatedDate());
+		existingContact.setUpdatedDate(date);
 		return contactDetailsRepository.save(existingContact);
 	}
 
 	public ContactDetails softDelete(Long id, String updatedBy) {
+		Date date = new Date();
 		ContactDetails existingContact = contactDetailsRepository.findById(id).get();
 		existingContact.setIsDeleted(true);
 		existingContact.setUpdatedBy(updatedBy);
+		existingContact.setUpdatedDate(date);
 		return contactDetailsRepository.save(existingContact);
 	}
 

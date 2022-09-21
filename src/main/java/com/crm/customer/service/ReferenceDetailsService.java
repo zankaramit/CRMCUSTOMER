@@ -1,5 +1,6 @@
 package com.crm.customer.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,12 +48,14 @@ public class ReferenceDetailsService {
 	}
 
 	public ReferenceDetails save(ReferenceDetails referenceDetails) {
+		Date date = new Date();
 		referenceDetails.setIsDeleted(false);
+		referenceDetails.setCreatedDate(date);
 		return referenceDetailsRepository.save(referenceDetails);
 	}
 
 	public ReferenceDetails update(ReferenceDetails referenceDetails) {
-
+		Date date = new Date();
 		ReferenceDetails existingReference = referenceDetailsRepository
 				.findById(referenceDetails.getReferenceDetailsId()).get();
 
@@ -69,15 +72,17 @@ public class ReferenceDetailsService {
 		existingReference.setReferencePhoneNumber(referenceDetails.getReferencePhoneNumber());
 		existingReference.setRelationship(referenceDetails.getRelationship());
 		existingReference.setUpdatedBy(referenceDetails.getUpdatedBy());
-		existingReference.setUpdatedDate(referenceDetails.getUpdatedDate());
+		existingReference.setUpdatedDate(date);
 
 		return referenceDetailsRepository.save(existingReference);
 	}
 
 	public ReferenceDetails softDelete(Long id, String updatedBy) {
+		Date date = new Date();
 		ReferenceDetails existingReference = referenceDetailsRepository.findById(id).get();
 		existingReference.setIsDeleted(true);
 		existingReference.setUpdatedBy(updatedBy);
+		existingReference.setUpdatedDate(date);
 		return referenceDetailsRepository.save(existingReference);
 	}
 

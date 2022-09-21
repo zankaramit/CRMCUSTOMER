@@ -1,5 +1,6 @@
 package com.crm.customer.service;
 
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,9 @@ public class CompanyDetailsService {
 	CompanyDetailsRepository companyDetailsRepository;
 
 	public CompanyDetails save(CompanyDetails companyDetails) {
+		Date date = new Date();
 		companyDetails.setIsDeleted(false);
+		companyDetails.setCreatedDate(date);
 		return companyDetailsRepository.save(companyDetails);
 
 	}
@@ -28,6 +31,7 @@ public class CompanyDetailsService {
 	}
 
 	public CompanyDetails update(CompanyDetails companyDetails) {
+		Date date = new Date();
 		CompanyDetails existingCompanyDetails = companyDetailsRepository.findById(companyDetails.getCompanyDetailsId())
 				.get();
 		existingCompanyDetails.setAccountName(companyDetails.getAccountName());
@@ -39,14 +43,16 @@ public class CompanyDetailsService {
 		existingCompanyDetails.setWebsiteDetails(companyDetails.getWebsiteDetails());
 		existingCompanyDetails.setParentAccount(companyDetails.getParentAccount());
 		existingCompanyDetails.setUpdatedBy(companyDetails.getUpdatedBy());
-		existingCompanyDetails.setUpdatedDate(companyDetails.getUpdatedDate());
+		existingCompanyDetails.setUpdatedDate(date);
 		return companyDetailsRepository.save(existingCompanyDetails);
 	}
 
 	public CompanyDetails softDelete(Long id, String updatedBy) {
+		Date date = new Date();
 		CompanyDetails existingCompanyDetails = companyDetailsRepository.findById(id).get();
 		existingCompanyDetails.setIsDeleted(true);
 		existingCompanyDetails.setUpdatedBy(updatedBy);
+		existingCompanyDetails.setUpdatedDate(date);
 		return companyDetailsRepository.save(existingCompanyDetails);
 	}
 
