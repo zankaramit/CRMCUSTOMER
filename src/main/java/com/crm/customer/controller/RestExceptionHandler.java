@@ -23,4 +23,7 @@ public class RestExceptionHandler {
 		ErrorResponse errorResp = new ErrorResponse(ex.getMessage());
 		return new ResponseEntity<>(errorResp, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
+	
+
 }

@@ -1,5 +1,6 @@
 package com.crm.customer.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -64,13 +65,13 @@ public class CompanyDetails {
 	private String createdBy;
 
 	@Column(name = "created_date")
-	private Date createdDate;
+	private LocalDateTime createdDate;
 
 	@Column(name = "updated_by")
 	private String updatedBy;
 
 	@Column(name = "updated_date")
-	private Date updatedDate;
+	private LocalDateTime updatedDate;
 
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")

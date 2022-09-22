@@ -1,7 +1,10 @@
 package com.crm.customer.service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Optional;
+
+import javax.persistence.PersistenceException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -44,14 +47,14 @@ public class CustomerService {
 	}
 
 	public Customer save(Customer customer) {
-		Date date = new Date();
+		LocalDateTime dateTime = LocalDateTime.now();
 		customer.setIsDeleted(false);
-		customer.setCreatedDate(date);
+		customer.setCreatedDate(dateTime);
 		return customerRepository.save(customer);
 	}
 
 	public Customer update(Customer customer) {
-		Date date = new Date();
+		LocalDateTime dateTime = LocalDateTime.now();
 		Customer existingCustomer = customerRepository.findById(customer.getCustomerId()).get();
 		existingCustomer.setCustomerType(customer.getCustomerType());
 		existingCustomer.setCustomerClass(customer.getCustomerClass());
@@ -69,17 +72,25 @@ public class CustomerService {
 		existingCustomer.setDateOfBirth(customer.getDateOfBirth());
 		existingCustomer.setPlaceOfBirth(customer.getPlaceOfBirth());
 		existingCustomer.setUpdatedBy(customer.getUpdatedBy());
-		existingCustomer.setUpdatedDate(date);
+		existingCustomer.setUpdatedDate(dateTime);
 		return customerRepository.save(existingCustomer);
 
 	}
 
 	public Customer softDelete(Long id, String updatedBy) {
-		Date date = new Date();
-		Customer existingCustomer = customerRepository.findById(id).get();
+		LocalDateTime dateTime = LocalDateTime.now();
+		Customer existingCustomer;
+		try {
+			existingCustomer = customerRepository.findById(id).get();
+		} catch (Exception e) {
+			throw new ResourceNotFoundException("Customer Details not found.");
+		}
+		if (existingCustomer.getIsDeleted()) {
+			throw new PersistenceException("Customer Details already Deleted");
+		}
 		existingCustomer.setIsDeleted(true);
 		existingCustomer.setUpdatedBy(updatedBy);
-		existingCustomer.setUpdatedDate(date);
+		existingCustomer.setUpdatedDate(dateTime);
 		return customerRepository.save(existingCustomer);
 	}
 

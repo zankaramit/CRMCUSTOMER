@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.ReferenceDetails;
 import com.crm.customer.service.ReferenceDetailsService;
@@ -36,12 +35,14 @@ public class ReferenceDetailsController {
 	ReferenceDetailsService referenceDetailsService;
 
 	@GetMapping("all")
-	public ResponseEntity<Page<ReferenceDetails>> getSearchAndPagination(@Nullable String name,Long customerId, Pageable pageable){
+	public ResponseEntity<Page<ReferenceDetails>> getSearchAndPagination(@Nullable String name, Long customerId,
+			Pageable pageable) {
 
-		Page<ReferenceDetails> referencePage = referenceDetailsService.getSearchAndPagination(name,customerId, pageable);
+		Page<ReferenceDetails> referencePage = referenceDetailsService.getSearchAndPagination(name, customerId,
+				pageable);
 		return new ResponseEntity<>(referencePage, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("{id}")
 	public ResponseEntity<ReferenceDetails> getById(@PathVariable(value = "id") Long id) {
 
@@ -57,8 +58,8 @@ public class ReferenceDetailsController {
 	@PostMapping(path = "create")
 	public ResponseEntity<?> create(@RequestBody ReferenceDetails referenceDetails) {
 		try {
-		ReferenceDetails referenceSaved = referenceDetailsService.save(referenceDetails);
-		return new ResponseEntity<>(referenceSaved, HttpStatus.OK);
+			ReferenceDetails referenceSaved = referenceDetailsService.save(referenceDetails);
+			return new ResponseEntity<>(referenceSaved, HttpStatus.OK);
 		} catch (DataIntegrityViolationException dive) {
 			return new ResponseEntity<>(new ErrorResponse("Exception is :" + dive.getRootCause().getMessage()),
 					HttpStatus.BAD_REQUEST);
@@ -81,14 +82,10 @@ public class ReferenceDetailsController {
 
 	@DeleteMapping("softdelete/{id}/{updatedBy}")
 	public ResponseEntity<ReferenceDetails> softDelete(@PathVariable Long id, @PathVariable String updatedBy) {
-		try {
-			ReferenceDetails referenceDeleted = referenceDetailsService.softDelete(id, updatedBy);
-			return new ResponseEntity<>(referenceDeleted, HttpStatus.OK);
-		} catch (Exception e) {
-			throw new PersistenceException("Failed deleting Reference Details.", e);
 
-		}
+		ReferenceDetails referenceDeleted = referenceDetailsService.softDelete(id, updatedBy);
+		return new ResponseEntity<>(referenceDeleted, HttpStatus.OK);
+
 	}
-	
 
 }

@@ -1,8 +1,10 @@
 package com.crm.customer.service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDateTime; 
+
+import javax.persistence.PersistenceException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.ReferenceDetails;
 import com.crm.customer.repository.ReferenceDetailsRepository;
 
@@ -46,14 +49,14 @@ public class ReferenceDetailsService {
 	}
 
 	public ReferenceDetails save(ReferenceDetails referenceDetails) {
-		Date date = new Date();
+		LocalDateTime dateTime = LocalDateTime.now();  
 		referenceDetails.setIsDeleted(false);
-		referenceDetails.setCreatedDate(date);
+		referenceDetails.setCreatedDate(dateTime);
 		return referenceDetailsRepository.save(referenceDetails);
 	}
 
 	public ReferenceDetails update(ReferenceDetails referenceDetails) {
-		Date date = new Date();
+		LocalDateTime dateTime = LocalDateTime.now();
 		ReferenceDetails existingReference = referenceDetailsRepository
 				.findById(referenceDetails.getReferenceDetailsId()).get();
 
@@ -70,17 +73,25 @@ public class ReferenceDetailsService {
 		existingReference.setReferencePhoneNumber(referenceDetails.getReferencePhoneNumber());
 		existingReference.setRelationship(referenceDetails.getRelationship());
 		existingReference.setUpdatedBy(referenceDetails.getUpdatedBy());
-		existingReference.setUpdatedDate(date);
+		existingReference.setUpdatedDate(dateTime);
 
 		return referenceDetailsRepository.save(existingReference);
 	}
 
 	public ReferenceDetails softDelete(Long id, String updatedBy) {
-		Date date = new Date();
-		ReferenceDetails existingReference = referenceDetailsRepository.findById(id).get();
+		LocalDateTime dateTime = LocalDateTime.now();
+		ReferenceDetails existingReference;
+		try {
+		existingReference = referenceDetailsRepository.findById(id).get();
+		} catch (Exception e) {
+			throw new ResourceNotFoundException("Reference Details not found.");
+		}
+		if (existingReference.getIsDeleted()) {
+			throw new PersistenceException("Reference Details already Deleted");
+		}
 		existingReference.setIsDeleted(true);
 		existingReference.setUpdatedBy(updatedBy);
-		existingReference.setUpdatedDate(date);
+		existingReference.setUpdatedDate(dateTime);
 		return referenceDetailsRepository.save(existingReference);
 	}
 

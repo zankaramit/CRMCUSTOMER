@@ -82,13 +82,10 @@ public class CustomerController {
 
 	@DeleteMapping("softdelete/{id}/{updatedBy}")
 	public ResponseEntity<Customer> softDelete(@PathVariable Long id, @PathVariable String updatedBy) {
-		try {
-			Customer customer = customerService.softDelete(id, updatedBy);
-			return new ResponseEntity<>(customer, HttpStatus.OK);
-		} catch (Exception e) {
-			throw new PersistenceException("Failed deleting Customer.", e);
 
-		}
+		Customer customer = customerService.softDelete(id, updatedBy);
+		return new ResponseEntity<>(customer, HttpStatus.OK);
+
 	}
 
 }

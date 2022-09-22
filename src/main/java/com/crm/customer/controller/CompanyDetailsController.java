@@ -65,21 +65,13 @@ public class CompanyDetailsController {
 		}
 
 	}
-	
+
 	@DeleteMapping("softdelete/{id}/{updatedBy}")
 	public ResponseEntity<CompanyDetails> softDelete(@PathVariable Long id, @PathVariable String updatedBy) {
-		try {
-			CompanyDetails companyDetails = companyDetailsService.softDelete(id, updatedBy);
-			return new ResponseEntity<>(companyDetails, HttpStatus.OK);
-		} catch (Exception e) {
-			throw new PersistenceException("Failed deleting Company Details.", e);
 
-		}
+		CompanyDetails companyDetails = companyDetailsService.softDelete(id, updatedBy);
+		return new ResponseEntity<>(companyDetails, HttpStatus.OK);
+
 	}
-	
-	
-	
-	
-	
-	
+
 }

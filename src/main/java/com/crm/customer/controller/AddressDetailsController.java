@@ -1,6 +1,5 @@
 package com.crm.customer.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.PersistenceException;
@@ -34,10 +33,11 @@ public class AddressDetailsController {
 	@Autowired
 	AddressDetailsService addressDetailsService;
 
-    @GetMapping("all")
-	public ResponseEntity<Page<AddressDetails>> getSearchAndPagination(@Nullable String name,Long customerId, Pageable pageable){
+	@GetMapping("all")
+	public ResponseEntity<Page<AddressDetails>> getSearchAndPagination(@Nullable String name, Long customerId,
+			Pageable pageable) {
 
-		Page<AddressDetails> addressPage = addressDetailsService.getSearchAndPagination(name,customerId, pageable);
+		Page<AddressDetails> addressPage = addressDetailsService.getSearchAndPagination(name, customerId, pageable);
 		return new ResponseEntity<>(addressPage, HttpStatus.OK);
 	}
 
@@ -79,13 +79,10 @@ public class AddressDetailsController {
 
 	@DeleteMapping("softdelete/{id}/{updatedBy}")
 	public ResponseEntity<AddressDetails> softDelete(@PathVariable Long id, @PathVariable String updatedBy) {
-		try {
-			AddressDetails addressDeleted = addressDetailsService.softDelete(id, updatedBy);
-			return new ResponseEntity<>(addressDeleted, HttpStatus.OK);
-		} catch (Exception e) {
-			throw new PersistenceException("Failed deleting Address Details.", e);
 
-		}
+		AddressDetails addressDeleted = addressDetailsService.softDelete(id, updatedBy);
+		return new ResponseEntity<>(addressDeleted, HttpStatus.OK);
+
 	}
 
 }

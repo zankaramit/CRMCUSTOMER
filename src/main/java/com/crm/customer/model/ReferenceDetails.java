@@ -1,5 +1,12 @@
 package com.crm.customer.model;
 
+
+
+
+
+
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -72,13 +79,13 @@ public class ReferenceDetails {
 	private String createdBy;
 
 	@Column(name = "created_date")
-	private Date createdDate;
+	private LocalDateTime   createdDate;
 
 	@Column(name = "updated_by")
 	private String updatedBy;
 
 	@Column(name = "updated_date")
-	private Date updatedDate;
+	private LocalDateTime   updatedDate;
 	
 	@ManyToOne
 	@JoinColumn(name = "customer_id")

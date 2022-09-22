@@ -1,18 +1,18 @@
 package com.crm.customer.service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.query.criteria.internal.predicate.IsEmptyPredicate;
+import javax.persistence.PersistenceException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.AddressDetails;
 import com.crm.customer.repository.AddressDetailsRepository;
 
@@ -39,9 +39,9 @@ public class AddressDetailsService {
 	}
 
 	public AddressDetails save(AddressDetails addressDetails) {
-		Date date = new Date();
+		LocalDateTime dateTime = LocalDateTime.now();
 		addressDetails.setIsDeleted(false);
-		addressDetails.setCreatedDate(date);
+		addressDetails.setCreatedDate(dateTime);
 		return addressDetailsRepository.save(addressDetails);
 	}
 
@@ -51,7 +51,7 @@ public class AddressDetailsService {
 	}
 
 	public AddressDetails update(AddressDetails addressDetails) {
-		Date date = new Date();
+		LocalDateTime dateTime = LocalDateTime.now();
 		AddressDetails existingAddress = addressDetailsRepository.findById(addressDetails.getAddressDetailsId()).get();
 		existingAddress.setAddress1(addressDetails.getAddress1());
 		existingAddress.setAddress2(addressDetails.getAddress2());
@@ -64,19 +64,29 @@ public class AddressDetailsService {
 		existingAddress.setAddressTenureMonth(addressDetails.getAddressTenureMonth());
 		existingAddress.setAddressTenureYears(addressDetails.getAddressTenureYears());
 		existingAddress.setUpdatedBy(addressDetails.getUpdatedBy());
-		existingAddress.setUpdatedDate(date);
+		existingAddress.setUpdatedDate(dateTime);
 
 		return addressDetailsRepository.save(existingAddress);
 
 	}
 
 	public AddressDetails softDelete(Long id, String updatedBy) {
-		Date date = new Date();
-		AddressDetails existingAddress = addressDetailsRepository.findById(id).get();
+
+		LocalDateTime dateTime = LocalDateTime.now();
+		AddressDetails existingAddress;
+		try {
+			existingAddress = addressDetailsRepository.findById(id).get();
+		} catch (Exception e) {
+			throw new ResourceNotFoundException("Address Details not found.");
+		}
+		if (existingAddress.getIsDeleted()) {
+			throw new PersistenceException("Address Details already Deleted");
+		}
 		existingAddress.setIsDeleted(true);
 		existingAddress.setUpdatedBy(updatedBy);
-		existingAddress.setUpdatedDate(date);
+		existingAddress.setUpdatedDate(dateTime);
 		return addressDetailsRepository.save(existingAddress);
+
 	}
 
 }
