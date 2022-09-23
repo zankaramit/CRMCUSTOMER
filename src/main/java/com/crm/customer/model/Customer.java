@@ -80,6 +80,27 @@ public class Customer {
 	@Column(name = "religion")
 	private String religion;
 
+	@Column(name = "account_name")
+	private String accountName;
+
+	@Column(name = "company_registration_number")
+	private String companyRegistrationNumber;
+
+	@Column(name = "tax_registration_number")
+	private String taxRegistrationNumber;
+
+	@Column(name = "line_of_business")
+	private String lineOfBusiness;
+
+	@Column(name = "size_of_company")
+	private Long sizeOfCompany;
+
+	@Column(name = "annual_revenue")
+	private String annualRevenue;
+
+	@Column(name = "website_details")
+	private String websiteDetails;
+
 	@Column(name = "is_deleted")
 	private Boolean isDeleted;
 

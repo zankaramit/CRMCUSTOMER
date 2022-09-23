@@ -56,6 +56,7 @@ public class AddressDetailsService {
 		existingAddress.setAddress1(addressDetails.getAddress1());
 		existingAddress.setAddress2(addressDetails.getAddress2());
 		existingAddress.setAddressType(addressDetails.getAddressType());
+		existingAddress.setIdentificationType(addressDetails.getIdentificationType());
 		existingAddress.setContactAddress(addressDetails.getContactAddress());
 		existingAddress.setCountry(addressDetails.getCountry());
 		existingAddress.setOwnershipStatus(addressDetails.getOwnershipStatus());

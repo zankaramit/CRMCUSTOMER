@@ -36,6 +36,9 @@ public class AddressDetails {
 
 	@Column(name = "address_type")
 	private String addressType;
+	
+	@Column(name = "identification_type")
+	private String identificationType;
 
 	@Column(name = "address1")
 	private String address1;

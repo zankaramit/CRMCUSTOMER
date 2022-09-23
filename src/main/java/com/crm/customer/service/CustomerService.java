@@ -32,9 +32,10 @@ public class CustomerService {
 			customer = customerRepository.findByIsDeleted(false, pageable);
 		} else {
 			customer = customerRepository
-					.findByIsDeletedAndFirstNameLikeIgnoreCaseOrIsDeletedAndMiddelNameLikeIgnoreCaseOrIsDeletedAndLastNameLikeIgnoreCaseOrIsDeletedAndEmailAddressLikeIgnoreCaseOrIsDeletedAndMobileNumberLikeIgnoreCase(
+					.findByIsDeletedAndFirstNameLikeIgnoreCaseOrIsDeletedAndMiddelNameLikeIgnoreCaseOrIsDeletedAndLastNameLikeIgnoreCaseOrIsDeletedAndEmailAddressLikeIgnoreCaseOrIsDeletedAndMobileNumberLikeIgnoreCaseOrIsDeletedAndAccountNameLikeIgnoreCaseOrIsDeletedAndCompanyRegistrationNumberLikeIgnoreCaseOrIsDeletedAndWebsiteDetailsLikeIgnoreCase(
 							false, "%" + name + "%", false, "%" + name + "%", false, "%" + name + "%", false,
-							"%" + name + "%", false, "%" + name + "%", pageable);
+							"%" + name + "%", false, "%" + name + "%", false, "%" + name + "%", false, "%" + name + "%",
+							false, "%" + name + "%", pageable);
 		}
 		return customer;
 	}
@@ -71,6 +72,13 @@ public class CustomerService {
 		existingCustomer.setNationality(customer.getNationality());
 		existingCustomer.setDateOfBirth(customer.getDateOfBirth());
 		existingCustomer.setPlaceOfBirth(customer.getPlaceOfBirth());
+		existingCustomer.setAccountName(customer.getAccountName());
+		existingCustomer.setCompanyRegistrationNumber(customer.getCompanyRegistrationNumber());
+		existingCustomer.setTaxRegistrationNumber(customer.getTaxRegistrationNumber());
+		existingCustomer.setLineOfBusiness(customer.getLineOfBusiness());
+		existingCustomer.setSizeOfCompany(customer.getSizeOfCompany());
+		existingCustomer.setAnnualRevenue(customer.getAnnualRevenue());
+		existingCustomer.setWebsiteDetails(customer.getWebsiteDetails());
 		existingCustomer.setUpdatedBy(customer.getUpdatedBy());
 		existingCustomer.setUpdatedDate(dateTime);
 		return customerRepository.save(existingCustomer);

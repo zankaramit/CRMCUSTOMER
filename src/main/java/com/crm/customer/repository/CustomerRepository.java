@@ -15,8 +15,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>, Pagin
 
 	Page<Customer> findByIsDeleted(boolean b, Pageable pageable);
 
-	Page<Customer> findByIsDeletedAndFirstNameLikeIgnoreCaseOrIsDeletedAndMiddelNameLikeIgnoreCaseOrIsDeletedAndLastNameLikeIgnoreCaseOrIsDeletedAndEmailAddressLikeIgnoreCaseOrIsDeletedAndMobileNumberLikeIgnoreCase(
+	Page<Customer> findByIsDeletedAndFirstNameLikeIgnoreCaseOrIsDeletedAndMiddelNameLikeIgnoreCaseOrIsDeletedAndLastNameLikeIgnoreCaseOrIsDeletedAndEmailAddressLikeIgnoreCaseOrIsDeletedAndMobileNumberLikeIgnoreCaseOrIsDeletedAndAccountNameLikeIgnoreCaseOrIsDeletedAndCompanyRegistrationNumberLikeIgnoreCaseOrIsDeletedAndWebsiteDetailsLikeIgnoreCase(
 			boolean b, String string, boolean c, String string2, boolean d, String string3, boolean e, String string4,
-			boolean f, String string5, Pageable pageable);
+			boolean f, String string5, boolean g, String string6, boolean h, String string7, boolean i, String string8,
+			Pageable pageable);
 
 }
