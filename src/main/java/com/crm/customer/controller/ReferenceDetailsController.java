@@ -27,7 +27,7 @@ import com.crm.customer.model.ReferenceDetails;
 import com.crm.customer.service.ReferenceDetailsService;
 
 @RestController
-@RequestMapping("/referenceDetails")
+@RequestMapping("reference-details")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ReferenceDetailsController {
 

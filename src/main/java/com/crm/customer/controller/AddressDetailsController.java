@@ -26,7 +26,7 @@ import com.crm.customer.model.AddressDetails;
 import com.crm.customer.service.AddressDetailsService;
 
 @RestController
-@RequestMapping("/addressDetails")
+@RequestMapping("address-details")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AddressDetailsController {
 

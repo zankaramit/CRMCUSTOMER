@@ -27,7 +27,7 @@ import com.crm.customer.model.ContactDetails;
 import com.crm.customer.service.ContactDetailsService;
 
 @RestController
-@RequestMapping("/contactDetails")
+@RequestMapping("contact-details")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ContactDetailsController {
 
