@@ -18,6 +18,7 @@ public class CustomerMetadataController {
 	private static final DataTableMetadata ADDRESS_METADATA;
 	private static final DataTableMetadata CONTACT_METADATA;
 	private static final DataTableMetadata REFERENCE_METADATA;
+	private static final DataTableMetadata IDENTIFICATION_METADATA;
 
 	static {
 		CUSTOMER_METADATA = new DataTableMetadata()
@@ -55,6 +56,13 @@ public class CustomerMetadataController {
 				.addColumnMetadata(new ColumnMetadata("COUNTRY", "country", ColumnType.TEXT, 15))
 				.addColumnMetadata(new ColumnMetadata("PHONE", "referencePhoneNumber", ColumnType.TEXT, 15));
 
+		IDENTIFICATION_METADATA = new DataTableMetadata()
+				.addColumnMetadata(new ColumnMetadata("", "occupationDetailsId", ColumnType.RADIO, 10))
+				.addColumnMetadata(new ColumnMetadata("Current Occupation", "currentOccupation", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("Education Level", "lastEducationLevel", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("Hobby", "hobby", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("Persons in Household", "numPersonsHousehold", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("Income Group", "incomeGroup", ColumnType.TEXT, 18));
 
 
 	}
@@ -77,5 +85,10 @@ public class CustomerMetadataController {
 	@GetMapping("reference")
 	public DataTableMetadata getReferenceDataTableMetadata() {
 		return REFERENCE_METADATA;
+	}
+	
+	@GetMapping("identification")
+	public DataTableMetadata getIdentificationDataTableMetadata() {
+		return IDENTIFICATION_METADATA;
 	}
 }

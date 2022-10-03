@@ -1,5 +1,6 @@
 package com.crm.customer.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -69,7 +70,7 @@ public class Customer {
 	private String fax;
 
 	@Column(name = "date_of_birth")
-	private LocalDateTime dateOfBirth;
+	private LocalDate dateOfBirth;
 
 	@Column(name = "nationality")
 	private String nationality;
