@@ -57,12 +57,12 @@ public class CustomerMetadataController {
 				.addColumnMetadata(new ColumnMetadata("PHONE", "referencePhoneNumber", ColumnType.TEXT, 15));
 
 		IDENTIFICATION_METADATA = new DataTableMetadata()
-				.addColumnMetadata(new ColumnMetadata("", "occupationDetailsId", ColumnType.RADIO, 10))
-				.addColumnMetadata(new ColumnMetadata("Current Occupation", "currentOccupation", ColumnType.TEXT, 18))
-				.addColumnMetadata(new ColumnMetadata("Education Level", "lastEducationLevel", ColumnType.TEXT, 18))
-				.addColumnMetadata(new ColumnMetadata("Hobby", "hobby", ColumnType.TEXT, 18))
-				.addColumnMetadata(new ColumnMetadata("Persons in Household", "numPersonsHousehold", ColumnType.TEXT, 18))
-				.addColumnMetadata(new ColumnMetadata("Income Group", "incomeGroup", ColumnType.TEXT, 18));
+				.addColumnMetadata(new ColumnMetadata("", "identificationId", ColumnType.RADIO, 10))
+				.addColumnMetadata(new ColumnMetadata("Identification Type", "identificationType", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("Identification Number", "identificationNumber", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("Expiry Date", "iDExpiryDate", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("Soft Copy Link", "iDSoftcopy", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("Mothers Maiden Name", "mothersMaidenName", ColumnType.TEXT, 18));
 
 
 	}
