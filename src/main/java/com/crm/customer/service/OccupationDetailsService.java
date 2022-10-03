@@ -30,7 +30,7 @@ public class OccupationDetailsService {
 	}
 
 	public Optional<OccupationDetails> getById(Long id) {
-		return occupationDetailsRepository.findByOccupationDetailsIdAndIsDeleted(id, false);
+		return occupationDetailsRepository.findByCustomerCustomerIdAndIsDeleted(id, false);
 	}
 
 	public OccupationDetails update(OccupationDetails occupationDetails) {

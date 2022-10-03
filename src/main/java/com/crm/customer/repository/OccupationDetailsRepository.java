@@ -10,6 +10,6 @@ import com.crm.customer.model.OccupationDetails;
 public interface OccupationDetailsRepository
 		extends JpaRepository<OccupationDetails, Long>, PagingAndSortingRepository<OccupationDetails, Long> {
 
-	Optional<OccupationDetails> findByOccupationDetailsIdAndIsDeleted(Long id, boolean b);
+	Optional<OccupationDetails> findByCustomerCustomerIdAndIsDeleted(Long id, boolean b);
 
 }

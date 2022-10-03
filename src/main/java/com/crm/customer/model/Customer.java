@@ -38,6 +38,9 @@ public class Customer {
 
 	@Column(name = "customer_class")
 	private String customerClass;
+	
+	@Column(name = "title")
+	private String title;
 
 	@Column(name = "first_name")
 	private String firstName;

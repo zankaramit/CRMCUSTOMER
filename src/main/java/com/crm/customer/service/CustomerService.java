@@ -59,6 +59,7 @@ public class CustomerService {
 		Customer existingCustomer = customerRepository.findById(customer.getCustomerId()).get();
 		existingCustomer.setCustomerType(customer.getCustomerType());
 		existingCustomer.setCustomerClass(customer.getCustomerClass());
+		existingCustomer.setTitle(customer.getTitle());
 		existingCustomer.setFirstName(customer.getFirstName());
 		existingCustomer.setMiddelName(customer.getMiddelName());
 		existingCustomer.setLastName(customer.getLastName());
