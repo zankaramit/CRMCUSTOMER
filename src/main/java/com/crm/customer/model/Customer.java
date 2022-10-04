@@ -97,7 +97,7 @@ public class Customer {
 	private String lineOfBusiness;
 
 	@Column(name = "size_of_company")
-	private Long sizeOfCompany;
+	private String sizeOfCompany;
 
 	@Column(name = "annual_revenue")
 	private String annualRevenue;
