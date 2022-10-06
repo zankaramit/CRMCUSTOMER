@@ -31,19 +31,18 @@ public class OccupationDetailsController {
 	OccupationDetailsService occupationDetailsService;
 
 	@PostMapping(path = "create")
-	public ResponseEntity<?> create(@RequestBody OccupationDetails occupationDetails) {
+	public ResponseEntity<OccupationDetails> create(@RequestBody OccupationDetails occupationDetails) {
 
 		try {
 			OccupationDetails occupationSaved = occupationDetailsService.save(occupationDetails);
 			return new ResponseEntity<>(occupationSaved, HttpStatus.OK);
 
 		} catch (DataIntegrityViolationException dive) {
-			return new ResponseEntity<>(new ErrorResponse("Exception is :" + dive.getRootCause().getMessage()),
-					HttpStatus.BAD_REQUEST);
+			throw new DataIntegrityViolationException("Data IntegrityViolationException" + dive);
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
+			throw new PersistenceException("Failed saving Occupation Details.", e);
+
 		}
 	}
 
@@ -63,7 +62,7 @@ public class OccupationDetailsController {
 			OccupationDetails occupationUpdate = occupationDetailsService.update(occupationDetails);
 			return new ResponseEntity<>(occupationUpdate, HttpStatus.OK);
 		} catch (Exception e) {
-			throw new PersistenceException("Failed update Occupation Details.", e);
+			throw new PersistenceException(e.getMessage());
 		}
 
 	}

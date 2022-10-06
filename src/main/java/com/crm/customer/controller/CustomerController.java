@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.crm.customer.exception.ResourceNotFoundException;
@@ -38,7 +37,7 @@ public class CustomerController {
 	public ResponseEntity<Page<Customer>> getByNameAndPagination(@Nullable String name, Pageable pageable) {
 
 		Page<Customer> customerPage = customerService.getByNameCustomerAndPagination(name, pageable);
-		return new ResponseEntity<Page<Customer>>(customerPage, HttpStatus.OK);
+		return new ResponseEntity<>(customerPage, HttpStatus.OK);
 
 	}
 
@@ -55,14 +54,12 @@ public class CustomerController {
 	}
 
 	@PostMapping(path = "create")
-	public ResponseEntity<?> create(@RequestBody Customer customer) {
+	public ResponseEntity<Customer> create(@RequestBody Customer customer) {
 		try {
 			Customer customerSaved = customerService.save(customer);
 			return new ResponseEntity<>(customerSaved, HttpStatus.OK);
 		} catch (DataIntegrityViolationException dive) {
-			return new ResponseEntity<>(new ErrorResponse("Exception is :" + dive.getRootCause().getMessage()),
-					HttpStatus.BAD_REQUEST);
-
+			throw new DataIntegrityViolationException("Data IntegrityViolationException" + dive);
 		} catch (Exception e) {
 			throw new PersistenceException("Failed saving customer.", e);
 		}
@@ -70,12 +67,12 @@ public class CustomerController {
 	}
 
 	@PutMapping(path = "update")
-	public ResponseEntity<Customer> update(@RequestBody Customer customer) {
+	public ResponseEntity<Customer> update(@RequestBody Customer customer)   {
 		try {
 			Customer customerUpdate = customerService.update(customer);
 			return new ResponseEntity<>(customerUpdate, HttpStatus.OK);
 		} catch (Exception e) {
-			throw new PersistenceException("Failed update customer.", e);
+			throw new PersistenceException( e.getMessage());
 		}
 
 	}

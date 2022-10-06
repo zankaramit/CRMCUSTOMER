@@ -1,6 +1,5 @@
 package com.crm.customer.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.PersistenceException;
@@ -56,13 +55,12 @@ public class ContactDetailsController {
 	}
 
 	@PostMapping(path = "create")
-	public ResponseEntity<?> create(@RequestBody ContactDetails contactDetails) {
+	public ResponseEntity<ContactDetails> create(@RequestBody ContactDetails contactDetails) {
 		try {
 			ContactDetails contactSaved = contactDetailsService.save(contactDetails);
 			return new ResponseEntity<>(contactSaved, HttpStatus.OK);
 		} catch (DataIntegrityViolationException dive) {
-			return new ResponseEntity<>(new ErrorResponse("Exception is :" + dive.getRootCause().getMessage()),
-					HttpStatus.BAD_REQUEST);
+			throw new DataIntegrityViolationException("Data IntegrityViolationException" + dive);
 
 		} catch (Exception e) {
 			throw new PersistenceException("Failed saving Contact Details.", e);
@@ -76,7 +74,7 @@ public class ContactDetailsController {
 			ContactDetails contactUpdate = contactDetailsService.update(contactDetails);
 			return new ResponseEntity<>(contactUpdate, HttpStatus.OK);
 		} catch (Exception e) {
-			throw new PersistenceException("Failed update Contact Details.", e);
+			throw new PersistenceException(e.getMessage());
 		}
 	}
 

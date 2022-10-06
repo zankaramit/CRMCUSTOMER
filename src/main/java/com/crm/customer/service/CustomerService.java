@@ -1,18 +1,15 @@
 package com.crm.customer.service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Optional;
 
 import javax.persistence.PersistenceException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
-import org.springframework.data.domain.Sort;
 
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.Customer;
@@ -42,9 +39,8 @@ public class CustomerService {
 
 	public Optional<Customer> getById(Long id) {
 
-		Optional<Customer> customer = customerRepository.findByCustomerIdAndIsDeleted(id, false);
+		return customerRepository.findByCustomerIdAndIsDeleted(id, false);
 
-		return customer;
 	}
 
 	public Customer save(Customer customer) {
@@ -56,7 +52,11 @@ public class CustomerService {
 
 	public Customer update(Customer customer) {
 		LocalDateTime dateTime = LocalDateTime.now();
-		Customer existingCustomer = customerRepository.findById(customer.getCustomerId()).get();
+		Optional<Customer> findById = customerRepository.findById(customer.getCustomerId());
+		if (findById.isEmpty()) {
+			throw new ResourceNotFoundException("Customer Details not found for ID :" + customer.getCustomerId());
+		}
+		Customer existingCustomer = findById.get();
 		existingCustomer.setCustomerType(customer.getCustomerType());
 		existingCustomer.setCustomerClass(customer.getCustomerClass());
 		existingCustomer.setTitle(customer.getTitle());
@@ -89,13 +89,14 @@ public class CustomerService {
 	public Customer softDelete(Long id, String updatedBy) {
 		LocalDateTime dateTime = LocalDateTime.now();
 		Customer existingCustomer;
-		try {
-			existingCustomer = customerRepository.findById(id).get();
-		} catch (Exception e) {
-			throw new ResourceNotFoundException("Customer Details not found.");
+		Optional<Customer> findById = customerRepository.findById(id);
+		if (findById.isEmpty()) {
+			throw new ResourceNotFoundException("Customer Details not found and ID :" + id);
 		}
-		if (existingCustomer.getIsDeleted()) {
-			throw new PersistenceException("Customer Details already Deleted");
+		existingCustomer = findById.get();
+		Boolean b = existingCustomer.getIsDeleted();
+		if (Boolean.TRUE.equals(b)) {
+			throw new PersistenceException("Customer Details already Deleted and ID :" + id);
 		}
 		existingCustomer.setIsDeleted(true);
 		existingCustomer.setUpdatedBy(updatedBy);

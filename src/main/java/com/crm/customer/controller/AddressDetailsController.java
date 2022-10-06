@@ -53,13 +53,12 @@ public class AddressDetailsController {
 	}
 
 	@PostMapping(path = "create")
-	public ResponseEntity<?> create(@RequestBody AddressDetails addressDetails) {
+	public ResponseEntity<AddressDetails> create(@RequestBody AddressDetails addressDetails) {
 		try {
 			AddressDetails addressSaved = addressDetailsService.save(addressDetails);
 			return new ResponseEntity<>(addressSaved, HttpStatus.OK);
 		} catch (DataIntegrityViolationException dive) {
-			return new ResponseEntity<>(new ErrorResponse("Exception is :" + dive.getRootCause().getMessage()),
-					HttpStatus.BAD_REQUEST);
+			throw new DataIntegrityViolationException("Data IntegrityViolationException" + dive);
 
 		} catch (Exception e) {
 			throw new PersistenceException("Failed saving Address Details.", e);
@@ -72,7 +71,7 @@ public class AddressDetailsController {
 			AddressDetails addressUpdate = addressDetailsService.update(addressDetails);
 			return new ResponseEntity<>(addressUpdate, HttpStatus.OK);
 		} catch (Exception e) {
-			throw new PersistenceException("Failed update Address Details.", e);
+			throw new PersistenceException(e.getMessage());
 		}
 
 	}

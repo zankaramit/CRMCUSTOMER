@@ -24,7 +24,7 @@ public class CustomerMetadataController {
 		CUSTOMER_METADATA = new DataTableMetadata()
 				.addColumnMetadata(new ColumnMetadata("", "customerId", ColumnType.RADIO, 10))
 				.addColumnMetadata(new ColumnMetadata("CUSTOMER", "firstName", ColumnType.TEXT, 15))
-				.addColumnMetadata(new ColumnMetadata("Account Name", "accountName", ColumnType.TEXT, 15))
+				.addColumnMetadata(new ColumnMetadata("CORPORATE", "accountName", ColumnType.TEXT, 15))
 				.addColumnMetadata(new ColumnMetadata("TYPE", "customerType", ColumnType.TEXT, 15))
 				.addColumnMetadata(new ColumnMetadata("PHONE", "mobileNumber", ColumnType.TEXT, 15))
 				.addColumnMetadata(new ColumnMetadata("EMAIL", "emailAddress", ColumnType.TEXT, 15))
@@ -32,12 +32,12 @@ public class CustomerMetadataController {
 
 		ADDRESS_METADATA = new DataTableMetadata()
 				.addColumnMetadata(new ColumnMetadata("", "addressDetailsId", ColumnType.RADIO, 10))
-                .addColumnMetadata(new ColumnMetadata("TYPE", "addressType", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("TYPE", "addressType", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("ADDRESS", "address1", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("STATE", "state", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("COUNTRY", "country", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("POST CODE", "postCode", ColumnType.TEXT, 18));
-		
+
 		CONTACT_METADATA = new DataTableMetadata()
 				.addColumnMetadata(new ColumnMetadata("", "contactDetailsId", ColumnType.RADIO, 10))
 				.addColumnMetadata(new ColumnMetadata("First Name", "firstName", ColumnType.TEXT, 15))
@@ -46,7 +46,7 @@ public class CustomerMetadataController {
 				.addColumnMetadata(new ColumnMetadata("PHONE", "mobileNumber", ColumnType.TEXT, 15))
 				.addColumnMetadata(new ColumnMetadata("FAX", "fax", ColumnType.TEXT, 15))
 				.addColumnMetadata(new ColumnMetadata("DATE", "createdDate", ColumnType.TEXT, 15));
-		
+
 		REFERENCE_METADATA = new DataTableMetadata()
 				.addColumnMetadata(new ColumnMetadata("", "referenceDetailsId", ColumnType.RADIO, 10))
 				.addColumnMetadata(new ColumnMetadata("First Name", "firstName", ColumnType.TEXT, 15))
@@ -59,34 +59,34 @@ public class CustomerMetadataController {
 		IDENTIFICATION_METADATA = new DataTableMetadata()
 				.addColumnMetadata(new ColumnMetadata("", "identificationId", ColumnType.RADIO, 10))
 				.addColumnMetadata(new ColumnMetadata("Identification Type", "identificationType", ColumnType.TEXT, 18))
-				.addColumnMetadata(new ColumnMetadata("Identification Number", "identificationNumber", ColumnType.TEXT, 18))
+				.addColumnMetadata(
+						new ColumnMetadata("Identification Number", "identificationNumber", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("Expiry Date", "iDExpiryDate", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("Soft Copy Link", "iDSoftcopy", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("Mothers Maiden Name", "mothersMaidenName", ColumnType.TEXT, 18));
 
-
 	}
-	
+
 	@GetMapping("customer")
 	public DataTableMetadata getCustomerDataTableMetadata() {
 		return CUSTOMER_METADATA;
 	}
-	
+
 	@GetMapping("address")
 	public DataTableMetadata getAddressDataTableMetadata() {
 		return ADDRESS_METADATA;
 	}
-	
+
 	@GetMapping("contact")
 	public DataTableMetadata getContactDataTableMetadata() {
 		return CONTACT_METADATA;
 	}
-	
+
 	@GetMapping("reference")
 	public DataTableMetadata getReferenceDataTableMetadata() {
 		return REFERENCE_METADATA;
 	}
-	
+
 	@GetMapping("identification")
 	public DataTableMetadata getIdentificationDataTableMetadata() {
 		return IDENTIFICATION_METADATA;

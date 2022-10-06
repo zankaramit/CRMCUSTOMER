@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,13 +42,12 @@ public class IdentificationDetailsController {
 	}
 	
 	@PostMapping(path = "create")
-	public ResponseEntity<?> create(@RequestPart Identification identification, @Nullable @RequestPart MultipartFile file){
+	public ResponseEntity<Identification> create(@RequestPart Identification identification, @Nullable @RequestPart MultipartFile file){
 		try {
 		Identification identificationSaved = identificationDetailsService.save(identification, file);
 		return new ResponseEntity<>(identificationSaved, HttpStatus.OK);
 		}catch (DataIntegrityViolationException dive) {
-			return new ResponseEntity<>(new ErrorResponse("Exception is :" + dive.getRootCause().getMessage()),
-					HttpStatus.BAD_REQUEST);
+			throw new DataIntegrityViolationException("Data IntegrityViolationException"+dive);
 
 		} catch (Exception e) {
 			throw new PersistenceException("Failed saving Identification Details.", e);
@@ -73,13 +71,13 @@ public class IdentificationDetailsController {
 			Identification identificationUpdate = identificationDetailsService.update(identification, file);
 			return new ResponseEntity<>(identificationUpdate, HttpStatus.OK);
 		} catch (Exception e) {
-			throw new PersistenceException("Failed update Identification Details.", e);
+			throw new PersistenceException(e.getMessage());
 		}
 	}
 	
 	@DeleteMapping("softdelete/{id}/{updatedBy}")
 	public ResponseEntity<Identification> softDelete(@PathVariable Long id, @PathVariable String updatedBy) {
-		Identification identificationDeleted =identificationDetailsService.softDelete(id, updatedBy);;
+		Identification identificationDeleted =identificationDetailsService.softDelete(id, updatedBy);
 				return new ResponseEntity<>(identificationDeleted, HttpStatus.OK);
 	}
 }

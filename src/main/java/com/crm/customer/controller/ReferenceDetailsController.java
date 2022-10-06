@@ -1,6 +1,5 @@
 package com.crm.customer.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.PersistenceException;
@@ -76,7 +75,7 @@ public class ReferenceDetailsController {
 			ReferenceDetails referenceUpdate = referenceDetailsService.update(referenceDetails);
 			return new ResponseEntity<>(referenceUpdate, HttpStatus.OK);
 		} catch (Exception e) {
-			throw new PersistenceException("Failed update Reference Details.", e);
+			throw new PersistenceException(e.getMessage());
 		}
 	}
 

@@ -1,13 +1,6 @@
 package com.crm.customer.model;
 
-
-
-
-
-
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,43 +28,43 @@ public class ReferenceDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "REFERENCE_DETAILS_ID")
 	private Long referenceDetailsId;
-	
+
 	@Column(name = "FIRST_NAME")
 	private String firstName;
-	
+
 	@Column(name = "MIDDEL_NAME")
 	private String middelName;
-	
+
 	@Column(name = "LAST_NAME")
 	private String lastName;
-	
+
 	@Column(name = "ADDRESS_TYPE")
 	private String addressType;
-	
+
 	@Column(name = "ADDRESS1")
 	private String address1;
-	
+
 	@Column(name = "ADDRESS2")
 	private String address2;
-	
+
 	@Column(name = "COUNTRY")
 	private String country;
-	
+
 	@Column(name = "PROVINCE_STATE")
 	private String provinceState;
-	
+
 	@Column(name = "CITY")
 	private String city;
-	
+
 	@Column(name = "POST_CODE")
 	private Long postCode;
-	
+
 	@Column(name = "REFERENCE_PHONE_NUMBER")
 	private String referencePhoneNumber;
-	
+
 	@Column(name = "RELATIONSHIP")
 	private String relationship;
-	
+
 	@Column(name = "is_deleted")
 	private Boolean isDeleted;
 
@@ -79,15 +72,15 @@ public class ReferenceDetails {
 	private String createdBy;
 
 	@Column(name = "created_date")
-	private LocalDateTime   createdDate;
+	private LocalDateTime createdDate;
 
 	@Column(name = "updated_by")
 	private String updatedBy;
 
 	@Column(name = "updated_date")
-	private LocalDateTime   updatedDate;
-	
+	private LocalDateTime updatedDate;
+
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
-    private Customer customer;
+	private Customer customer;
 }

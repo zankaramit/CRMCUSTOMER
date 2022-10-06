@@ -6,10 +6,7 @@ import java.util.Optional;
 import javax.persistence.PersistenceException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
 
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.OccupationDetails;
@@ -35,8 +32,11 @@ public class OccupationDetailsService {
 
 	public OccupationDetails update(OccupationDetails occupationDetails) {
 		LocalDateTime dateTime = LocalDateTime.now();
-		OccupationDetails existingOccupation = occupationDetailsRepository
-				.findById(occupationDetails.getOccupationDetailsId()).get();
+		Optional<OccupationDetails> findById = occupationDetailsRepository.findById(occupationDetails.getOccupationDetailsId());
+		if (findById.isEmpty()) {
+			throw new ResourceNotFoundException("Occupation Details not found for ID :" + occupationDetails.getOccupationDetailsId());
+		}
+		OccupationDetails existingOccupation = findById.get();
 		existingOccupation.setCurrentOccupation(occupationDetails.getCurrentOccupation());
 		existingOccupation.setCurrentOccupationMonth(occupationDetails.getCurrentOccupationMonth());
 		existingOccupation.setCurrentOccupationYears(occupationDetails.getCurrentOccupationYears());
@@ -53,13 +53,14 @@ public class OccupationDetailsService {
 
 		LocalDateTime dateTime = LocalDateTime.now();
 		OccupationDetails existingOccupation;
-		try {
-			existingOccupation = occupationDetailsRepository.findById(id).get();
-		} catch (Exception e) {
-			throw new ResourceNotFoundException("Occupation Details not found.");
+		Optional<OccupationDetails> findById = occupationDetailsRepository.findById(id);
+		if (findById.isEmpty()) {
+			throw new ResourceNotFoundException("Occupation Details not found and ID :" + id);
 		}
-		if (existingOccupation.getIsDeleted()) {
-			throw new PersistenceException("Occupation Details already Deleted");
+		existingOccupation = findById.get();	
+		Boolean b = existingOccupation.getIsDeleted();
+		if (Boolean.TRUE.equals(b)) {
+			throw new PersistenceException("Occupation Details already Deleted and ID :" + id);
 		}
 		existingOccupation.setIsDeleted(true);
 		existingOccupation.setUpdatedBy(updatedBy);

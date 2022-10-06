@@ -1,16 +1,13 @@
 package com.crm.customer.service;
 
-import java.util.List;
 import java.util.Optional;
-import java.time.LocalDateTime; 
+import java.time.LocalDateTime;
 
 import javax.persistence.PersistenceException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -30,9 +27,11 @@ public class ReferenceDetailsService {
 		if (!ObjectUtils.isEmpty(name)) {
 			referenceList = referenceDetailsRepository
 					.findByIsDeletedAndCustomerCustomerIdAndFirstNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndMiddelNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndLastNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCityLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndProvinceStateLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndReferencePhoneNumberLikeIgnoreCase(
-							false,customerId, "%" + name + "%", false,customerId, "%" + name + "%", false,customerId, "%" + name + "%", false,customerId,
-							"%" + name + "%", false,customerId, "%" + name + "%", false,customerId, "%" + name + "%", false,customerId, "%" + name + "%",
-							false,customerId, "%" + name + "%", false,customerId, "%" + name + "%", false, customerId,"%" + name + "%", pageable);
+							false, customerId, "%" + name + "%", false, customerId, "%" + name + "%", false, customerId,
+							"%" + name + "%", false, customerId, "%" + name + "%", false, customerId, "%" + name + "%",
+							false, customerId, "%" + name + "%", false, customerId, "%" + name + "%", false, customerId,
+							"%" + name + "%", false, customerId, "%" + name + "%", false, customerId, "%" + name + "%",
+							pageable);
 
 		} else {
 			referenceList = referenceDetailsRepository.findByIsDeletedAndCustomerCustomerId(false, customerId,
@@ -49,7 +48,7 @@ public class ReferenceDetailsService {
 	}
 
 	public ReferenceDetails save(ReferenceDetails referenceDetails) {
-		LocalDateTime dateTime = LocalDateTime.now();  
+		LocalDateTime dateTime = LocalDateTime.now();
 		referenceDetails.setIsDeleted(false);
 		referenceDetails.setCreatedDate(dateTime);
 		return referenceDetailsRepository.save(referenceDetails);
@@ -57,8 +56,11 @@ public class ReferenceDetailsService {
 
 	public ReferenceDetails update(ReferenceDetails referenceDetails) {
 		LocalDateTime dateTime = LocalDateTime.now();
-		ReferenceDetails existingReference = referenceDetailsRepository
-				.findById(referenceDetails.getReferenceDetailsId()).get();
+		Optional<ReferenceDetails> findById = referenceDetailsRepository.findById(referenceDetails.getReferenceDetailsId());
+		if (findById.isEmpty()) {
+			throw new ResourceNotFoundException("Reference Details not found for ID :" + referenceDetails.getReferenceDetailsId());
+		}
+		ReferenceDetails existingReference = findById.get();
 
 		existingReference.setFirstName(referenceDetails.getFirstName());
 		existingReference.setMiddelName(referenceDetails.getMiddelName());
@@ -81,13 +83,14 @@ public class ReferenceDetailsService {
 	public ReferenceDetails softDelete(Long id, String updatedBy) {
 		LocalDateTime dateTime = LocalDateTime.now();
 		ReferenceDetails existingReference;
-		try {
-		existingReference = referenceDetailsRepository.findById(id).get();
-		} catch (Exception e) {
-			throw new ResourceNotFoundException("Reference Details not found.");
+		Optional<ReferenceDetails> findById = referenceDetailsRepository.findById(id);
+		if (findById.isEmpty()) {
+			throw new ResourceNotFoundException("Reference Details not found and ID :" + id);
 		}
-		if (existingReference.getIsDeleted()) {
-			throw new PersistenceException("Reference Details already Deleted");
+		existingReference = findById.get();
+		Boolean b = existingReference.getIsDeleted();
+		if (Boolean.TRUE.equals(b)) {
+			throw new PersistenceException("Reference Details already Deleted and ID :" + id);
 		}
 		existingReference.setIsDeleted(true);
 		existingReference.setUpdatedBy(updatedBy);

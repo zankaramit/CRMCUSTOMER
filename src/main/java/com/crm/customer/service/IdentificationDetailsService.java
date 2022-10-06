@@ -19,26 +19,27 @@ import com.crm.customer.util.UploadFile;
 
 @Service
 public class IdentificationDetailsService {
-	
+
 	@Autowired
 	IdentificationDetailsRepository identificationDetailsRepository;
 
 	public Page<Identification> getSearchAndPagination(String name, Long customerId, Pageable pageable) {
 		Page<Identification> identificationList = null;
 		if (!ObjectUtils.isEmpty(name)) {
-			identificationList = identificationDetailsRepository.findByIsDeletedAndCustomerCustomerIdAndIdentificationNumberLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndIdentificationTypeLikeIgnoreCase(
-					false, customerId, "%" + name + "%",false, customerId, "%" + name + "%", pageable);
-		}else {
-			identificationList = identificationDetailsRepository.findByIsDeletedAndCustomerCustomerId(false, customerId, pageable);
+			identificationList = identificationDetailsRepository
+					.findByIsDeletedAndCustomerCustomerIdAndIdentificationNumberLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndIdentificationTypeLikeIgnoreCase(
+							false, customerId, "%" + name + "%", false, customerId, "%" + name + "%", pageable);
+		} else {
+			identificationList = identificationDetailsRepository.findByIsDeletedAndCustomerCustomerId(false, customerId,
+					pageable);
 		}
 		return identificationList;
 	}
-	
-	
+
 	public Identification save(Identification identification, MultipartFile file) {
 		if (file != null) {
-			String fileUploadLocation =UploadFile.uploadFile(file);
-			
+			String fileUploadLocation = UploadFile.uploadFile(file);
+
 			identification.setIDSoftcopy(fileUploadLocation);
 		}
 		LocalDateTime dateTime = LocalDateTime.now();
@@ -48,13 +49,17 @@ public class IdentificationDetailsService {
 	}
 
 	public Optional<Identification> getById(Long id) {
-		
-		return identificationDetailsRepository.findByIdentificationIdAndIsDeleted(id,false);
+
+		return identificationDetailsRepository.findByIdentificationIdAndIsDeleted(id, false);
 	}
 
 	public Identification update(Identification identification, MultipartFile file) {
 		LocalDateTime dateTime = LocalDateTime.now();
-		Identification identificationexisting = identificationDetailsRepository.findById(identification.getIdentificationId()).get();
+		Optional<Identification> findById = identificationDetailsRepository.findById(identification.getIdentificationId());
+		if (findById.isEmpty()) {
+			throw new ResourceNotFoundException("Identification Details not found for ID :" + identification.getIdentificationId());
+		}
+		Identification identificationexisting = findById.get();
 		identificationexisting.setIdentificationType(identification.getIdentificationType());
 		identificationexisting.setIdentificationNumber(identification.getIdentificationNumber());
 		identificationexisting.setIdExpiryDate(identification.getIdExpiryDate());
@@ -63,24 +68,24 @@ public class IdentificationDetailsService {
 		identificationexisting.setUpdatedBy(identification.getUpdatedBy());
 		identificationexisting.setUpdatedDate(dateTime);
 		if (file != null) {
-			String fileUploadLocation =UploadFile.uploadFile(file);
-			
+			String fileUploadLocation = UploadFile.uploadFile(file);
+
 			identificationexisting.setIDSoftcopy(fileUploadLocation);
 		}
 		return identificationDetailsRepository.save(identificationexisting);
 	}
 
-
 	public Identification softDelete(Long id, String updatedBy) {
 		LocalDateTime dateTime = LocalDateTime.now();
 		Identification existingIdentification;
-		try {
-			existingIdentification = identificationDetailsRepository.findById(id).get();
-		}catch (Exception e) {
-			throw new ResourceNotFoundException("Identification Details not found.");
+		Optional<Identification> findById = identificationDetailsRepository.findById(id);
+		if (findById.isEmpty()) {
+			throw new ResourceNotFoundException("Identification Details not found and ID :" + id);
 		}
-		if (existingIdentification.getIsDeleted()) {
-			throw new PersistenceException("Identification Details already Deleted");
+		existingIdentification = findById.get();
+		Boolean b = existingIdentification.getIsDeleted();
+		if (Boolean.TRUE.equals(b)) {
+			throw new PersistenceException("Identification Details already Deleted and ID :" + id);
 		}
 		existingIdentification.setIsDeleted(true);
 		existingIdentification.setUpdatedBy(updatedBy);
@@ -88,7 +93,4 @@ public class IdentificationDetailsService {
 		return identificationDetailsRepository.save(existingIdentification);
 	}
 
-	
-
-	
 }

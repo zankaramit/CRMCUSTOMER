@@ -1,7 +1,6 @@
 package com.crm.customer.service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Optional;
 
 import javax.persistence.PersistenceException;
@@ -52,7 +51,12 @@ public class AddressDetailsService {
 
 	public AddressDetails update(AddressDetails addressDetails) {
 		LocalDateTime dateTime = LocalDateTime.now();
-		AddressDetails existingAddress = addressDetailsRepository.findById(addressDetails.getAddressDetailsId()).get();
+		Optional<AddressDetails> findById = addressDetailsRepository.findById(addressDetails.getAddressDetailsId());
+		if (findById.isEmpty()) {
+			throw new ResourceNotFoundException(
+					"Address Details not found for ID :" + addressDetails.getAddressDetailsId());
+		}
+		AddressDetails existingAddress = findById.get();
 		existingAddress.setAddress1(addressDetails.getAddress1());
 		existingAddress.setAddress2(addressDetails.getAddress2());
 		existingAddress.setAddressType(addressDetails.getAddressType());
@@ -66,28 +70,24 @@ public class AddressDetailsService {
 		existingAddress.setAddressTenureYears(addressDetails.getAddressTenureYears());
 		existingAddress.setUpdatedBy(addressDetails.getUpdatedBy());
 		existingAddress.setUpdatedDate(dateTime);
-
 		return addressDetailsRepository.save(existingAddress);
-
 	}
 
 	public AddressDetails softDelete(Long id, String updatedBy) {
-
 		LocalDateTime dateTime = LocalDateTime.now();
-		AddressDetails existingAddress;
-		try {
-			existingAddress = addressDetailsRepository.findById(id).get();
-		} catch (Exception e) {
-			throw new ResourceNotFoundException("Address Details not found.");
+		AddressDetails existingAddress = null;
+		Optional<AddressDetails> findById = addressDetailsRepository.findById(id);
+		if (findById.isEmpty()) {
+			throw new ResourceNotFoundException("Address Details not found and ID :" + id);
 		}
-		if (existingAddress.getIsDeleted()) {
-			throw new PersistenceException("Address Details already Deleted");
+		existingAddress = findById.get();
+		Boolean b = existingAddress.getIsDeleted();
+		if (Boolean.TRUE.equals(b)) {
+			throw new PersistenceException("Address Details Already Deleted and ID :" + id);
 		}
 		existingAddress.setIsDeleted(true);
 		existingAddress.setUpdatedBy(updatedBy);
 		existingAddress.setUpdatedDate(dateTime);
 		return addressDetailsRepository.save(existingAddress);
-
 	}
-
 }
