@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +24,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @Data
+@Audited
 @ToString
 @Table(name = "crm_occupation_details")
 public class OccupationDetails {
@@ -66,6 +70,7 @@ public class OccupationDetails {
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
 
+	@NotAudited
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
 	private Customer customer;

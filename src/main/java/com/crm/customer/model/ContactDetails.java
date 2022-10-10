@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +23,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @Data
+@Audited
 @ToString
 @Table(name = "CRM_CONTACT_DETAILS")
 public class ContactDetails {
@@ -71,6 +75,7 @@ public class ContactDetails {
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
 
+	@NotAudited
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;

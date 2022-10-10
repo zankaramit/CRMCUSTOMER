@@ -6,10 +6,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.history.RevisionRepository;
 
 import com.crm.customer.model.Customer;
 
-public interface CustomerRepository extends JpaRepository<Customer, Long>, PagingAndSortingRepository<Customer, Long> {
+public interface CustomerRepository extends RevisionRepository<Customer, Long, Long>, JpaRepository<Customer, Long>, PagingAndSortingRepository<Customer, Long> {
 
 	Optional<Customer> findByCustomerIdAndIsDeleted(Long id, boolean b);
 

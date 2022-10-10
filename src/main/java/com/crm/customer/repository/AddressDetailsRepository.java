@@ -6,11 +6,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.history.RevisionRepository;
 
 import com.crm.customer.model.AddressDetails;
 
 public interface AddressDetailsRepository
-		extends JpaRepository<AddressDetails, Long>, PagingAndSortingRepository<AddressDetails, Long> {
+		extends RevisionRepository<AddressDetails, Long, Long>, JpaRepository<AddressDetails, Long>, PagingAndSortingRepository<AddressDetails, Long> {
 
 	Optional<AddressDetails> findByAddressDetailsIdAndIsDeleted(Long id, boolean b);
 

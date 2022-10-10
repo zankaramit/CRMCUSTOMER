@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +21,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @Data
+@Audited
 @ToString
 @Table(name = "crm_customer")
 public class Customer {
