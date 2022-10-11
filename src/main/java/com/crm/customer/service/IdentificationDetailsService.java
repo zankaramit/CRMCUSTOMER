@@ -63,7 +63,7 @@ public class IdentificationDetailsService {
 		identificationexisting.setIdentificationType(identification.getIdentificationType());
 		identificationexisting.setIdentificationNumber(identification.getIdentificationNumber());
 		identificationexisting.setIdExpiryDate(identification.getIdExpiryDate());
-		identificationexisting.setIDSoftcopy(identification.getIDSoftcopy());
+//		identificationexisting.setIDSoftcopy(identification.getIDSoftcopy());
 		identificationexisting.setMothersMaidenName(identification.getMothersMaidenName());
 		identificationexisting.setUpdatedBy(identification.getUpdatedBy());
 		identificationexisting.setUpdatedDate(dateTime);
