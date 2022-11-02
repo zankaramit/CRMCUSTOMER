@@ -7,7 +7,6 @@ public class DataTableMetadata {
 
 	private List<ColumnMetadata> columnsMetadata = new ArrayList<>();
 
-	
 	public DataTableMetadata addColumnMetadata(ColumnMetadata columnMetadata) {
 		this.columnsMetadata.add(columnMetadata);
 		return this;

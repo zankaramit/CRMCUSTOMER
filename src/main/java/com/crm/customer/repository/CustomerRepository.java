@@ -21,4 +21,12 @@ public interface CustomerRepository extends RevisionRepository<Customer, Long, L
 			boolean f, String string5, boolean g, String string6, boolean h, String string7, boolean i, String string8,
 			Pageable pageable);
 
+	Page<Customer> findByIsDeletedAndCustomerType(boolean b, String string, Pageable pageable);
+
+	Page<Customer> findByIsDeletedAndCustomerTypeAndFirstNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndMiddelNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndLastNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndEmailAddressLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndMobileNumberLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndAccountNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndCompanyRegistrationNumberLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndWebsiteDetailsLikeIgnoreCase(
+			boolean b, String string, String string2, boolean c, String string3, String string4, boolean d,
+			String string5, String string6, boolean e, String string7, String string8, boolean f, String string9,
+			String string10, boolean g, String string11, String string12, boolean h, String string13, String string14,
+			boolean i, String string15, String string16, Pageable pageable);
+
 }

@@ -25,10 +25,10 @@ public class AddressDetailsService {
 		Page<AddressDetails> addressList = null;
 		if (!ObjectUtils.isEmpty(name)) {
 			addressList = addressDetailsRepository
-					.findByIsDeletedAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndContactAddressLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndStateLikeIgnoreCase(
+					.findByIsDeletedAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCityLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndContactAddressLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndStateLikeIgnoreCase(
 							false, customerId, "%" + name + "%", false, customerId, "%" + name + "%", false, customerId,
 							"%" + name + "%", false, customerId, "%" + name + "%", false, customerId, "%" + name + "%",
-							false, customerId, "%" + name + "%", pageable);
+							false, customerId, "%" + name + "%", false, customerId, "%" + name + "%", pageable);
 		} else {
 
 			addressList = addressDetailsRepository.findByIsDeletedAndCustomerCustomerId(false, customerId, pageable);
@@ -61,6 +61,7 @@ public class AddressDetailsService {
 		existingAddress.setAddress2(addressDetails.getAddress2());
 		existingAddress.setAddressType(addressDetails.getAddressType());
 		existingAddress.setIdentificationType(addressDetails.getIdentificationType());
+		existingAddress.setCity(addressDetails.getCity());
 		existingAddress.setContactAddress(addressDetails.getContactAddress());
 		existingAddress.setCountry(addressDetails.getCountry());
 		existingAddress.setOwnershipStatus(addressDetails.getOwnershipStatus());

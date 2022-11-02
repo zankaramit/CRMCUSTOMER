@@ -84,5 +84,15 @@ public class CustomerController {
 		return new ResponseEntity<>(customer, HttpStatus.OK);
 
 	}
+	
+	@GetMapping("all-parent-account")
+	public ResponseEntity<Page<Customer>> getAllCustomerType(@Nullable String name, String customerType, Pageable pageable) {
+
+		Page<Customer> customerPage = customerService.getAllByCustomerType(name,customerType, pageable);
+		return new ResponseEntity<>(customerPage, HttpStatus.OK);
+
+	}
+	
+	
 
 }

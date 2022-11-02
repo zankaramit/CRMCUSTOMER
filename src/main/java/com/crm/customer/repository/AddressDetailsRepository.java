@@ -17,9 +17,12 @@ public interface AddressDetailsRepository
 
 	Page<AddressDetails> findByIsDeletedAndCustomerCustomerId(boolean b, Long customerId, Pageable pageable);
 
-	Page<AddressDetails> findByIsDeletedAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndContactAddressLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndStateLikeIgnoreCase(
+	Page<AddressDetails> findByIsDeletedAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCityLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndContactAddressLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndStateLikeIgnoreCase(
 			boolean b, Long customerId, String string, boolean c, Long customerId2, String string2, boolean d,
 			Long customerId3, String string3, boolean e, Long customerId4, String string4, boolean f, Long customerId5,
-			String string5, boolean g, Long customerId6, String string6, Pageable pageable);
+			String string5, boolean g, Long customerId6, String string6, boolean h, Long customerId7, String string7,
+			Pageable pageable);
+
+	
 
 }

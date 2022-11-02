@@ -3,6 +3,7 @@ package com.crm.customer.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
@@ -65,7 +67,7 @@ public class Identification {
 	private LocalDateTime updatedDate;
 
 	@NotAudited
-	@ManyToOne
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 

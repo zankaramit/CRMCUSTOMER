@@ -2,15 +2,26 @@ package com.crm.customer.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 import lombok.Getter;
@@ -64,8 +75,9 @@ public class Customer {
 	@Column(name = "email_Address")
 	private String emailAddress;
 
-	@Column(name = "parent_account")
-	private String parentAccount;
+	@NotAudited
+	@ManyToMany
+	private List<Customer> parentAccount;
 
 	@Column(name = "fax")
 	private String fax;

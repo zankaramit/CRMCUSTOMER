@@ -12,15 +12,18 @@ import com.crm.customer.dto.DataTableMetadata;
 @RestController
 @RequestMapping("data-table-metadata")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class CustomerMetadataController {
+public class DataTableMetadataController {
 
 	private static final DataTableMetadata CUSTOMER_METADATA;
 	private static final DataTableMetadata ADDRESS_METADATA;
 	private static final DataTableMetadata CONTACT_METADATA;
 	private static final DataTableMetadata REFERENCE_METADATA;
 	private static final DataTableMetadata IDENTIFICATION_METADATA;
+	private static final DataTableMetadata BILLING_ACCOUNT;
+	private static final DataTableMetadata BILLING_CONTACT_DETAILS;
 
 	static {
+		
 		CUSTOMER_METADATA = new DataTableMetadata()
 				.addColumnMetadata(new ColumnMetadata("", "customerId", ColumnType.RADIO, 10))
 				.addColumnMetadata(new ColumnMetadata("CUSTOMER", "firstName", ColumnType.TEXT, 15))
@@ -64,7 +67,22 @@ public class CustomerMetadataController {
 				.addColumnMetadata(new ColumnMetadata("Expiry Date", "iDExpiryDate", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("Soft Copy Link", "iDSoftcopy", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("Mothers Maiden Name", "mothersMaidenName", ColumnType.TEXT, 18));
+		
+		BILLING_ACCOUNT = new DataTableMetadata()
+				.addColumnMetadata(new ColumnMetadata("", "billingAccountId", ColumnType.RADIO, 10))
+				.addColumnMetadata(new ColumnMetadata("ACCOUNT NAME", "billingAccount", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("SERVICE TYPE", "serviceType", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("BILLING ACCOUNT", "billingAccount", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("BILLING CYCLE", "billingCycle", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("DATE", "createdDate", ColumnType.TEXT, 18));
 
+		BILLING_CONTACT_DETAILS = new DataTableMetadata()
+				.addColumnMetadata(new ColumnMetadata("", "contactDetailsId", ColumnType.RADIO, 10))
+				.addColumnMetadata(new ColumnMetadata("ACCOUNT NAME", "accountName", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("SERVICE TYPE", "serviceType", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("MOBILE", "mobile", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("EMAIL", "email", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("DATE", "createdDate", ColumnType.TEXT, 18));
 	}
 
 	@GetMapping("customer")
@@ -90,5 +108,15 @@ public class CustomerMetadataController {
 	@GetMapping("identification")
 	public DataTableMetadata getIdentificationDataTableMetadata() {
 		return IDENTIFICATION_METADATA;
+	}
+	
+	@GetMapping("billing-account")
+	public DataTableMetadata getBillingAccountDataTableMetadata() {
+		return BILLING_ACCOUNT;
+	}
+	
+	@GetMapping("billing-contact")
+	public DataTableMetadata getBillingContactDataTableMetadata() {
+		return BILLING_CONTACT_DETAILS;
 	}
 }

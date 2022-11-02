@@ -68,7 +68,7 @@ public class CustomerService {
 		existingCustomer.setPreferredLanguage(customer.getPreferredLanguage());
 		existingCustomer.setMobileNumber(customer.getMobileNumber());
 		existingCustomer.setEmailAddress(customer.getEmailAddress());
-		existingCustomer.setParentAccount(customer.getParentAccount());
+//		existingCustomer.setParentAccount(customer.getParentAccount());
 		existingCustomer.setFax(customer.getFax());
 		existingCustomer.setNationality(customer.getNationality());
 		existingCustomer.setDateOfBirth(customer.getDateOfBirth());
@@ -102,6 +102,22 @@ public class CustomerService {
 		existingCustomer.setUpdatedBy(updatedBy);
 		existingCustomer.setUpdatedDate(dateTime);
 		return customerRepository.save(existingCustomer);
+	}
+
+	public Page<Customer> getAllByCustomerType(String name, String customerType, Pageable pageable) {
+		Page<Customer> consumer = null;
+
+		if (ObjectUtils.isEmpty(name)) {
+			consumer = customerRepository.findByIsDeletedAndCustomerType(false, customerType, pageable);
+		} else {
+			consumer = customerRepository
+					.findByIsDeletedAndCustomerTypeAndFirstNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndMiddelNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndLastNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndEmailAddressLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndMobileNumberLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndAccountNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndCompanyRegistrationNumberLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndWebsiteDetailsLikeIgnoreCase(
+							false, customerType, "%" + name + "%", false, customerType, "%" + name + "%", false, customerType,
+							"%" + name + "%", false, customerType, "%" + name + "%", false, customerType, "%" + name + "%",
+							false, customerType, "%" + name + "%", false, customerType, "%" + name + "%", false, customerType,
+							"%" + name + "%", pageable);
+		}
+		return consumer;
 	}
 
 }
