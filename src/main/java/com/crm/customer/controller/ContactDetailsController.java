@@ -34,10 +34,10 @@ public class ContactDetailsController {
 	ContactDetailsService contactDetailsService;
 
 	@GetMapping("all")
-	public ResponseEntity<Page<ContactDetails>> getSearchAndPagination(@Nullable String name, Long customerId,
+	public ResponseEntity<Page<ContactDetails>> getSearchAndPagination(@Nullable String name,String owner, Long customerId,
 			Pageable pageable) {
 
-		Page<ContactDetails> contactPage = contactDetailsService.getSearchAndPagination(name, customerId, pageable);
+		Page<ContactDetails> contactPage = contactDetailsService.getSearchAndPagination(name, owner, customerId, pageable);
 
 		return new ResponseEntity<>(contactPage, HttpStatus.OK);
 	}

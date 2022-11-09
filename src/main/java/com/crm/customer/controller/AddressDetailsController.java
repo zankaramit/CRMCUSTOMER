@@ -34,10 +34,10 @@ public class AddressDetailsController {
 	AddressDetailsService addressDetailsService;
 
 	@GetMapping("all")
-	public ResponseEntity<Page<AddressDetails>> getSearchAndPagination(@Nullable String name, Long customerId,
+	public ResponseEntity<Page<AddressDetails>> getSearchAndPagination(@Nullable String name,String owner, Long customerId,
 			Pageable pageable) {
 
-		Page<AddressDetails> addressPage = addressDetailsService.getSearchAndPagination(name, customerId, pageable);
+		Page<AddressDetails> addressPage = addressDetailsService.getSearchAndPagination(name, customerId, owner, pageable);
 		return new ResponseEntity<>(addressPage, HttpStatus.OK);
 	}
 

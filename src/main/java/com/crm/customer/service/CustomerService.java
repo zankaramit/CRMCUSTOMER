@@ -1,6 +1,7 @@
 package com.crm.customer.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.PersistenceException;
@@ -14,25 +15,30 @@ import org.springframework.util.ObjectUtils;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.Customer;
 import com.crm.customer.repository.CustomerRepository;
+import com.crm.customer.util.AccessToken;
 
 @Service
 public class CustomerService {
 
 	@Autowired
 	CustomerRepository customerRepository;
+	
+	@Autowired
+	UserService userService;
 
-	public Page<Customer> getByNameCustomerAndPagination(String name, Pageable pageable) {
+	public Page<Customer> getByNameCustomerAndPagination(String name,String owner, Pageable pageable) {
 
+		List<String> checkAccessApi = AccessToken.checkAccessApi(owner);
 		Page<Customer> customer = null;
 
 		if (ObjectUtils.isEmpty(name)) {
-			customer = customerRepository.findByIsDeleted(false, pageable);
+			customer = customerRepository.findByIsDeletedAndOwnerIn(false,checkAccessApi, pageable);
 		} else {
 			customer = customerRepository
-					.findByIsDeletedAndFirstNameLikeIgnoreCaseOrIsDeletedAndMiddelNameLikeIgnoreCaseOrIsDeletedAndLastNameLikeIgnoreCaseOrIsDeletedAndEmailAddressLikeIgnoreCaseOrIsDeletedAndMobileNumberLikeIgnoreCaseOrIsDeletedAndAccountNameLikeIgnoreCaseOrIsDeletedAndCompanyRegistrationNumberLikeIgnoreCaseOrIsDeletedAndWebsiteDetailsLikeIgnoreCase(
-							false, "%" + name + "%", false, "%" + name + "%", false, "%" + name + "%", false,
-							"%" + name + "%", false, "%" + name + "%", false, "%" + name + "%", false, "%" + name + "%",
-							false, "%" + name + "%", pageable);
+					.findByIsDeletedAndOwnerInAndFirstNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndMiddelNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndLastNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndEmailAddressLikeIgnoreCaseOrIsDeletedAndOwnerInAndMobileNumberLikeIgnoreCaseOrIsDeletedAndOwnerInAndAccountNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndCompanyRegistrationNumberLikeIgnoreCaseOrIsDeletedAndOwnerInAndWebsiteDetailsLikeIgnoreCase(
+							false,checkAccessApi, "%" + name + "%", false,checkAccessApi, "%" + name + "%", false,checkAccessApi, "%" + name + "%", false,checkAccessApi,
+							"%" + name + "%", false,checkAccessApi, "%" + name + "%", false,checkAccessApi, "%" + name + "%", false,checkAccessApi, "%" + name + "%",
+							false,checkAccessApi, "%" + name + "%", pageable);
 		}
 		return customer;
 	}
@@ -47,6 +53,7 @@ public class CustomerService {
 		LocalDateTime dateTime = LocalDateTime.now();
 		customer.setIsDeleted(false);
 		customer.setCreatedDate(dateTime);
+		customer.setOwner(customer.getCreatedBy());
 		return customerRepository.save(customer);
 	}
 
@@ -80,6 +87,8 @@ public class CustomerService {
 		existingCustomer.setSizeOfCompany(customer.getSizeOfCompany());
 		existingCustomer.setAnnualRevenue(customer.getAnnualRevenue());
 		existingCustomer.setWebsiteDetails(customer.getWebsiteDetails());
+		existingCustomer.setPromotionalMessages(customer.getPromotionalMessages());
+		existingCustomer.setReligion(customer.getReligion());
 		existingCustomer.setUpdatedBy(customer.getUpdatedBy());
 		existingCustomer.setUpdatedDate(dateTime);
 		return customerRepository.save(existingCustomer);

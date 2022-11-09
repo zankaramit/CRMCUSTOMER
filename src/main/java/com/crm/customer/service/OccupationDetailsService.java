@@ -22,6 +22,7 @@ public class OccupationDetailsService {
 		LocalDateTime dateTime = LocalDateTime.now();
 		occupationDetails.setIsDeleted(false);
 		occupationDetails.setCreatedDate(dateTime);
+		occupationDetails.setOwner(occupationDetails.getCreatedBy());
 		return occupationDetailsRepository.save(occupationDetails);
 
 	}

@@ -34,10 +34,10 @@ public class ReferenceDetailsController {
 	ReferenceDetailsService referenceDetailsService;
 
 	@GetMapping("all")
-	public ResponseEntity<Page<ReferenceDetails>> getSearchAndPagination(@Nullable String name, Long customerId,
+	public ResponseEntity<Page<ReferenceDetails>> getSearchAndPagination(@Nullable String name, String owner, Long customerId,
 			Pageable pageable) {
 
-		Page<ReferenceDetails> referencePage = referenceDetailsService.getSearchAndPagination(name, customerId,
+		Page<ReferenceDetails> referencePage = referenceDetailsService.getSearchAndPagination(name,owner, customerId,
 				pageable);
 		return new ResponseEntity<>(referencePage, HttpStatus.OK);
 	}

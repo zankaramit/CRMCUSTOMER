@@ -34,9 +34,9 @@ public class CustomerController {
 	CustomerService customerService;
 
 	@GetMapping("all")
-	public ResponseEntity<Page<Customer>> getByNameAndPagination(@Nullable String name, Pageable pageable) {
+	public ResponseEntity<Page<Customer>> getByNameAndPagination(@Nullable String name, String owner, Pageable pageable) {
 
-		Page<Customer> customerPage = customerService.getByNameCustomerAndPagination(name, pageable);
+		Page<Customer> customerPage = customerService.getByNameCustomerAndPagination(name,owner, pageable);
 		return new ResponseEntity<>(customerPage, HttpStatus.OK);
 
 	}

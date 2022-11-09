@@ -1,6 +1,7 @@
 package com.crm.customer.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.PersistenceException;
@@ -14,24 +15,29 @@ import org.springframework.util.ObjectUtils;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.AddressDetails;
 import com.crm.customer.repository.AddressDetailsRepository;
+import com.crm.customer.util.AccessToken;
 
 @Service
 public class AddressDetailsService {
 
 	@Autowired
 	AddressDetailsRepository addressDetailsRepository;
+	
+	@Autowired
+	UserService userService;
 
-	public Page<AddressDetails> getSearchAndPagination(String name, Long customerId, Pageable pageable) {
+	public Page<AddressDetails> getSearchAndPagination(String name, Long customerId,String owner, Pageable pageable) {
 		Page<AddressDetails> addressList = null;
+		List<String> checkAccessApi = AccessToken.checkAccessApi(owner);
 		if (!ObjectUtils.isEmpty(name)) {
 			addressList = addressDetailsRepository
-					.findByIsDeletedAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCityLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndContactAddressLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndStateLikeIgnoreCase(
-							false, customerId, "%" + name + "%", false, customerId, "%" + name + "%", false, customerId,
-							"%" + name + "%", false, customerId, "%" + name + "%", false, customerId, "%" + name + "%",
-							false, customerId, "%" + name + "%", false, customerId, "%" + name + "%", pageable);
+					.findByIsDeletedAndOwnerInAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndCityLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndContactAddressLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndStateLikeIgnoreCase(
+							false, checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId,
+							"%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%",
+							false, checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", pageable);
 		} else {
 
-			addressList = addressDetailsRepository.findByIsDeletedAndCustomerCustomerId(false, customerId, pageable);
+			addressList = addressDetailsRepository.findByIsDeletedAndOwnerInAndCustomerCustomerId(false,checkAccessApi, customerId, pageable);
 
 		}
 		return addressList;
@@ -41,12 +47,13 @@ public class AddressDetailsService {
 		LocalDateTime dateTime = LocalDateTime.now();
 		addressDetails.setIsDeleted(false);
 		addressDetails.setCreatedDate(dateTime);
+		addressDetails.setOwner(addressDetails.getCreatedBy());
 		return addressDetailsRepository.save(addressDetails);
 	}
 
 	public Optional<AddressDetails> getById(Long id) {
 
-		return addressDetailsRepository.findByAddressDetailsIdAndIsDeleted(id, false);
+		return addressDetailsRepository.findByCustomerCustomerIdAndIsDeleted(id, false);
 	}
 
 	public AddressDetails update(AddressDetails addressDetails) {

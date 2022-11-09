@@ -33,6 +33,9 @@ public class ReferenceDetails {
 	@Column(name = "REFERENCE_DETAILS_ID")
 	private Long referenceDetailsId;
 
+	@Column(name = "title")
+	private String title;
+	
 	@Column(name = "FIRST_NAME")
 	private String firstName;
 
@@ -83,6 +86,9 @@ public class ReferenceDetails {
 
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
+	
+	@Column(name = "owner")
+	private String owner; 
 
 	@NotAudited
 	@ManyToOne

@@ -31,6 +31,9 @@ public class BillingAccountService {
 
 	@Autowired
 	BillingAccountRepository billingAccountRepository;
+	
+	@Autowired
+	UserService userService;
 
 	public Optional<BillingAccount> getById(Long id) {
 		return billingAccountRepository.findByBillingAccountIdAndIsDeleted(id, false);

@@ -33,6 +33,9 @@ public class ContactDetails {
 	@Column(name = "CONTACT_DETAILS_ID")
 	private Long contactDetailsId;
 
+	@Column(name = "title")
+	private String title;
+	
 	@Column(name = "FIRST_NAME")
 	private String firstName;
 
@@ -57,6 +60,9 @@ public class ContactDetails {
 	@Column(name = "Fax")
 	private String fax;
 	
+	@Column(name = "address_type")
+	private String addressType;
+	
 	@Column(name = "address1")
 	private String address1;
 
@@ -72,9 +78,17 @@ public class ContactDetails {
 	@Column(name = "post_Code")
 	private String postCode;
 
+	@Column(name = "country")
+	private String country;
 
 	@Column(name = "NATIONALITY")
 	private String nationality;
+	
+	@Column(name = "address_tenure_years")
+	private Long addressTenureYears;
+
+	@Column(name = "address_tenure_month")
+	private Long addressTenureMonth;
 
 	@Column(name = "is_deleted")
 	private Boolean isDeleted;
@@ -90,6 +104,9 @@ public class ContactDetails {
 
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
+	
+	@Column(name = "owner")
+	private String owner; 
 
 	@NotAudited
 	@ManyToOne

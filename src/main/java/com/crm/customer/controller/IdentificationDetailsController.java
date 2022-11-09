@@ -35,9 +35,9 @@ public class IdentificationDetailsController {
 	IdentificationDetailsService identificationDetailsService;
 	
 	@GetMapping("all")
-	public ResponseEntity<Page<Identification>> getSearchAndPagination(@Nullable String name, Long customerId,
+	public ResponseEntity<Page<Identification>> getSearchAndPagination(@Nullable String name,String owner, Long customerId,
 			Pageable pageable) {
-		Page<Identification> identificationPage = identificationDetailsService.getSearchAndPagination(name, customerId, pageable);
+		Page<Identification> identificationPage = identificationDetailsService.getSearchAndPagination(name,owner, customerId, pageable);
 		return new ResponseEntity<>(identificationPage, HttpStatus.OK);
 	}
 	

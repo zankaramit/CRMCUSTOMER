@@ -1,6 +1,7 @@
 package com.crm.customer.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.PersistenceException;
@@ -14,26 +15,30 @@ import org.springframework.util.ObjectUtils;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.ContactDetails;
 import com.crm.customer.repository.ContactDetailsRepository;
+import com.crm.customer.util.AccessToken;
 
 @Service
 public class ContactDetailsService {
 
 	@Autowired
 	ContactDetailsRepository contactDetailsRepository;
+	
+	@Autowired
+	UserService userService;
 
-	public Page<ContactDetails> getSearchAndPagination(String name, Long customerId, Pageable pageable) {
-
+	public Page<ContactDetails> getSearchAndPagination(String name,String owner, Long customerId, Pageable pageable) {
+		List<String> checkAccessApi = AccessToken.checkAccessApi(owner);
 		Page<ContactDetails> contactList = null;
 
 		if (!ObjectUtils.isEmpty(name)) {
 			contactList = contactDetailsRepository
-					.findByIsDeletedAndCustomerCustomerIdAndFirstNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndMiddelNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndLastNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndMobileNumberLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndFaxLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndNationalityLikeIgnoreCase(
-							false, customerId, "%" + name + "%", false, customerId, "%" + name + "%", false, customerId,
-							"%" + name + "%", false, customerId, "%" + name + "%", false, customerId, "%" + name + "%",
-							false, customerId, "%" + name + "%", pageable);
+					.findByIsDeletedAndOwnerInAndCustomerCustomerIdAndFirstNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndMiddelNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndLastNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndMobileNumberLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndFaxLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndNationalityLikeIgnoreCase(
+							false,checkAccessApi, customerId, "%" + name + "%", false,checkAccessApi, customerId, "%" + name + "%", false,checkAccessApi, customerId,
+							"%" + name + "%", false,checkAccessApi, customerId, "%" + name + "%", false,checkAccessApi, customerId, "%" + name + "%",
+							false,checkAccessApi, customerId, "%" + name + "%", pageable);
 
 		} else {
-			contactList = contactDetailsRepository.findByIsDeletedAndCustomerCustomerId(false, customerId, pageable);
+			contactList = contactDetailsRepository.findByIsDeletedAndOwnerInAndCustomerCustomerId(false,checkAccessApi, customerId, pageable);
 		}
 
 		return contactList;
@@ -48,6 +53,7 @@ public class ContactDetailsService {
 		LocalDateTime dateTime = LocalDateTime.now();
 		contactDetails.setIsDeleted(false);
 		contactDetails.setCreatedDate(dateTime);
+		contactDetails.setOwner(contactDetails.getCreatedBy());
 		return contactDetailsRepository.save(contactDetails);
 	}
 
@@ -58,6 +64,7 @@ public class ContactDetailsService {
 			throw new ResourceNotFoundException("Contact Details not found for ID :" + contactDetails.getContactDetailsId());
 		}
 		ContactDetails existingContact = findById.get();
+		existingContact.setTitle(contactDetails.getTitle());
 		existingContact.setFirstName(contactDetails.getFirstName());
 		existingContact.setMiddelName(contactDetails.getMiddelName());
 		existingContact.setLastName(contactDetails.getLastName());
@@ -67,6 +74,15 @@ public class ContactDetailsService {
 		existingContact.setMobileNumber(contactDetails.getMobileNumber());
 		existingContact.setFax(contactDetails.getFax());
 		existingContact.setNationality(contactDetails.getNationality());
+		existingContact.setAddressType(contactDetails.getAddressType());
+		existingContact.setAddress1(contactDetails.getAddress1());
+		existingContact.setAddress2(contactDetails.getAddress2());
+		existingContact.setCity(contactDetails.getCity());
+		existingContact.setState(contactDetails.getState());
+		existingContact.setCountry(contactDetails.getCountry());
+		existingContact.setPostCode(contactDetails.getPostCode());
+		existingContact.setAddressTenureMonth(contactDetails.getAddressTenureMonth());
+		existingContact.setAddressTenureYears(contactDetails.getAddressTenureYears());
 		existingContact.setUpdatedBy(contactDetails.getUpdatedBy());
 		existingContact.setUpdatedDate(dateTime);
 		return contactDetailsRepository.save(existingContact);

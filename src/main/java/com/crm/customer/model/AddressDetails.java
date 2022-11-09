@@ -85,6 +85,9 @@ public class AddressDetails {
 
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
+	
+	@Column(name = "owner")
+	private String owner; 
 
 	@NotAudited
 	@OneToOne(cascade = CascadeType.MERGE)

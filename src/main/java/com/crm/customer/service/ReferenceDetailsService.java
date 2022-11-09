@@ -1,5 +1,6 @@
 package com.crm.customer.service;
 
+import java.util.List;
 import java.util.Optional;
 import java.time.LocalDateTime;
 
@@ -14,6 +15,7 @@ import org.springframework.util.ObjectUtils;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.ReferenceDetails;
 import com.crm.customer.repository.ReferenceDetailsRepository;
+import com.crm.customer.util.AccessToken;
 
 @Service
 public class ReferenceDetailsService {
@@ -21,21 +23,28 @@ public class ReferenceDetailsService {
 	@Autowired
 	ReferenceDetailsRepository referenceDetailsRepository;
 
-	public Page<ReferenceDetails> getSearchAndPagination(String name, Long customerId, Pageable pageable) {
+	@Autowired
+	UserService userService;
+
+	public Page<ReferenceDetails> getSearchAndPagination(String name, String owner, Long customerId,
+			Pageable pageable) {
+		List<String> checkAccessApi = AccessToken.checkAccessApi(owner);
 		Page<ReferenceDetails> referenceList = null;
 
 		if (!ObjectUtils.isEmpty(name)) {
 			referenceList = referenceDetailsRepository
-					.findByIsDeletedAndCustomerCustomerIdAndFirstNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndMiddelNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndLastNameLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCityLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndProvinceStateLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndCustomerCustomerIdAndReferencePhoneNumberLikeIgnoreCase(
-							false, customerId, "%" + name + "%", false, customerId, "%" + name + "%", false, customerId,
-							"%" + name + "%", false, customerId, "%" + name + "%", false, customerId, "%" + name + "%",
-							false, customerId, "%" + name + "%", false, customerId, "%" + name + "%", false, customerId,
-							"%" + name + "%", false, customerId, "%" + name + "%", false, customerId, "%" + name + "%",
-							pageable);
+					.findByIsDeletedAndOwnerInAndCustomerCustomerIdAndFirstNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndMiddelNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndLastNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndCityLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndProvinceStateLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndReferencePhoneNumberLikeIgnoreCase(
+							false, checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId,
+							"%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", false,
+							checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId,
+							"%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", false,
+							checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId,
+							"%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", false,
+							checkAccessApi, customerId, "%" + name + "%", pageable);
 
 		} else {
-			referenceList = referenceDetailsRepository.findByIsDeletedAndCustomerCustomerId(false, customerId,
-					pageable);
+			referenceList = referenceDetailsRepository.findByIsDeletedAndOwnerInAndCustomerCustomerId(false,
+					checkAccessApi, customerId, pageable);
 
 		}
 
@@ -51,17 +60,20 @@ public class ReferenceDetailsService {
 		LocalDateTime dateTime = LocalDateTime.now();
 		referenceDetails.setIsDeleted(false);
 		referenceDetails.setCreatedDate(dateTime);
+		referenceDetails.setOwner(referenceDetails.getCreatedBy());
 		return referenceDetailsRepository.save(referenceDetails);
 	}
 
 	public ReferenceDetails update(ReferenceDetails referenceDetails) {
 		LocalDateTime dateTime = LocalDateTime.now();
-		Optional<ReferenceDetails> findById = referenceDetailsRepository.findById(referenceDetails.getReferenceDetailsId());
+		Optional<ReferenceDetails> findById = referenceDetailsRepository
+				.findById(referenceDetails.getReferenceDetailsId());
 		if (findById.isEmpty()) {
-			throw new ResourceNotFoundException("Reference Details not found for ID :" + referenceDetails.getReferenceDetailsId());
+			throw new ResourceNotFoundException(
+					"Reference Details not found for ID :" + referenceDetails.getReferenceDetailsId());
 		}
 		ReferenceDetails existingReference = findById.get();
-
+		existingReference.setTitle(referenceDetails.getTitle());
 		existingReference.setFirstName(referenceDetails.getFirstName());
 		existingReference.setMiddelName(referenceDetails.getMiddelName());
 		existingReference.setLastName(referenceDetails.getLastName());

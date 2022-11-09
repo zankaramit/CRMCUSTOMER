@@ -1,5 +1,6 @@
 package com.crm.customer.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -14,12 +15,7 @@ public interface CustomerRepository extends RevisionRepository<Customer, Long, L
 
 	Optional<Customer> findByCustomerIdAndIsDeleted(Long id, boolean b);
 
-	Page<Customer> findByIsDeleted(boolean b, Pageable pageable);
-
-	Page<Customer> findByIsDeletedAndFirstNameLikeIgnoreCaseOrIsDeletedAndMiddelNameLikeIgnoreCaseOrIsDeletedAndLastNameLikeIgnoreCaseOrIsDeletedAndEmailAddressLikeIgnoreCaseOrIsDeletedAndMobileNumberLikeIgnoreCaseOrIsDeletedAndAccountNameLikeIgnoreCaseOrIsDeletedAndCompanyRegistrationNumberLikeIgnoreCaseOrIsDeletedAndWebsiteDetailsLikeIgnoreCase(
-			boolean b, String string, boolean c, String string2, boolean d, String string3, boolean e, String string4,
-			boolean f, String string5, boolean g, String string6, boolean h, String string7, boolean i, String string8,
-			Pageable pageable);
+	
 
 	Page<Customer> findByIsDeletedAndCustomerType(boolean b, String string, Pageable pageable);
 
@@ -28,5 +24,16 @@ public interface CustomerRepository extends RevisionRepository<Customer, Long, L
 			String string5, String string6, boolean e, String string7, String string8, boolean f, String string9,
 			String string10, boolean g, String string11, String string12, boolean h, String string13, String string14,
 			boolean i, String string15, String string16, Pageable pageable);
+
+	Page<Customer> findByIsDeletedAndOwnerIn(boolean b, List<String> checkAccessApi, Pageable pageable);
+
+
+
+	Page<Customer> findByIsDeletedAndOwnerInAndFirstNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndMiddelNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndLastNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndEmailAddressLikeIgnoreCaseOrIsDeletedAndOwnerInAndMobileNumberLikeIgnoreCaseOrIsDeletedAndOwnerInAndAccountNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndCompanyRegistrationNumberLikeIgnoreCaseOrIsDeletedAndOwnerInAndWebsiteDetailsLikeIgnoreCase(
+			boolean b, List<String> checkAccessApi, String string, boolean c, List<String> checkAccessApi2,
+			String string2, boolean d, List<String> checkAccessApi3, String string3, boolean e,
+			List<String> checkAccessApi4, String string4, boolean f, List<String> checkAccessApi5, String string5,
+			boolean g, List<String> checkAccessApi6, String string6, boolean h, List<String> checkAccessApi7,
+			String string7, boolean i, List<String> checkAccessApi8, String string8, Pageable pageable);
 
 }

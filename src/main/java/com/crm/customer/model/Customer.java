@@ -76,8 +76,8 @@ public class Customer {
 	private String emailAddress;
 
 	@NotAudited
-	@ManyToMany
-	private List<Customer> parentAccount;
+	@OneToOne
+	private Customer parentAccount;
 
 	@Column(name = "fax")
 	private String fax;
@@ -115,6 +115,9 @@ public class Customer {
 	@Column(name = "website_details")
 	private String websiteDetails;
 
+	@Column(name = "promotional_messages")
+	private Boolean promotionalMessages;
+	
 	@Column(name = "is_deleted")
 	private Boolean isDeleted;
 
@@ -129,5 +132,8 @@ public class Customer {
 
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
+	
+	@Column(name = "owner")
+	private String owner; 
 
 }

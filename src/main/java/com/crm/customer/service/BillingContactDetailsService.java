@@ -15,13 +15,15 @@ import org.springframework.util.ObjectUtils;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.BillingContactDetails;
 import com.crm.customer.repository.BillingContactDetailsRepository;
-import com.crm.customer.util.AccessToken;
 
 @Service
 public class BillingContactDetailsService {
 
 	@Autowired
 	BillingContactDetailsRepository billingContactDetailsRepository;
+	
+	@Autowired
+	UserService userService;
 
 	public Optional<BillingContactDetails> getById(Long id) {
 		return billingContactDetailsRepository.findByContactDetailsIdAndIsDeleted(id, false);
@@ -84,7 +86,7 @@ public class BillingContactDetailsService {
 
 	public Page<BillingContactDetails> getSearchAndPagination(String name, String owner, Pageable pageable) {
 		Page<BillingContactDetails>  billingContactDetails= null;
-		List<String> checkAccessApi = AccessToken.checkAccessApi(owner);
+		List<String> checkAccessApi = userService.checkAccessApi(owner);
 		
 			if (ObjectUtils.isEmpty(name)) {
 				billingContactDetails = billingContactDetailsRepository.findByIsDeletedAndOwnerIn(false, checkAccessApi, pageable);
