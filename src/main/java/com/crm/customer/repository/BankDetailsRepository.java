@@ -8,8 +8,9 @@ import org.springframework.data.repository.history.RevisionRepository;
 
 import com.crm.customer.model.BankDetails;
 
-public interface BankDetailsRepository extends RevisionRepository<BankDetails, Long, Long>, JpaRepository<BankDetails, Long>, PagingAndSortingRepository<BankDetails, Long> {
+public interface BankDetailsRepository extends RevisionRepository<BankDetails, Long, Long>,
+		JpaRepository<BankDetails, Long>, PagingAndSortingRepository<BankDetails, Long> {
 
-	Optional<BankDetails> findByBankDetailsIdAndIsDeleted(Long id, boolean b);
+	Optional<BankDetails> findByBillingAccountBillingAccountIdAndIsDeleted(Long id, boolean b);
 
 }

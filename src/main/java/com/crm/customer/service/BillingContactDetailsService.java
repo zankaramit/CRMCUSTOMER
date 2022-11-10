@@ -15,13 +15,14 @@ import org.springframework.util.ObjectUtils;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.BillingContactDetails;
 import com.crm.customer.repository.BillingContactDetailsRepository;
+import com.crm.customer.util.AccessToken;
 
 @Service
 public class BillingContactDetailsService {
 
 	@Autowired
 	BillingContactDetailsRepository billingContactDetailsRepository;
-	
+
 	@Autowired
 	UserService userService;
 
@@ -84,17 +85,23 @@ public class BillingContactDetailsService {
 		return billingContactDetailsRepository.save(existingBillingContactDetails);
 	}
 
-	public Page<BillingContactDetails> getSearchAndPagination(String name, String owner, Pageable pageable) {
-		Page<BillingContactDetails>  billingContactDetails= null;
-		List<String> checkAccessApi = userService.checkAccessApi(owner);
-		
-			if (ObjectUtils.isEmpty(name)) {
-				billingContactDetails = billingContactDetailsRepository.findByIsDeletedAndOwnerIn(false, checkAccessApi, pageable);
-			}else {
-				billingContactDetails = billingContactDetailsRepository.findByIsDeletedAndOwnerInAndAccountNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndServiceTypeLikeIgnoreCaseOrIsDeletedAndOwnerInAndMobileLikeIgnoreCaseOrIsDeletedAndOwnerInAndEmailLikeIgnoreCase(false, checkAccessApi, "%" + name + "%", false, checkAccessApi, "%" + name + "%", false, checkAccessApi, "%" + name + "%", false, checkAccessApi, "%" + name + "%", pageable);
-			}
-	
-		
+	public Page<BillingContactDetails> getSearchAndPagination(String name, String owner, Long billingAccountId,
+			Pageable pageable) {
+		Page<BillingContactDetails> billingContactDetails = null;
+		List<String> checkAccessApi = AccessToken.checkAccessApi(owner);
+
+		if (ObjectUtils.isEmpty(name)) {
+			billingContactDetails = billingContactDetailsRepository
+					.findByIsDeletedAndBillingAccountBillingAccountIdAndOwnerIn(false, billingAccountId, checkAccessApi,
+							pageable);
+		} else {
+			billingContactDetails = billingContactDetailsRepository
+					.findByIsDeletedAndBillingAccountBillingAccountIdAndOwnerInAndAccountNameLikeIgnoreCaseOrIsDeletedAndBillingAccountBillingAccountIdAndOwnerInAndServiceTypeLikeIgnoreCaseOrIsDeletedAndBillingAccountBillingAccountIdAndOwnerInAndMobileLikeIgnoreCaseOrIsDeletedAndBillingAccountBillingAccountIdAndOwnerInAndEmailLikeIgnoreCase(
+							false, billingAccountId, checkAccessApi, "%" + name + "%", false, billingAccountId,
+							checkAccessApi, "%" + name + "%", false, billingAccountId, checkAccessApi, "%" + name + "%",
+							false, billingAccountId, checkAccessApi, "%" + name + "%", pageable);
+		}
+
 		return billingContactDetails;
 	}
 }

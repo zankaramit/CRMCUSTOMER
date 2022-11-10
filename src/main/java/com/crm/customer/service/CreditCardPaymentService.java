@@ -19,7 +19,7 @@ public class CreditCardPaymentService {
 	CreditCardPaymentRepository creditCardPaymentRepository;
 
 	public Optional<CreditCardPaymentDetails> getById(Long id) {
-		return creditCardPaymentRepository.findByCreditCardPaymentIdAndIsDeleted(id, false);
+		return creditCardPaymentRepository.findByBillingAccountBillingAccountIdAndIsDeleted(id, false);
 	}
 
 	public CreditCardPaymentDetails create(CreditCardPaymentDetails creditCardPaymentDetails) {

@@ -19,7 +19,7 @@ public class BankDetailsService {
 	BankDetailsRepository bankDetailsRepository;
 
 	public Optional<BankDetails> getById(Long id) {
-		return bankDetailsRepository.findByBankDetailsIdAndIsDeleted(id, false);
+		return bankDetailsRepository.findByBillingAccountBillingAccountIdAndIsDeleted(id, false);
 	}
 
 	public BankDetails create(BankDetails bankDetails) {

@@ -35,9 +35,9 @@ public class BillingContactDetailsController {
 	BillingContactDetailsService billingContactDetailsService;
 	
 	@GetMapping("all")
-	public ResponseEntity<Page<BillingContactDetails>> getSearchAndPagination(@Nullable String name, String owner,
+	public ResponseEntity<Page<BillingContactDetails>> getSearchAndPagination(@Nullable String name, String owner, Long billingAccountId,
 			Pageable pageable) {
-		Page<BillingContactDetails> billingContactDetailsPage = billingContactDetailsService.getSearchAndPagination(name,owner, pageable);
+		Page<BillingContactDetails> billingContactDetailsPage = billingContactDetailsService.getSearchAndPagination(name,owner,billingAccountId, pageable);
 		return new ResponseEntity<>(billingContactDetailsPage, HttpStatus.OK);
 	}
 	

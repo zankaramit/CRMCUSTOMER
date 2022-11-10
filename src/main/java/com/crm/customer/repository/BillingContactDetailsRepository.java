@@ -11,15 +11,18 @@ import org.springframework.data.repository.history.RevisionRepository;
 
 import com.crm.customer.model.BillingContactDetails;
 
-public interface BillingContactDetailsRepository extends RevisionRepository<BillingContactDetails, Long, Long>,  JpaRepository<BillingContactDetails, Long>, PagingAndSortingRepository<BillingContactDetails, Long> {
+public interface BillingContactDetailsRepository extends RevisionRepository<BillingContactDetails, Long, Long>,
+		JpaRepository<BillingContactDetails, Long>, PagingAndSortingRepository<BillingContactDetails, Long> {
 
 	Optional<BillingContactDetails> findByContactDetailsIdAndIsDeleted(Long id, boolean b);
 
-	Page<BillingContactDetails> findByIsDeletedAndOwnerIn(boolean b, List<String> checkAccessApi, Pageable pageable);
+	Page<BillingContactDetails> findByIsDeletedAndBillingAccountBillingAccountIdAndOwnerIn(boolean b,
+			Long billingAccountId, List<String> checkAccessApi, Pageable pageable);
 
-	Page<BillingContactDetails> findByIsDeletedAndOwnerInAndAccountNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndServiceTypeLikeIgnoreCaseOrIsDeletedAndOwnerInAndMobileLikeIgnoreCaseOrIsDeletedAndOwnerInAndEmailLikeIgnoreCase(
-			boolean b, List<String> checkAccessApi, String string, boolean c, List<String> checkAccessApi2,
-			String string2, boolean d, List<String> checkAccessApi3, String string3, boolean e,
+	Page<BillingContactDetails> findByIsDeletedAndBillingAccountBillingAccountIdAndOwnerInAndAccountNameLikeIgnoreCaseOrIsDeletedAndBillingAccountBillingAccountIdAndOwnerInAndServiceTypeLikeIgnoreCaseOrIsDeletedAndBillingAccountBillingAccountIdAndOwnerInAndMobileLikeIgnoreCaseOrIsDeletedAndBillingAccountBillingAccountIdAndOwnerInAndEmailLikeIgnoreCase(
+			boolean b, Long billingAccountId, List<String> checkAccessApi, String string, boolean c,
+			Long billingAccountId2, List<String> checkAccessApi2, String string2, boolean d, Long billingAccountId3,
+			List<String> checkAccessApi3, String string3, boolean e, Long billingAccountId4,
 			List<String> checkAccessApi4, String string4, Pageable pageable);
 
 }

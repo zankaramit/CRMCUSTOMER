@@ -8,8 +8,9 @@ import org.springframework.data.repository.history.RevisionRepository;
 
 import com.crm.customer.model.CreditCardPaymentDetails;
 
-public interface CreditCardPaymentRepository extends RevisionRepository<CreditCardPaymentDetails, Long, Long>, JpaRepository<CreditCardPaymentDetails, Long>,  PagingAndSortingRepository<CreditCardPaymentDetails, Long>{
+public interface CreditCardPaymentRepository extends RevisionRepository<CreditCardPaymentDetails, Long, Long>,
+		JpaRepository<CreditCardPaymentDetails, Long>, PagingAndSortingRepository<CreditCardPaymentDetails, Long> {
 
-	Optional<CreditCardPaymentDetails> findByCreditCardPaymentIdAndIsDeleted(Long id, boolean b);
+	Optional<CreditCardPaymentDetails> findByBillingAccountBillingAccountIdAndIsDeleted(Long id, boolean b);
 
 }

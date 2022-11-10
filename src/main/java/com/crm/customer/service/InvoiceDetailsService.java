@@ -19,7 +19,7 @@ public class InvoiceDetailsService {
 	InvoiceDetailsRepository invoiceDetailsRepository;
 
 	public Optional<InvoiceDetails> getById(Long id) {
-		return invoiceDetailsRepository.findByInvoiceDetailsIdAndIsDeleted(id, false);
+		return invoiceDetailsRepository.findByBillingAccountBillingAccountIdAndIsDeleted(id, false);
 	}
 
 	public InvoiceDetails create(InvoiceDetails invoiceDetails) {

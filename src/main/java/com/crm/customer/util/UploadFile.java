@@ -13,7 +13,7 @@ public class UploadFile {
 	public static String uploadFile(MultipartFile file) {
 
 		RestTemplate restTemplate = new RestTemplate();
-		String url = "http://114.143.224.42:8020/uploadFile";
+		String url = "http://192.168.1.11:8020/uploadFile";
 
 		HttpHeaders httpHeader = new HttpHeaders();
 		httpHeader.setContentType(MediaType.MULTIPART_FORM_DATA);
