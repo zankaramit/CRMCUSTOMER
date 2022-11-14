@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.persistence.PersistenceException;
 
+import org.hibernate.query.criteria.internal.predicate.IsEmptyPredicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,23 +23,24 @@ public class CustomerService {
 
 	@Autowired
 	CustomerRepository customerRepository;
-	
+
 	@Autowired
 	UserService userService;
 
-	public Page<Customer> getByNameCustomerAndPagination(String name,String owner, Pageable pageable) {
+	public Page<Customer> getByNameCustomerAndPagination(String name, String owner, Pageable pageable) {
 
-		List<String> checkAccessApi = AccessToken.checkAccessApi(owner);
+		List<String> checkAccessApi = userService.checkAccessApi(owner);
 		Page<Customer> customer = null;
 
 		if (ObjectUtils.isEmpty(name)) {
-			customer = customerRepository.findByIsDeletedAndOwnerIn(false,checkAccessApi, pageable);
+			customer = customerRepository.findByIsDeletedAndOwnerIn(false, checkAccessApi, pageable);
 		} else {
 			customer = customerRepository
 					.findByIsDeletedAndOwnerInAndFirstNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndMiddelNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndLastNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndEmailAddressLikeIgnoreCaseOrIsDeletedAndOwnerInAndMobileNumberLikeIgnoreCaseOrIsDeletedAndOwnerInAndAccountNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndCompanyRegistrationNumberLikeIgnoreCaseOrIsDeletedAndOwnerInAndWebsiteDetailsLikeIgnoreCase(
-							false,checkAccessApi, "%" + name + "%", false,checkAccessApi, "%" + name + "%", false,checkAccessApi, "%" + name + "%", false,checkAccessApi,
-							"%" + name + "%", false,checkAccessApi, "%" + name + "%", false,checkAccessApi, "%" + name + "%", false,checkAccessApi, "%" + name + "%",
-							false,checkAccessApi, "%" + name + "%", pageable);
+							false, checkAccessApi, "%" + name + "%", false, checkAccessApi, "%" + name + "%", false,
+							checkAccessApi, "%" + name + "%", false, checkAccessApi, "%" + name + "%", false,
+							checkAccessApi, "%" + name + "%", false, checkAccessApi, "%" + name + "%", false,
+							checkAccessApi, "%" + name + "%", false, checkAccessApi, "%" + name + "%", pageable);
 		}
 		return customer;
 	}
@@ -50,11 +52,16 @@ public class CustomerService {
 	}
 
 	public Customer save(Customer customer) {
+
+		if (customer.getParentAccount().getCustomerId() == null) {
+			customer.setParentAccount(null);
+		}
 		LocalDateTime dateTime = LocalDateTime.now();
 		customer.setIsDeleted(false);
 		customer.setCreatedDate(dateTime);
 		customer.setOwner(customer.getCreatedBy());
 		return customerRepository.save(customer);
+
 	}
 
 	public Customer update(Customer customer) {
@@ -75,7 +82,6 @@ public class CustomerService {
 		existingCustomer.setPreferredLanguage(customer.getPreferredLanguage());
 		existingCustomer.setMobileNumber(customer.getMobileNumber());
 		existingCustomer.setEmailAddress(customer.getEmailAddress());
-//		existingCustomer.setParentAccount(customer.getParentAccount());
 		existingCustomer.setFax(customer.getFax());
 		existingCustomer.setNationality(customer.getNationality());
 		existingCustomer.setDateOfBirth(customer.getDateOfBirth());
@@ -89,6 +95,11 @@ public class CustomerService {
 		existingCustomer.setWebsiteDetails(customer.getWebsiteDetails());
 		existingCustomer.setPromotionalMessages(customer.getPromotionalMessages());
 		existingCustomer.setReligion(customer.getReligion());
+		if (customer.getParentAccount().getCustomerId() == null) {
+			existingCustomer.setParentAccount(null);
+		} else {
+			existingCustomer.setParentAccount(customer.getParentAccount());
+		}
 		existingCustomer.setUpdatedBy(customer.getUpdatedBy());
 		existingCustomer.setUpdatedDate(dateTime);
 		return customerRepository.save(existingCustomer);
@@ -117,14 +128,14 @@ public class CustomerService {
 		Page<Customer> consumer = null;
 
 		if (ObjectUtils.isEmpty(name)) {
-			consumer = customerRepository.findByIsDeletedAndCustomerType(false, customerType, pageable);
+			consumer = customerRepository.findByIsDeletedAndCustomerTypeIgnoreCase(false, customerType, pageable);
 		} else {
 			consumer = customerRepository
 					.findByIsDeletedAndCustomerTypeAndFirstNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndMiddelNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndLastNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndEmailAddressLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndMobileNumberLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndAccountNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndCompanyRegistrationNumberLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndWebsiteDetailsLikeIgnoreCase(
-							false, customerType, "%" + name + "%", false, customerType, "%" + name + "%", false, customerType,
-							"%" + name + "%", false, customerType, "%" + name + "%", false, customerType, "%" + name + "%",
-							false, customerType, "%" + name + "%", false, customerType, "%" + name + "%", false, customerType,
-							"%" + name + "%", pageable);
+							false, customerType, "%" + name + "%", false, customerType, "%" + name + "%", false,
+							customerType, "%" + name + "%", false, customerType, "%" + name + "%", false, customerType,
+							"%" + name + "%", false, customerType, "%" + name + "%", false, customerType,
+							"%" + name + "%", false, customerType, "%" + name + "%", pageable);
 		}
 		return consumer;
 	}

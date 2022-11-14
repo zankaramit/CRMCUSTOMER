@@ -17,7 +17,7 @@ public interface CustomerRepository extends RevisionRepository<Customer, Long, L
 
 	
 
-	Page<Customer> findByIsDeletedAndCustomerType(boolean b, String string, Pageable pageable);
+	Page<Customer> findByIsDeletedAndCustomerTypeIgnoreCase(boolean b, String customerType, Pageable pageable);
 
 	Page<Customer> findByIsDeletedAndCustomerTypeAndFirstNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndMiddelNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndLastNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndEmailAddressLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndMobileNumberLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndAccountNameLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndCompanyRegistrationNumberLikeIgnoreCaseOrIsDeletedAndCustomerTypeAndWebsiteDetailsLikeIgnoreCase(
 			boolean b, String string, String string2, boolean c, String string3, String string4, boolean d,
@@ -35,5 +35,9 @@ public interface CustomerRepository extends RevisionRepository<Customer, Long, L
 			List<String> checkAccessApi4, String string4, boolean f, List<String> checkAccessApi5, String string5,
 			boolean g, List<String> checkAccessApi6, String string6, boolean h, List<String> checkAccessApi7,
 			String string7, boolean i, List<String> checkAccessApi8, String string8, Pageable pageable);
+
+
+
+	
 
 }

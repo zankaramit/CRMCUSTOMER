@@ -88,7 +88,7 @@ public class BillingContactDetailsService {
 	public Page<BillingContactDetails> getSearchAndPagination(String name, String owner, Long billingAccountId,
 			Pageable pageable) {
 		Page<BillingContactDetails> billingContactDetails = null;
-		List<String> checkAccessApi = AccessToken.checkAccessApi(owner);
+		List<String> checkAccessApi = userService.checkAccessApi(owner);
 
 		if (ObjectUtils.isEmpty(name)) {
 			billingContactDetails = billingContactDetailsRepository

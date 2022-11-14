@@ -28,9 +28,12 @@ public class IdentificationDetailsService {
 	@Autowired
 	UserService userService;
 	
+	@Autowired
+	UploadFileService uploadFileService;
+	
 	public Page<Identification> getSearchAndPagination(String name,String owner, Long customerId, Pageable pageable) {
 		Page<Identification> identificationList = null;
-		List<String> checkAccessApi = AccessToken.checkAccessApi(owner);
+		List<String> checkAccessApi = userService.checkAccessApi(owner);
 		if (!ObjectUtils.isEmpty(name)) {
 			identificationList = identificationDetailsRepository
 					.findByIsDeletedAndOwnerInAndCustomerCustomerIdAndIdentificationNumberLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndIdentificationTypeLikeIgnoreCase(
@@ -44,7 +47,7 @@ public class IdentificationDetailsService {
 
 	public Identification save(Identification identification, MultipartFile file) {
 		if (file != null) {
-			String fileUploadLocation = UploadFile.uploadFile(file);
+			String fileUploadLocation = uploadFileService.uploadFile(file);
 
 			identification.setIDSoftcopy(fileUploadLocation);
 		}

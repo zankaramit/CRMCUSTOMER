@@ -27,7 +27,7 @@ public class ContactDetailsService {
 	UserService userService;
 
 	public Page<ContactDetails> getSearchAndPagination(String name,String owner, Long customerId, Pageable pageable) {
-		List<String> checkAccessApi = AccessToken.checkAccessApi(owner);
+		List<String> checkAccessApi = userService.checkAccessApi(owner);
 		Page<ContactDetails> contactList = null;
 
 		if (!ObjectUtils.isEmpty(name)) {

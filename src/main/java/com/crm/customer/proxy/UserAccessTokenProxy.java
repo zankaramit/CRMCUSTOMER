@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 
 import com.crm.customer.dto.Credentials;
-@FeignClient(name = "KEYCLOAK", url = "http://192.168.1.42:8040")
+@FeignClient(name = "KEYCLOAK")
 public interface UserAccessTokenProxy {
 
 	@GetMapping("/user/userId/{userid}")

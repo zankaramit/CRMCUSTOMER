@@ -28,7 +28,7 @@ public class ReferenceDetailsService {
 
 	public Page<ReferenceDetails> getSearchAndPagination(String name, String owner, Long customerId,
 			Pageable pageable) {
-		List<String> checkAccessApi = AccessToken.checkAccessApi(owner);
+		List<String> checkAccessApi = userService.checkAccessApi(owner);
 		Page<ReferenceDetails> referenceList = null;
 
 		if (!ObjectUtils.isEmpty(name)) {
