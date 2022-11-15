@@ -13,10 +13,9 @@ public class UploadFileService {
 
 	@Autowired
 	FileServerProxy fileServerProxy;
-	
+
 	public String uploadFile(MultipartFile file) {
-		return fileServerProxy.uploadFile(file);
-
+		String uploadFile = fileServerProxy.uploadFile(file);
+		return uploadFile.substring(uploadFile.indexOf("http"));
 	}
-
 }
