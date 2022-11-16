@@ -36,11 +36,14 @@ public class Collaterals {
 	@Column(name = "flag")
 	private String flag;
 
+	@Column(name = "document_type")
+	private String documentType;
+	
+	@Column(name = "document_info")
+	private String documentInfo;
+	
 	@Column(name = "file_name",columnDefinition="TEXT" )
 	private String fileName;
-
-	@Column(name = "file_info")
-	private String fileInfo;
 
 	@Column(name = "is_deleted")
 	private Boolean isDeleted;

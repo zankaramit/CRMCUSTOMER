@@ -2,6 +2,7 @@ package com.crm.customer.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import javax.persistence.PersistenceException;
@@ -71,6 +72,9 @@ public class CustomerService {
 			throw new ResourceNotFoundException("Customer Details not found for ID :" + customer.getCustomerId());
 		}
 		Customer existingCustomer = findById.get();
+		if (Objects.equals(customer.getParentAccount().getCustomerId(), customer.getCustomerId())) {
+			throw new ResourceNotFoundException("Unable to select same account as parent account");
+		}
 		existingCustomer.setCustomerType(customer.getCustomerType());
 		existingCustomer.setCustomerClass(customer.getCustomerClass());
 		existingCustomer.setTitle(customer.getTitle());

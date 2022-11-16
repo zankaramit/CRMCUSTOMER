@@ -75,7 +75,7 @@ public class Customer {
 	@Column(name = "email_Address")
 	private String emailAddress;
 
-	@NotAudited
+	
 	@OneToOne
 	private Customer parentAccount;
 
