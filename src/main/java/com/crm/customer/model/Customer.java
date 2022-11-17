@@ -19,6 +19,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Formula;
 import org.hibernate.envers.Audited;
+import org.springframework.data.annotation.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -74,9 +75,9 @@ public class Customer {
 
 	@Column(name = "email_Address")
 	private String emailAddress;
-	
+
 	@OneToOne
-	@JsonIgnoreProperties({ "parentAccount"})
+	@JsonIgnoreProperties({ "parentAccount" })
 	private Customer parentAccount;
 
 	@Column(name = "fax")
@@ -117,10 +118,7 @@ public class Customer {
 
 	@Column(name = "promotional_messages")
 	private Boolean promotionalMessages;
-	
-//		@Formula(value = "concat(first_name,account_name)")
-//		private String name;
-	
+
 	@Column(name = "is_deleted")
 	private Boolean isDeleted;
 
@@ -135,8 +133,8 @@ public class Customer {
 
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
-	
+
 	@Column(name = "owner")
-	private String owner; 
+	private String owner;
 
 }

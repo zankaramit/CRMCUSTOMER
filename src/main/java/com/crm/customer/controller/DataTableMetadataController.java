@@ -26,7 +26,7 @@ public class DataTableMetadataController {
 		
 		CUSTOMER_METADATA = new DataTableMetadata()
 				.addColumnMetadata(new ColumnMetadata("", "customerId", ColumnType.RADIO, 12))
-				.addColumnMetadata(new ColumnMetadata("NAME", "name", ColumnType.TEXT, 22))
+				.addColumnMetadata(new ColumnMetadata("NAME", "firstName,accountName", ColumnType.TEXT, 22))
 				.addColumnMetadata(new ColumnMetadata("TYPE", "customerType", ColumnType.TEXT, 22))
 				.addColumnMetadata(new ColumnMetadata("PHONE", "mobileNumber", ColumnType.TEXT, 22))
 				.addColumnMetadata(new ColumnMetadata("EMAIL", "emailAddress", ColumnType.TEXT, 22));
