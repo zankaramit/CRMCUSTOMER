@@ -89,7 +89,6 @@ public class AddressDetails {
 	@Column(name = "owner")
 	private String owner; 
 
-	@NotAudited
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "customer_id")
 	private Customer customer;

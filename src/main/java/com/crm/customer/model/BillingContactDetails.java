@@ -101,7 +101,6 @@ public class BillingContactDetails {
 	@Column(name = "owner")
 	private String owner;
 	
-	@NotAudited
 	@ManyToOne
 	@JoinColumn(name = "billing_account_id")
 	private BillingAccount billingAccount;

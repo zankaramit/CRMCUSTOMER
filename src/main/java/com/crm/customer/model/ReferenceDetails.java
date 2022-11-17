@@ -90,7 +90,6 @@ public class ReferenceDetails {
 	@Column(name = "owner")
 	private String owner; 
 
-	@NotAudited
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;

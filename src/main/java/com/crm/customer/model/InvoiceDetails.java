@@ -64,7 +64,6 @@ public class InvoiceDetails {
 	@Column(name = "owner")
 	private String owner;
 	
-	@NotAudited
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "billing_account_id", referencedColumnName = "billing_account_id")
 	private BillingAccount billingAccount;

@@ -73,7 +73,6 @@ public class OccupationDetails {
 	@Column(name = "owner")
 	private String owner; 
 
-	@NotAudited
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
 	private Customer customer;
