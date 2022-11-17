@@ -17,12 +17,13 @@ public interface BillingAccountRepository extends RevisionRepository<BillingAcco
 
 	Page<BillingAccount> findByIsDeletedAndOwner(boolean b, String owners, Pageable pageable);
 
-	
-	Page<BillingAccount> findByIsDeletedAndOwnerIn(boolean b, List<String> checkAccessApi, Pageable pageable);
+	Page<BillingAccount> findByIsDeletedAndOwnerInAndCustomerCustomerId(boolean b, List<String> checkAccessApi,
+			Long customerId, Pageable pageable);
 
-	Page<BillingAccount> findByIsDeletedAndOwnerInAndBillingAccountLikeIgnoreCaseOrIsDeletedAndOwnerInAndBillingCycleLikeIgnoreCaseOrIsDeletedAndOwnerInAndAccountTypeLikeIgnoreCaseOrIsDeletedAndOwnerInAndServiceTypeLikeIgnoreCase(
-			boolean b, List<String> checkAccessApi, String string, boolean c, List<String> checkAccessApi2,
-			String string2, boolean d, List<String> checkAccessApi3, String string3, boolean e,
-			List<String> checkAccessApi4, String string4, Pageable pageable);
+	Page<BillingAccount> findByIsDeletedAndOwnerInAndCustomerCustomerIdAndBillingAccountLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndBillingCycleLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAccountTypeLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndServiceTypeLikeIgnoreCase(
+			boolean b, List<String> checkAccessApi, Long customerId, String string, boolean c,
+			List<String> checkAccessApi2, Long customerId2, String string2, boolean d, List<String> checkAccessApi3,
+			Long customerId3, String string3, boolean e, List<String> checkAccessApi4, Long customerId4, String string4,
+			Pageable pageable);
 
 }

@@ -9,9 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Formula;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 
@@ -110,7 +112,7 @@ public class BillingAccount {
 	private String owner; 
 	
 	@NotAudited
-	@OneToOne(cascade = CascadeType.MERGE)
+	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 }

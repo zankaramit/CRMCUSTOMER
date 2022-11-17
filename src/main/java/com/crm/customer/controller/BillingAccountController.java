@@ -34,9 +34,9 @@ public class BillingAccountController {
 	BillingAccountService billingAccountService;
 
 	@GetMapping("all")
-	public ResponseEntity<Page<BillingAccount>> getSearchAndPagination(@Nullable String name, String owner,
+	public ResponseEntity<Page<BillingAccount>> getSearchAndPagination(@Nullable String name, String owner, Long customerId,
 			Pageable pageable) {
-		Page<BillingAccount> billingAccountPage = billingAccountService.getSearchAndPagination(name,owner, pageable);
+		Page<BillingAccount> billingAccountPage = billingAccountService.getSearchAndPagination(name,owner, customerId, pageable);
 		return new ResponseEntity<>(billingAccountPage, HttpStatus.OK);
 	}
 

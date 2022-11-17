@@ -97,18 +97,18 @@ public class BillingAccountService {
 		return billingAccountRepository.save(existingBillingAccount);
 	}
 
-	public Page<BillingAccount> getSearchAndPagination(String name, String owner, Pageable pageable) {
+	public Page<BillingAccount> getSearchAndPagination(String name, String owner, Long customerId, Pageable pageable) {
 		Page<BillingAccount> billingAccount = null;
 		List<String> checkAccessApi = AccessToken.checkAccessApi(owner);
 
 		if (ObjectUtils.isEmpty(name)) {
 
-			billingAccount = billingAccountRepository.findByIsDeletedAndOwnerIn(false, checkAccessApi, pageable);
+			billingAccount = billingAccountRepository.findByIsDeletedAndOwnerInAndCustomerCustomerId(false, checkAccessApi, customerId, pageable);
 		} else {
 			billingAccount = billingAccountRepository
-					.findByIsDeletedAndOwnerInAndBillingAccountLikeIgnoreCaseOrIsDeletedAndOwnerInAndBillingCycleLikeIgnoreCaseOrIsDeletedAndOwnerInAndAccountTypeLikeIgnoreCaseOrIsDeletedAndOwnerInAndServiceTypeLikeIgnoreCase(
-							false, checkAccessApi, "%" + name + "%", false, checkAccessApi, "%" + name + "%", false,
-							checkAccessApi, "%" + name + "%", false, checkAccessApi, "%" + name + "%", pageable);
+					.findByIsDeletedAndOwnerInAndCustomerCustomerIdAndBillingAccountLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndBillingCycleLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAccountTypeLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndServiceTypeLikeIgnoreCase(
+							false, checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", false,
+							checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", pageable);
 		}
 
 		return billingAccount;

@@ -25,13 +25,11 @@ public class DataTableMetadataController {
 	static {
 		
 		CUSTOMER_METADATA = new DataTableMetadata()
-				.addColumnMetadata(new ColumnMetadata("", "customerId", ColumnType.RADIO, 10))
-				.addColumnMetadata(new ColumnMetadata("CUSTOMER", "firstName", ColumnType.TEXT, 15))
-				.addColumnMetadata(new ColumnMetadata("CORPORATE", "accountName", ColumnType.TEXT, 15))
-				.addColumnMetadata(new ColumnMetadata("TYPE", "customerType", ColumnType.TEXT, 15))
-				.addColumnMetadata(new ColumnMetadata("PHONE", "mobileNumber", ColumnType.TEXT, 15))
-				.addColumnMetadata(new ColumnMetadata("EMAIL", "emailAddress", ColumnType.TEXT, 15))
-				.addColumnMetadata(new ColumnMetadata("DATE", "createdDate", ColumnType.TEXT, 15));
+				.addColumnMetadata(new ColumnMetadata("", "customerId", ColumnType.RADIO, 12))
+				.addColumnMetadata(new ColumnMetadata("NAME", "name", ColumnType.TEXT, 22))
+				.addColumnMetadata(new ColumnMetadata("TYPE", "customerType", ColumnType.TEXT, 22))
+				.addColumnMetadata(new ColumnMetadata("PHONE", "mobileNumber", ColumnType.TEXT, 22))
+				.addColumnMetadata(new ColumnMetadata("EMAIL", "emailAddress", ColumnType.TEXT, 22));
 
 		ADDRESS_METADATA = new DataTableMetadata()
 				.addColumnMetadata(new ColumnMetadata("", "addressDetailsId", ColumnType.RADIO, 10))

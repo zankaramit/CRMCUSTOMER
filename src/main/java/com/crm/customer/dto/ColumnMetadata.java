@@ -1,5 +1,7 @@
 package com.crm.customer.dto;
 
+
+
 public class ColumnMetadata {
 	private String name;
 	private String mappedBy;
@@ -8,6 +10,7 @@ public class ColumnMetadata {
 	
 	public ColumnMetadata(String name, String mappedBy, ColumnType type, int width) {
 		this.name = name;
+		
 		this.mappedBy = mappedBy;
 		this.type = type;
 		this.width = width;

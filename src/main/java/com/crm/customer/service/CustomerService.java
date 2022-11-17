@@ -7,7 +7,6 @@ import java.util.Optional;
 
 import javax.persistence.PersistenceException;
 
-import org.hibernate.query.criteria.internal.predicate.IsEmptyPredicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,7 +16,8 @@ import org.springframework.util.ObjectUtils;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.Customer;
 import com.crm.customer.repository.CustomerRepository;
-import com.crm.customer.util.AccessToken;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 @Service
 public class CustomerService {
@@ -47,7 +47,8 @@ public class CustomerService {
 	}
 
 	public Optional<Customer> getById(Long id) {
-
+//		ObjectMapper objectMapper = new ObjectMapper();
+//	    objectMapper.configure(SerializationFeature.FAIL_ON_SELF_REFERENCES, false);
 		return customerRepository.findByCustomerIdAndIsDeleted(id, false);
 
 	}

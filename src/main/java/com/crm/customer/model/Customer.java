@@ -3,25 +3,25 @@ package com.crm.customer.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Formula;
 import org.hibernate.envers.Audited;
-import org.hibernate.envers.NotAudited;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 import lombok.Getter;
@@ -74,9 +74,9 @@ public class Customer {
 
 	@Column(name = "email_Address")
 	private String emailAddress;
-
 	
 	@OneToOne
+	@JsonIgnoreProperties({ "parentAccount"})
 	private Customer parentAccount;
 
 	@Column(name = "fax")
@@ -117,6 +117,9 @@ public class Customer {
 
 	@Column(name = "promotional_messages")
 	private Boolean promotionalMessages;
+	
+//		@Formula(value = "concat(first_name,account_name)")
+//		private String name;
 	
 	@Column(name = "is_deleted")
 	private Boolean isDeleted;
