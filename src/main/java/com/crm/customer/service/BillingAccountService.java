@@ -99,7 +99,7 @@ public class BillingAccountService {
 
 	public Page<BillingAccount> getSearchAndPagination(String name, String owner, Long customerId, Pageable pageable) {
 		Page<BillingAccount> billingAccount = null;
-		List<String> checkAccessApi = AccessToken.checkAccessApi(owner);
+		List<String> checkAccessApi = userService.checkAccessApi(owner);
 
 		if (ObjectUtils.isEmpty(name)) {
 

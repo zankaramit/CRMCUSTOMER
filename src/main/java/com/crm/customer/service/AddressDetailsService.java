@@ -28,7 +28,7 @@ public class AddressDetailsService {
 
 	public Page<AddressDetails> getSearchAndPagination(String name, Long customerId,String owner, Pageable pageable) {
 		Page<AddressDetails> addressList = null;
-		List<String> checkAccessApi = AccessToken.checkAccessApi(owner);
+		List<String> checkAccessApi = userService.checkAccessApi(owner);
 		if (!ObjectUtils.isEmpty(name)) {
 			addressList = addressDetailsRepository
 					.findByIsDeletedAndOwnerInAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndCityLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndContactAddressLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndStateLikeIgnoreCase(
