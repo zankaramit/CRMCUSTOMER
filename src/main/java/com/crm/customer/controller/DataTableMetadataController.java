@@ -69,7 +69,7 @@ public class DataTableMetadataController {
 				.addColumnMetadata(new ColumnMetadata("", "billingAccountId", ColumnType.RADIO, 10))
 				.addColumnMetadata(new ColumnMetadata("ACCOUNT NAME", "accountName", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("SERVICE TYPE", "serviceType", ColumnType.TEXT, 18))
-				.addColumnMetadata(new ColumnMetadata("BILLING ACCOUNT", "billingAccount", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("BILLING ACCOUNT NO.", "billingAccount", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("BILLING CYCLE", "billingCycle", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("DATE", "createdDate", ColumnType.TEXT, 18));
 

@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.Customer;
@@ -27,6 +28,9 @@ public class CustomerService {
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	UploadFileService uploadFileService;
 
 	public Page<Customer> getByNameCustomerAndPagination(String name, String owner, Pageable pageable) {
 
@@ -47,14 +51,18 @@ public class CustomerService {
 	}
 
 	public Optional<Customer> getById(Long id) {
-//		ObjectMapper objectMapper = new ObjectMapper();
-//	    objectMapper.configure(SerializationFeature.FAIL_ON_SELF_REFERENCES, false);
 		return customerRepository.findByCustomerIdAndIsDeleted(id, false);
 
 	}
 
-	public Customer save(Customer customer) {
+	
+	public Customer save(Customer customer, MultipartFile file) {
+		if (!file.isEmpty() ) {
+			String fileUploadLocation = uploadFileService.uploadFile(file);
 
+			customer.setProfilePhoto(fileUploadLocation);
+		}
+		
 		if (customer.getParentAccount().getCustomerId() == null) {
 			customer.setParentAccount(null);
 		}
@@ -66,7 +74,7 @@ public class CustomerService {
 
 	}
 
-	public Customer update(Customer customer) {
+	public Customer update(Customer customer, MultipartFile file) {
 		LocalDateTime dateTime = LocalDateTime.now();
 		Optional<Customer> findById = customerRepository.findById(customer.getCustomerId());
 		if (findById.isEmpty()) {
@@ -75,6 +83,11 @@ public class CustomerService {
 		Customer existingCustomer = findById.get();
 		if (Objects.equals(customer.getParentAccount().getCustomerId(), customer.getCustomerId())) {
 			throw new ResourceNotFoundException("Unable to select same account as parent account");
+		}
+		if (!file.isEmpty()) {
+			String fileUploadLocation = uploadFileService.uploadFile(file);
+
+			existingCustomer.setProfilePhoto(fileUploadLocation);
 		}
 		existingCustomer.setCustomerType(customer.getCustomerType());
 		existingCustomer.setCustomerClass(customer.getCustomerClass());

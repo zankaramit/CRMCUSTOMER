@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.Customer;
@@ -54,9 +56,10 @@ public class CustomerController {
 	}
 
 	@PostMapping(path = "create")
-	public ResponseEntity<Customer> create(@RequestBody Customer customer) {
+	public ResponseEntity<Customer> create(@RequestPart Customer customer, @Nullable @RequestPart MultipartFile file) {
+		
 		try {
-			Customer customerSaved = customerService.save(customer);
+			Customer customerSaved = customerService.save(customer, file);
 			return new ResponseEntity<>(customerSaved, HttpStatus.OK);
 		} catch (DataIntegrityViolationException dive) {
 			throw new DataIntegrityViolationException("Data IntegrityViolationException" + dive);
@@ -67,9 +70,10 @@ public class CustomerController {
 	}
 
 	@PutMapping(path = "update")
-	public ResponseEntity<Customer> update(@RequestBody Customer customer)   {
+	public ResponseEntity<Customer> update(@RequestPart Customer customer, @Nullable @RequestPart MultipartFile file)   {
+		
 		try {
-			Customer customerUpdate = customerService.update(customer);
+			Customer customerUpdate = customerService.update(customer, file);
 			return new ResponseEntity<>(customerUpdate, HttpStatus.OK);
 		} catch (Exception e) {
 			throw new PersistenceException( e.getMessage());

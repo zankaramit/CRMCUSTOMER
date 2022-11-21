@@ -46,7 +46,7 @@ public class IdentificationDetailsService {
 	}
 
 	public Identification save(Identification identification, MultipartFile file) {
-		if (file != null) {
+		if (!file.isEmpty()) {
 			String fileUploadLocation = uploadFileService.uploadFile(file);
 
 			identification.setIDSoftcopy(fileUploadLocation);
@@ -77,7 +77,7 @@ public class IdentificationDetailsService {
 		identificationexisting.setMothersMaidenName(identification.getMothersMaidenName());
 		identificationexisting.setUpdatedBy(identification.getUpdatedBy());
 		identificationexisting.setUpdatedDate(dateTime);
-		if (file != null) {
+		if (!file.isEmpty()) {
 			String fileUploadLocation = uploadFileService.uploadFile(file);
 
 			identificationexisting.setIDSoftcopy(fileUploadLocation);

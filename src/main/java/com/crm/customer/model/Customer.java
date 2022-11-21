@@ -118,6 +118,9 @@ public class Customer {
 
 	@Column(name = "promotional_messages")
 	private Boolean promotionalMessages;
+	
+	@Column(name = "profile_photo")
+	private String profilePhoto;
 
 	@Column(name = "is_deleted")
 	private Boolean isDeleted;
