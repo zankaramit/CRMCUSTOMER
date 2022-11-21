@@ -69,7 +69,8 @@ public class BillingAccountService {
 		existingBillingAccount.setBillingFormat(billingAccount.getBillingFormat());
 		existingBillingAccount.setDetailedBilling(billingAccount.getDetailedBilling());
 		existingBillingAccount.setAddressType(billingAccount.getAddressType());
-		existingBillingAccount.setAddress(billingAccount.getAddress());
+		existingBillingAccount.setAddress1(billingAccount.getAddress1());
+		existingBillingAccount.setAddress2(billingAccount.getAddress2());
 		existingBillingAccount.setCity(billingAccount.getCity());
 		existingBillingAccount.setZipCode(billingAccount.getZipCode());
 		existingBillingAccount.setProvinceState(billingAccount.getProvinceState());

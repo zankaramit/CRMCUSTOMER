@@ -78,7 +78,7 @@ public class IdentificationDetailsService {
 		identificationexisting.setUpdatedBy(identification.getUpdatedBy());
 		identificationexisting.setUpdatedDate(dateTime);
 		if (file != null) {
-			String fileUploadLocation = UploadFile.uploadFile(file);
+			String fileUploadLocation = uploadFileService.uploadFile(file);
 
 			identificationexisting.setIDSoftcopy(fileUploadLocation);
 		}

@@ -1,4 +1,4 @@
-package com.crm.customer.controller;
+	package com.crm.customer.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,12 +41,11 @@ public class DataTableMetadataController {
 
 		CONTACT_METADATA = new DataTableMetadata()
 				.addColumnMetadata(new ColumnMetadata("", "contactDetailsId", ColumnType.RADIO, 10))
-				.addColumnMetadata(new ColumnMetadata("First Name", "firstName", ColumnType.TEXT, 15))
-				.addColumnMetadata(new ColumnMetadata("Last Name", "lastName", ColumnType.TEXT, 15))
-				.addColumnMetadata(new ColumnMetadata("GENDER", "gender", ColumnType.TEXT, 15))
-				.addColumnMetadata(new ColumnMetadata("PHONE", "mobileNumber", ColumnType.TEXT, 15))
-				.addColumnMetadata(new ColumnMetadata("FAX", "fax", ColumnType.TEXT, 15))
-				.addColumnMetadata(new ColumnMetadata("DATE", "createdDate", ColumnType.TEXT, 15));
+				.addColumnMetadata(new ColumnMetadata("First Name", "firstName", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("Last Name", "lastName", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("GENDER", "gender", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("PHONE", "mobileNumber", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("DATE", "createdDate", ColumnType.TEXT, 18));
 
 		REFERENCE_METADATA = new DataTableMetadata()
 				.addColumnMetadata(new ColumnMetadata("", "referenceDetailsId", ColumnType.RADIO, 10))
@@ -68,7 +67,7 @@ public class DataTableMetadataController {
 		
 		BILLING_ACCOUNT = new DataTableMetadata()
 				.addColumnMetadata(new ColumnMetadata("", "billingAccountId", ColumnType.RADIO, 10))
-				.addColumnMetadata(new ColumnMetadata("ACCOUNT NAME", "billingAccount", ColumnType.TEXT, 18))
+				.addColumnMetadata(new ColumnMetadata("ACCOUNT NAME", "accountName", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("SERVICE TYPE", "serviceType", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("BILLING ACCOUNT", "billingAccount", ColumnType.TEXT, 18))
 				.addColumnMetadata(new ColumnMetadata("BILLING CYCLE", "billingCycle", ColumnType.TEXT, 18))
