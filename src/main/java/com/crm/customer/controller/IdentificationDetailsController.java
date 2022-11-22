@@ -49,8 +49,10 @@ public class IdentificationDetailsController {
 	@PostMapping(path = "create")
 	public ResponseEntity<Identification> create(@RequestPart Identification identification,
 			@Nullable @RequestPart MultipartFile file) {
-		if (file.getSize() > softCopySize) {
-			throw new PersistenceException("File size should be less than "+softCopySize+"Bytes");
+		if (file != null) {
+			if (!file.getOriginalFilename().isEmpty() && file.getSize() > softCopySize) {
+				throw new PersistenceException("Profile photo size should be less than " + softCopySize + "Bytes");
+			}
 		}
 		try {
 			Identification identificationSaved = identificationDetailsService.save(identification, file);
@@ -77,8 +79,10 @@ public class IdentificationDetailsController {
 	@PutMapping(path = "update")
 	public ResponseEntity<Identification> update(@RequestPart Identification identification,
 			@Nullable @RequestPart MultipartFile file) {
-		if (file.getSize() > softCopySize) {
-			throw new PersistenceException("File size should be less than "+softCopySize+"Bytes");
+		if (file != null) {
+			if (!file.getOriginalFilename().isEmpty() && file.getSize() > softCopySize) {
+				throw new PersistenceException("Profile photo size should be less than " + softCopySize + "Bytes");
+			}
 		}
 		try {
 			Identification identificationUpdate = identificationDetailsService.update(identification, file);

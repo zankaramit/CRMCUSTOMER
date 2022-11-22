@@ -47,11 +47,13 @@ public class IdentificationDetailsService {
 	}
 
 	public Identification save(Identification identification, MultipartFile file) {
-		if (!file.getOriginalFilename().isEmpty()) {
-		if (!file.isEmpty()) {
-			String fileUploadLocation = uploadFileService.uploadFile(file);
-			identification.setIDSoftcopy(fileUploadLocation);
-		}
+		if (file != null) {
+			if (!file.getOriginalFilename().isEmpty()) {
+				if (!file.isEmpty()) {
+					String fileUploadLocation = uploadFileService.uploadFile(file);
+					identification.setIDSoftcopy(fileUploadLocation);
+				}
+			}
 		}
 		LocalDateTime dateTime = LocalDateTime.now();
 		identification.setIsDeleted(false);
@@ -81,11 +83,13 @@ public class IdentificationDetailsService {
 		identificationexisting.setMothersMaidenName(identification.getMothersMaidenName());
 		identificationexisting.setUpdatedBy(identification.getUpdatedBy());
 		identificationexisting.setUpdatedDate(dateTime);
-		if (!file.getOriginalFilename().isEmpty()) {
-		if (!file.isEmpty()) {
-			String fileUploadLocation = uploadFileService.uploadFile(file);
-			identificationexisting.setIDSoftcopy(fileUploadLocation);
-		}
+		if (file != null) {
+			if (!file.getOriginalFilename().isEmpty()) {
+				if (!file.isEmpty()) {
+					String fileUploadLocation = uploadFileService.uploadFile(file);
+					identificationexisting.setIDSoftcopy(fileUploadLocation);
+				}
+			}
 		}
 		return identificationDetailsRepository.save(identificationexisting);
 	}

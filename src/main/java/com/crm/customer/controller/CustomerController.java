@@ -62,11 +62,11 @@ public class CustomerController {
 
 	@PostMapping(path = "create")
 	public ResponseEntity<Customer> create(@RequestPart Customer customer, @Nullable @RequestPart MultipartFile file) {
-
-		if (!file.getOriginalFilename().isEmpty() && file.getSize() > profilePhotoSize) {
-			throw new PersistenceException("Profile photo size should be less than " + profilePhotoSize + "Bytes");
+		if (file != null) {
+			if (!file.getOriginalFilename().isEmpty() && file.getSize() > profilePhotoSize) {
+				throw new PersistenceException("Profile photo size should be less than " + profilePhotoSize + "Bytes");
+			}
 		}
-
 		try {
 			Customer customerSaved = customerService.save(customer, file);
 			return new ResponseEntity<>(customerSaved, HttpStatus.OK);
@@ -80,11 +80,11 @@ public class CustomerController {
 
 	@PutMapping(path = "update")
 	public ResponseEntity<Customer> update(@RequestPart Customer customer, @Nullable @RequestPart MultipartFile file) {
-		
-		if (  !file.getOriginalFilename().isEmpty() && file.getSize() > profilePhotoSize) {
-			throw new PersistenceException("Profile photo size should be less than " + profilePhotoSize + "Bytes");
+		if (file != null) {
+			if (!file.getOriginalFilename().isEmpty() && file.getSize() > profilePhotoSize) {
+				throw new PersistenceException("Profile photo size should be less than " + profilePhotoSize + "Bytes");
+			}
 		}
-		
 		try {
 			Customer customerUpdate = customerService.update(customer, file);
 			return new ResponseEntity<>(customerUpdate, HttpStatus.OK);
