@@ -27,29 +27,31 @@ public class IdentificationDetailsService {
 
 	@Autowired
 	UserService userService;
-	
+
 	@Autowired
 	UploadFileService uploadFileService;
-	
-	public Page<Identification> getSearchAndPagination(String name,String owner, Long customerId, Pageable pageable) {
+
+	public Page<Identification> getSearchAndPagination(String name, String owner, Long customerId, Pageable pageable) {
 		Page<Identification> identificationList = null;
 		List<String> checkAccessApi = userService.checkAccessApi(owner);
 		if (!ObjectUtils.isEmpty(name)) {
 			identificationList = identificationDetailsRepository
 					.findByIsDeletedAndOwnerInAndCustomerCustomerIdAndIdentificationNumberLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndIdentificationTypeLikeIgnoreCase(
-							false,checkAccessApi, customerId, "%" + name + "%", false,checkAccessApi, customerId, "%" + name + "%", pageable);
+							false, checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId,
+							"%" + name + "%", pageable);
 		} else {
-			identificationList = identificationDetailsRepository.findByIsDeletedAndOwnerInAndCustomerCustomerId(false,checkAccessApi, customerId,
-					pageable);
+			identificationList = identificationDetailsRepository.findByIsDeletedAndOwnerInAndCustomerCustomerId(false,
+					checkAccessApi, customerId, pageable);
 		}
 		return identificationList;
 	}
 
 	public Identification save(Identification identification, MultipartFile file) {
+		if (!file.getOriginalFilename().isEmpty()) {
 		if (!file.isEmpty()) {
 			String fileUploadLocation = uploadFileService.uploadFile(file);
-
 			identification.setIDSoftcopy(fileUploadLocation);
+		}
 		}
 		LocalDateTime dateTime = LocalDateTime.now();
 		identification.setIsDeleted(false);
@@ -65,9 +67,11 @@ public class IdentificationDetailsService {
 
 	public Identification update(Identification identification, MultipartFile file) {
 		LocalDateTime dateTime = LocalDateTime.now();
-		Optional<Identification> findById = identificationDetailsRepository.findById(identification.getIdentificationId());
+		Optional<Identification> findById = identificationDetailsRepository
+				.findById(identification.getIdentificationId());
 		if (findById.isEmpty()) {
-			throw new ResourceNotFoundException("Identification Details not found for ID :" + identification.getIdentificationId());
+			throw new ResourceNotFoundException(
+					"Identification Details not found for ID :" + identification.getIdentificationId());
 		}
 		Identification identificationexisting = findById.get();
 		identificationexisting.setIdentificationType(identification.getIdentificationType());
@@ -77,10 +81,11 @@ public class IdentificationDetailsService {
 		identificationexisting.setMothersMaidenName(identification.getMothersMaidenName());
 		identificationexisting.setUpdatedBy(identification.getUpdatedBy());
 		identificationexisting.setUpdatedDate(dateTime);
+		if (!file.getOriginalFilename().isEmpty()) {
 		if (!file.isEmpty()) {
 			String fileUploadLocation = uploadFileService.uploadFile(file);
-
 			identificationexisting.setIDSoftcopy(fileUploadLocation);
+		}
 		}
 		return identificationDetailsRepository.save(identificationexisting);
 	}

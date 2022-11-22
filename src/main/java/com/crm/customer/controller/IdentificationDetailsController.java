@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.persistence.PersistenceException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,6 +34,9 @@ public class IdentificationDetailsController {
 
 	@Autowired
 	IdentificationDetailsService identificationDetailsService;
+	
+	@Value("${softCopySize}")
+	private Long softCopySize;
 
 	@GetMapping("all")
 	public ResponseEntity<Page<Identification>> getSearchAndPagination(@Nullable String name, String owner,
@@ -45,6 +49,9 @@ public class IdentificationDetailsController {
 	@PostMapping(path = "create")
 	public ResponseEntity<Identification> create(@RequestPart Identification identification,
 			@Nullable @RequestPart MultipartFile file) {
+		if (file.getSize() > softCopySize) {
+			throw new PersistenceException("File size should be less than "+softCopySize+"Bytes");
+		}
 		try {
 			Identification identificationSaved = identificationDetailsService.save(identification, file);
 			return new ResponseEntity<>(identificationSaved, HttpStatus.OK);
@@ -70,6 +77,9 @@ public class IdentificationDetailsController {
 	@PutMapping(path = "update")
 	public ResponseEntity<Identification> update(@RequestPart Identification identification,
 			@Nullable @RequestPart MultipartFile file) {
+		if (file.getSize() > softCopySize) {
+			throw new PersistenceException("File size should be less than "+softCopySize+"Bytes");
+		}
 		try {
 			Identification identificationUpdate = identificationDetailsService.update(identification, file);
 			return new ResponseEntity<>(identificationUpdate, HttpStatus.OK);

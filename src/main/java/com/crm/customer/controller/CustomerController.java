@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.persistence.PersistenceException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -35,10 +36,14 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 
-	@GetMapping("all")
-	public ResponseEntity<Page<Customer>> getByNameAndPagination(@Nullable String name, String owner, Pageable pageable) {
+	@Value("${profilePhotoSize}")
+	private Long profilePhotoSize;
 
-		Page<Customer> customerPage = customerService.getByNameCustomerAndPagination(name,owner, pageable);
+	@GetMapping("all")
+	public ResponseEntity<Page<Customer>> getByNameAndPagination(@Nullable String name, String owner,
+			Pageable pageable) {
+
+		Page<Customer> customerPage = customerService.getByNameCustomerAndPagination(name, owner, pageable);
 		return new ResponseEntity<>(customerPage, HttpStatus.OK);
 
 	}
@@ -57,7 +62,11 @@ public class CustomerController {
 
 	@PostMapping(path = "create")
 	public ResponseEntity<Customer> create(@RequestPart Customer customer, @Nullable @RequestPart MultipartFile file) {
-		
+
+		if (!file.getOriginalFilename().isEmpty() && file.getSize() > profilePhotoSize) {
+			throw new PersistenceException("Profile photo size should be less than " + profilePhotoSize + "Bytes");
+		}
+
 		try {
 			Customer customerSaved = customerService.save(customer, file);
 			return new ResponseEntity<>(customerSaved, HttpStatus.OK);
@@ -70,13 +79,17 @@ public class CustomerController {
 	}
 
 	@PutMapping(path = "update")
-	public ResponseEntity<Customer> update(@RequestPart Customer customer, @Nullable @RequestPart MultipartFile file)   {
+	public ResponseEntity<Customer> update(@RequestPart Customer customer, @Nullable @RequestPart MultipartFile file) {
+		
+		if (  !file.getOriginalFilename().isEmpty() && file.getSize() > profilePhotoSize) {
+			throw new PersistenceException("Profile photo size should be less than " + profilePhotoSize + "Bytes");
+		}
 		
 		try {
 			Customer customerUpdate = customerService.update(customer, file);
 			return new ResponseEntity<>(customerUpdate, HttpStatus.OK);
 		} catch (Exception e) {
-			throw new PersistenceException( e.getMessage());
+			throw new PersistenceException(e.getMessage());
 		}
 
 	}
@@ -88,15 +101,14 @@ public class CustomerController {
 		return new ResponseEntity<>(customer, HttpStatus.OK);
 
 	}
-	
-	@GetMapping("all-parent-account")
-	public ResponseEntity<Page<Customer>> getAllCustomerType(@Nullable String name, String customerType, Pageable pageable) {
 
-		Page<Customer> customerPage = customerService.getAllByCustomerType(name,customerType, pageable);
+	@GetMapping("all-parent-account")
+	public ResponseEntity<Page<Customer>> getAllCustomerType(@Nullable String name, String customerType,
+			Pageable pageable) {
+
+		Page<Customer> customerPage = customerService.getAllByCustomerType(name, customerType, pageable);
 		return new ResponseEntity<>(customerPage, HttpStatus.OK);
 
 	}
-	
-	
 
 }

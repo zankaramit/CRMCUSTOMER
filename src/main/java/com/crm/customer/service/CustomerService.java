@@ -55,14 +55,15 @@ public class CustomerService {
 
 	}
 
-	
 	public Customer save(Customer customer, MultipartFile file) {
-		if (!file.isEmpty() ) {
-			String fileUploadLocation = uploadFileService.uploadFile(file);
 
-			customer.setProfilePhoto(fileUploadLocation);
+		if (!file.getOriginalFilename().isEmpty()) {
+			if (!file.isEmpty()) {
+				String fileUploadLocation = uploadFileService.uploadFile(file);
+				customer.setProfilePhoto(fileUploadLocation);
+			}
 		}
-		
+
 		if (customer.getParentAccount().getCustomerId() == null) {
 			customer.setParentAccount(null);
 		}
@@ -84,11 +85,14 @@ public class CustomerService {
 		if (Objects.equals(customer.getParentAccount().getCustomerId(), customer.getCustomerId())) {
 			throw new ResourceNotFoundException("Unable to select same account as parent account");
 		}
-		if (!file.isEmpty()) {
-			String fileUploadLocation = uploadFileService.uploadFile(file);
 
-			existingCustomer.setProfilePhoto(fileUploadLocation);
+		if (!file.getOriginalFilename().isEmpty()) {
+			if (!file.isEmpty()) {
+				String fileUploadLocation = uploadFileService.uploadFile(file);
+				existingCustomer.setProfilePhoto(fileUploadLocation);
+			}
 		}
+
 		existingCustomer.setCustomerType(customer.getCustomerType());
 		existingCustomer.setCustomerClass(customer.getCustomerClass());
 		existingCustomer.setTitle(customer.getTitle());
