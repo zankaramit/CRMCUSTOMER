@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.PersistenceException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,9 +31,17 @@ public class CollateralsController {
 	@Autowired
 	CollateralsService collateralsService;
 
+	@Value("${softCopySize}")
+	private Long softCopySize;
+	
 	@PostMapping(path = "create")
 	public ResponseEntity<Collaterals> create(@RequestPart Collaterals collaterals,
 			@Nullable @RequestPart MultipartFile file) {
+		if (file != null) {
+			if (!file.getOriginalFilename().isEmpty() && file.getSize() > softCopySize) {
+				throw new PersistenceException("Document size should be less than " + softCopySize + "Bytes");
+			}
+		}
 		try {
 			Collaterals collateralsSaved = collateralsService.save(collaterals, file);
 			return new ResponseEntity<>(collateralsSaved, HttpStatus.OK);

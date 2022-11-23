@@ -51,7 +51,7 @@ public class IdentificationDetailsController {
 			@Nullable @RequestPart MultipartFile file) {
 		if (file != null) {
 			if (!file.getOriginalFilename().isEmpty() && file.getSize() > softCopySize) {
-				throw new PersistenceException("Profile photo size should be less than " + softCopySize + "Bytes");
+				throw new PersistenceException("Document size should be less than " + softCopySize + "Bytes");
 			}
 		}
 		try {
@@ -81,7 +81,7 @@ public class IdentificationDetailsController {
 			@Nullable @RequestPart MultipartFile file) {
 		if (file != null) {
 			if (!file.getOriginalFilename().isEmpty() && file.getSize() > softCopySize) {
-				throw new PersistenceException("Profile photo size should be less than " + softCopySize + "Bytes");
+				throw new PersistenceException("Document size should be less than " + softCopySize + "Bytes");
 			}
 		}
 		try {
