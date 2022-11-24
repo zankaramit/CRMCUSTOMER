@@ -50,7 +50,8 @@ public class BillingContactDetailsService {
 		existingBillingContactDetails.setAccountName(billingContactDetails.getAccountName());
 		existingBillingContactDetails.setServiceType(billingContactDetails.getServiceType());
 		existingBillingContactDetails.setAddressType(billingContactDetails.getAddressType());
-		existingBillingContactDetails.setAddress(billingContactDetails.getAddress());
+		existingBillingContactDetails.setAddress1(billingContactDetails.getAddress1());
+		existingBillingContactDetails.setAddress2(billingContactDetails.getAddress2());
 		existingBillingContactDetails.setCity(billingContactDetails.getCity());
 		existingBillingContactDetails.setZipCode(billingContactDetails.getZipCode());
 		existingBillingContactDetails.setProvinceState(billingContactDetails.getProvinceState());
