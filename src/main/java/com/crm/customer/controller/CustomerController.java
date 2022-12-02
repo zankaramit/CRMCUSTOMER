@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.crm.customer.dto.SearchCustomer;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.Customer;
 import com.crm.customer.service.CustomerService;
@@ -107,6 +108,16 @@ public class CustomerController {
 			Pageable pageable) {
 
 		Page<Customer> customerPage = customerService.getAllByCustomerType(name, customerType, pageable);
+		return new ResponseEntity<>(customerPage, HttpStatus.OK);
+
+	}
+
+	
+
+	@GetMapping("search-query")
+	public ResponseEntity<Page<SearchCustomer>> getByQuery(String searchType, String input,Pageable pageable) {
+
+		Page<SearchCustomer> customerPage = customerService.searchCustomer(searchType, input, pageable);
 		return new ResponseEntity<>(customerPage, HttpStatus.OK);
 
 	}

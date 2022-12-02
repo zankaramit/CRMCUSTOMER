@@ -6,16 +6,18 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.history.RevisionRepository;
+import org.springframework.data.repository.query.Param;
 
+import com.crm.customer.dto.SearchCustomer;
 import com.crm.customer.model.Customer;
 
-public interface CustomerRepository extends RevisionRepository<Customer, Long, Long>, JpaRepository<Customer, Long>, PagingAndSortingRepository<Customer, Long> {
+public interface CustomerRepository extends RevisionRepository<Customer, Long, Long>, JpaRepository<Customer, Long>,
+		PagingAndSortingRepository<Customer, Long> {
 
 	Optional<Customer> findByCustomerIdAndIsDeleted(Long id, boolean b);
-
-	
 
 	Page<Customer> findByIsDeletedAndCustomerTypeIgnoreCase(boolean b, String customerType, Pageable pageable);
 
@@ -27,8 +29,6 @@ public interface CustomerRepository extends RevisionRepository<Customer, Long, L
 
 	Page<Customer> findByIsDeletedAndOwnerIn(boolean b, List<String> checkAccessApi, Pageable pageable);
 
-
-
 	Page<Customer> findByIsDeletedAndOwnerInAndFirstNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndMiddelNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndLastNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndEmailAddressLikeIgnoreCaseOrIsDeletedAndOwnerInAndMobileNumberLikeIgnoreCaseOrIsDeletedAndOwnerInAndAccountNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndCompanyRegistrationNumberLikeIgnoreCaseOrIsDeletedAndOwnerInAndWebsiteDetailsLikeIgnoreCase(
 			boolean b, List<String> checkAccessApi, String string, boolean c, List<String> checkAccessApi2,
 			String string2, boolean d, List<String> checkAccessApi3, String string3, boolean e,
@@ -36,8 +36,11 @@ public interface CustomerRepository extends RevisionRepository<Customer, Long, L
 			boolean g, List<String> checkAccessApi6, String string6, boolean h, List<String> checkAccessApi7,
 			String string7, boolean i, List<String> checkAccessApi8, String string8, Pageable pageable);
 
-
-
-	
+	@Query(value = "select new com.crm.customer.dto.SearchCustomer(cust,bill,identi) "
+			+ "from Customer cust left join BillingAccount bill ON cust.customerId =bill.customer.customerId "
+			+ " left join Identification identi ON cust.customerId=identi.customer.customerId "
+			+ "left join Collaterals cola ON cust.customerId=cola.referenceId "
+			+ "where cust.isDeleted = :f and  bill.isDeleted = :f")
+	Page<SearchCustomer> searchByInput(@Param("f") boolean b, Pageable pageable);
 
 }

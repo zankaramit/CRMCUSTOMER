@@ -3,6 +3,7 @@ package com.crm.customer.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -140,4 +142,10 @@ public class Customer {
 	@Column(name = "owner")
 	private String owner;
 
+	@OneToMany(mappedBy="customer")
+	private List<BillingAccount> billingAccount;
+	
+	
+	@OneToOne(mappedBy="customer")
+	private Identification identification;
 }

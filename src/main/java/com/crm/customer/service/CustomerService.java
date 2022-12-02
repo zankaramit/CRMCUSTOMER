@@ -1,6 +1,7 @@
 package com.crm.customer.service;
 
 import java.time.LocalDateTime;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.crm.customer.dto.SearchCustomer;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.Customer;
 import com.crm.customer.repository.CustomerRepository;
@@ -160,6 +162,12 @@ public class CustomerService {
 							"%" + name + "%", false, customerType, "%" + name + "%", pageable);
 		}
 		return consumer;
+	}
+
+	public Page<SearchCustomer> searchCustomer(String searchType, String input, Pageable pageable) {
+
+		return customerRepository.searchByInput(false, pageable);
+
 	}
 
 }

@@ -31,7 +31,7 @@ public class BillingAccountService {
 
 	@Autowired
 	BillingAccountRepository billingAccountRepository;
-	
+
 	@Autowired
 	UserService userService;
 
@@ -104,15 +104,19 @@ public class BillingAccountService {
 
 		if (ObjectUtils.isEmpty(name)) {
 
-			billingAccount = billingAccountRepository.findByIsDeletedAndOwnerInAndCustomerCustomerId(false, checkAccessApi, customerId, pageable);
+			billingAccount = billingAccountRepository.findByIsDeletedAndOwnerInAndCustomerCustomerId(false,
+					checkAccessApi, customerId, pageable);
 		} else {
 			billingAccount = billingAccountRepository
 					.findByIsDeletedAndOwnerInAndCustomerCustomerIdAndAccountNameLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndBillingAccountLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndBillingCycleLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAccountTypeLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndServiceTypeLikeIgnoreCase(
-							false, checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", false,
-							checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", pageable);
+							false, checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId,
+							"%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", false,
+							checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId,
+							"%" + name + "%", pageable);
 		}
 
 		return billingAccount;
 	}
+
 
 }

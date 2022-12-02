@@ -77,4 +77,5 @@ public class BillingAccountController {
 		BillingAccount billingAccount = billingAccountService.softDelete(id, updatedBy);
 		return new ResponseEntity<>(billingAccount, HttpStatus.OK);
 	}
+	
 }

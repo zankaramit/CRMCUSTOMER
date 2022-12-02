@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -69,6 +71,7 @@ public class Identification {
 	@Column(name = "owner")
 	private String owner; 
 
+	@JsonIgnoreProperties({ "identification","billingAccount" })
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
