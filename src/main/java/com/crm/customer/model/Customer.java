@@ -142,6 +142,7 @@ public class Customer {
 	@Column(name = "owner")
 	private String owner;
 
+	@JsonIgnoreProperties({ "customer"})
 	@OneToMany(mappedBy="customer")
 	private List<BillingAccount> billingAccount;
 	

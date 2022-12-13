@@ -76,7 +76,6 @@ public class CustomerController {
 		} catch (Exception e) {
 			throw new PersistenceException("Failed saving customer.", e);
 		}
-
 	}
 
 	@PutMapping(path = "update")
@@ -92,7 +91,6 @@ public class CustomerController {
 		} catch (Exception e) {
 			throw new PersistenceException(e.getMessage());
 		}
-
 	}
 
 	@DeleteMapping("softdelete/{id}/{updatedBy}")
@@ -112,14 +110,17 @@ public class CustomerController {
 
 	}
 
-	
-
-	@GetMapping("search-query")
-	public ResponseEntity<Page<SearchCustomer>> getByQuery(String searchType, String input,Pageable pageable) {
+	@GetMapping("search-customer")
+	public ResponseEntity<Page<SearchCustomer>> getCustomer(String searchType, String input, Pageable pageable) {
 
 		Page<SearchCustomer> customerPage = customerService.searchCustomer(searchType, input, pageable);
 		return new ResponseEntity<>(customerPage, HttpStatus.OK);
 
 	}
 
+	@GetMapping("customer-details")
+	public ResponseEntity<Object> getAll(@Nullable Long id, String callType) {
+		Object obj = customerService.geatallinfo(id, callType);
+		return new ResponseEntity<>(obj, HttpStatus.OK);
+	}
 }

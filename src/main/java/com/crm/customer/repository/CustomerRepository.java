@@ -36,11 +36,21 @@ public interface CustomerRepository extends RevisionRepository<Customer, Long, L
 			boolean g, List<String> checkAccessApi6, String string6, boolean h, List<String> checkAccessApi7,
 			String string7, boolean i, List<String> checkAccessApi8, String string8, Pageable pageable);
 
-	@Query(value = "select new com.crm.customer.dto.SearchCustomer(cust,bill,identi) "
+	@Query(value = "select new com.crm.customer.dto.SearchCustomer(cust,bill,identi,cola) "
 			+ "from Customer cust left join BillingAccount bill ON cust.customerId =bill.customer.customerId "
 			+ " left join Identification identi ON cust.customerId=identi.customer.customerId "
-			+ "left join Collaterals cola ON cust.customerId=cola.referenceId "
-			+ "where cust.isDeleted = :f and  bill.isDeleted = :f")
-	Page<SearchCustomer> searchByInput(@Param("f") boolean b, Pageable pageable);
+			+ "left join Collaterals cola ON cust.customerId=cola.referenceId and cola.isDeleted = :f  "
+			+ "where cust.isDeleted = :f and  bill.isDeleted = :f and"
+			+ "(lower(cust.firstName) like lower(concat('%', :name,'%'))"
+			+ "or (lower(cust.middelName) like lower(concat('%', :name,'%')))"
+			+ "or (lower(cust.lastName) like lower(concat('%', :name,'%')))"
+			+ "or (lower(cust.mobileNumber) like lower(concat('%', :name,'%')))"
+			+ "or (lower(cust.accountName) like lower(concat('%', :name,'%')))"
+			+ "or (lower(bill.billingAccount) like lower(concat('%', :name,'%')))"
+			+ "or (lower(identi.identificationNumber) like lower(concat('%', :name,'%')))"
+			+ "or (lower(cola.documentType) like lower(concat('%',:docType,'%')) and lower(cola.documentInfo) like lower(concat('%',:name,'%'))))")
+
+	Page<SearchCustomer> searchByInput(@Param("f") boolean b, @Param("name") String name,
+			@Param("docType") String docType, Pageable pageable);
 
 }

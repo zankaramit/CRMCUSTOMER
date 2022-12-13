@@ -33,6 +33,9 @@ public class CustomerService {
 
 	@Autowired
 	UploadFileService uploadFileService;
+	
+	@Autowired
+	BillingAccountService billingAccountService;
 
 	public Page<Customer> getByNameCustomerAndPagination(String name, String owner, Pageable pageable) {
 
@@ -166,8 +169,25 @@ public class CustomerService {
 
 	public Page<SearchCustomer> searchCustomer(String searchType, String input, Pageable pageable) {
 
-		return customerRepository.searchByInput(false, pageable);
+		return customerRepository.searchByInput(false, input, searchType, pageable);
 
+	}
+	
+	public Object geatallinfo(Long id,  String callType) {
+		Object obj = null;
+		switch (callType) {
+		case "BasicCustomerProfile":
+			obj = getById(id);
+			break;
+
+		case "BillingProfile":
+			obj = billingAccountService.getById(id);
+			break;
+
+		default:
+			break;
+		}
+		return obj;
 	}
 
 }

@@ -10,7 +10,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class SearchCustomer {
 
-	@JsonIgnoreProperties({ "billingAccount", "identification" })
+	private String msisdn;
+
+	@JsonIgnoreProperties({ "billingAccount", "parentAccount", "identification" })
 	private Customer customer;
 
 	@JsonIgnoreProperties({ "customer" })
@@ -18,17 +20,27 @@ public class SearchCustomer {
 
 	@JsonIgnoreProperties({ "customer" })
 	private Identification identification;
-	
+
 	private Collaterals collaterals;
 
-	public SearchCustomer(Customer customer, BillingAccount billingAccount, Identification identification) {
+	public SearchCustomer(Customer customer, BillingAccount billingAccount, Identification identification,
+			Collaterals collaterals) {
 		super();
 		this.customer = customer;
 		this.billingAccount = billingAccount;
 		this.identification = identification;
+		this.collaterals = collaterals;
+		this.msisdn = customer.getMobileNumber();
+
 	}
 
-	
+	public String getMsisdn() {
+		return msisdn;
+	}
+
+	public void setMsisdn() {
+		this.msisdn = customer.getMobileNumber();
+	}
 
 	public Customer getCustomer() {
 		return customer;
@@ -62,5 +74,4 @@ public class SearchCustomer {
 		this.identification = identification;
 	}
 
-	
 }
