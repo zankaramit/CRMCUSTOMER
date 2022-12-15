@@ -179,17 +179,17 @@ public class CustomerService {
 	public Object geatAllInfo(Long id,  String callType) {
 		Object obj = null;
 		switch (callType) {
-		case "BasicCustomerProfile":
+		case "Change Basic Customer Profile":
 			CustomerDTO customerDTO =  customerRepository.findByCustomerId(id);
 			obj = customerDTO;
 			break;
 
-		case "BillingProfile":
+		case "Change Billing Profile":
 			BillingDTO billingDTO = billingAccountService.getBilling(id);
 			obj = billingDTO;
 			break;
 
-		case "BillingAddress":
+		case "Change Billing Address":
 			BillingAddressDTO billingAddressDTO = billingAccountService.getBillingAddress(id);
 			obj = billingAddressDTO;
 			break;
