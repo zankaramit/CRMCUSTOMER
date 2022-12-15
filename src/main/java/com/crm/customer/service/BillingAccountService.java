@@ -20,6 +20,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.client.RestTemplate;
 
+import com.crm.customer.dto.BillingAddressDTO;
+import com.crm.customer.dto.BillingDTO;
 import com.crm.customer.dto.Credentials;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.BillingAccount;
@@ -117,6 +119,19 @@ public class BillingAccountService {
 
 		return billingAccount;
 	}
+
+	public BillingDTO getBilling(Long id) {
+		
+		return billingAccountRepository.findByBillingAccountId(id);
+	}
+
+	public BillingAddressDTO getBillingAddress(Long id) {
+		
+		return  billingAccountRepository.getByBillingAccountId(id);
+		
+	}
+
+	
 
 
 }

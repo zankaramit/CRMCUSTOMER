@@ -121,4 +121,17 @@ public class BillingAccount {
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
+	
+	@JsonIgnoreProperties({ "billingAccount" })
+	@OneToOne(mappedBy="billingAccount")
+	private InvoiceDetails invoiceDetails;
+	
+	@JsonIgnoreProperties({ "billingAccount" })
+	@OneToOne(mappedBy="billingAccount")
+	private CreditCardPaymentDetails creditCardPaymentDetails;
+	
+	@JsonIgnoreProperties({ "billingAccount" })
+	@OneToOne(mappedBy="billingAccount")
+	private BankDetails bankDetails;
+	
 }

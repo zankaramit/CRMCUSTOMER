@@ -146,7 +146,7 @@ public class Customer {
 	@OneToMany(mappedBy="customer")
 	private List<BillingAccount> billingAccount;
 	
-	
+	@JsonIgnoreProperties({ "customer"})
 	@OneToOne(mappedBy="customer")
 	private Identification identification;
 }

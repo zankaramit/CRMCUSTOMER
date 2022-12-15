@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -64,7 +66,8 @@ public class InvoiceDetails {
 	@Column(name = "owner")
 	private String owner;
 	
+	@JsonIgnoreProperties({ "invoiceDetails","creditCardPaymentDetails","bankDetails","customer" })
 	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "billing_account_id", referencedColumnName = "billing_account_id")
+	@JoinColumn(name = "billing_account_id")
 	private BillingAccount billingAccount;
 }

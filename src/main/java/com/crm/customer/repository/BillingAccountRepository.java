@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.history.RevisionRepository;
 
+import com.crm.customer.dto.BillingAddressDTO;
+import com.crm.customer.dto.BillingDTO;
 import com.crm.customer.model.BillingAccount;
 
 public interface BillingAccountRepository extends RevisionRepository<BillingAccount, Long, Long>,
@@ -25,6 +27,14 @@ public interface BillingAccountRepository extends RevisionRepository<BillingAcco
 			List<String> checkAccessApi2, Long customerId2, String string2, boolean d, List<String> checkAccessApi3,
 			Long customerId3, String string3, boolean e, List<String> checkAccessApi4, Long customerId4, String string4,
 			boolean f, List<String> checkAccessApi5, Long customerId5, String string5, Pageable pageable);
+
+	
+
+	BillingDTO findByBillingAccountId(Long id);
+
+	
+
+	BillingAddressDTO getByBillingAccountId(Long id);
 
 
 	

@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.crm.customer.dto.BillingAddressDTO;
+import com.crm.customer.dto.BillingDTO;
+import com.crm.customer.dto.CustomerDTO;
 import com.crm.customer.dto.SearchCustomer;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.Customer;
@@ -173,17 +176,24 @@ public class CustomerService {
 
 	}
 	
-	public Object geatallinfo(Long id,  String callType) {
+	public Object geatAllInfo(Long id,  String callType) {
 		Object obj = null;
 		switch (callType) {
 		case "BasicCustomerProfile":
-			obj = getById(id);
+			CustomerDTO customerDTO =  customerRepository.findByCustomerId(id);
+			obj = customerDTO;
 			break;
 
 		case "BillingProfile":
-			obj = billingAccountService.getById(id);
+			BillingDTO billingDTO = billingAccountService.getBilling(id);
+			obj = billingDTO;
 			break;
 
+		case "BillingAddress":
+			BillingAddressDTO billingAddressDTO = billingAccountService.getBillingAddress(id);
+			obj = billingAddressDTO;
+			break;
+			
 		default:
 			break;
 		}

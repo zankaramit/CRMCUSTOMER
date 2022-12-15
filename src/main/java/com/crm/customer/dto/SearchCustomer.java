@@ -15,7 +15,7 @@ public class SearchCustomer {
 	@JsonIgnoreProperties({ "billingAccount", "parentAccount", "identification" })
 	private Customer customer;
 
-	@JsonIgnoreProperties({ "customer" })
+	@JsonIgnoreProperties({ "customer","invoiceDetails","creditCardPaymentDetails","bankDetails", })
 	private BillingAccount billingAccount;
 
 	@JsonIgnoreProperties({ "customer" })

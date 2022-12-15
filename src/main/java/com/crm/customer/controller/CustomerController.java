@@ -119,8 +119,8 @@ public class CustomerController {
 	}
 
 	@GetMapping("customer-details")
-	public ResponseEntity<Object> getAll(@Nullable Long id, String callType) {
-		Object obj = customerService.geatallinfo(id, callType);
+	public ResponseEntity<Object> getCustomerValues(@Nullable Long id, String callType) {
+		Object obj = customerService.geatAllInfo(id, callType);
 		return new ResponseEntity<>(obj, HttpStatus.OK);
 	}
 }

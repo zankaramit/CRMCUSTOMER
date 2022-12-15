@@ -11,6 +11,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.history.RevisionRepository;
 import org.springframework.data.repository.query.Param;
 
+import com.crm.customer.dto.CustomerDTO;
 import com.crm.customer.dto.SearchCustomer;
 import com.crm.customer.model.Customer;
 
@@ -52,5 +53,7 @@ public interface CustomerRepository extends RevisionRepository<Customer, Long, L
 
 	Page<SearchCustomer> searchByInput(@Param("f") boolean b, @Param("name") String name,
 			@Param("docType") String docType, Pageable pageable);
+
+	CustomerDTO findByCustomerId(Long id);
 
 }
