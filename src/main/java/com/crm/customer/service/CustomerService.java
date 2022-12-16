@@ -36,7 +36,7 @@ public class CustomerService {
 
 	@Autowired
 	UploadFileService uploadFileService;
-	
+
 	@Autowired
 	BillingAccountService billingAccountService;
 
@@ -175,25 +175,38 @@ public class CustomerService {
 		return customerRepository.searchByInput(false, input, searchType, pageable);
 
 	}
-	
-	public Object geatAllInfo(Long id,  String callType) {
+
+	public Object geatAllInfo(Long id, String callType) {
 		Object obj = null;
 		switch (callType) {
-		case "Change Basic Customer Profile":
-			CustomerDTO customerDTO =  customerRepository.findByCustomerId(id);
-			obj = customerDTO;
+		case "CHANGE BASIC CUSTOMER PROFILE":
+			try {
+				CustomerDTO customerDTO = customerRepository.findByCustomerId(id);
+				obj = customerDTO;
+			} catch (Exception e) {
+				throw new ResourceNotFoundException("Customer Details not found ");
+			}
+
 			break;
 
-		case "Change Billing Profile":
-			BillingDTO billingDTO = billingAccountService.getBilling(id);
-			obj = billingDTO;
+		case "CHANGE BILLING PROFILE":
+			try {
+				BillingDTO billingDTO = billingAccountService.getBilling(id);
+				obj = billingDTO;
+			} catch (Exception e) {
+				throw new ResourceNotFoundException("Customer Details not found ");
+			}
 			break;
 
-		case "Change Billing Address":
-			BillingAddressDTO billingAddressDTO = billingAccountService.getBillingAddress(id);
-			obj = billingAddressDTO;
+		case "CHANGE BILLING ADDRESS":
+			try {
+				BillingAddressDTO billingAddressDTO = billingAccountService.getBillingAddress(id);
+				obj = billingAddressDTO;
+			} catch (Exception e) {
+				throw new ResourceNotFoundException("Customer Details not found ");
+			}
 			break;
-			
+
 		default:
 			break;
 		}

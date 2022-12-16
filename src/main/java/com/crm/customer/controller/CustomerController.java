@@ -120,7 +120,12 @@ public class CustomerController {
 
 	@GetMapping("customer-details")
 	public ResponseEntity<Object> getCustomerValues(@Nullable Long id, String callType) {
+		try {
 		Object obj = customerService.geatAllInfo(id, callType);
+
 		return new ResponseEntity<>(obj, HttpStatus.OK);
+	} catch (Exception e) {
+		throw new PersistenceException(e.getMessage());
+	}
 	}
 }
