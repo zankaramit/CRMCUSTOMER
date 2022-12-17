@@ -117,7 +117,7 @@ public class BillingAccount {
 	@Column(name = "owner")
 	private String owner; 
 	
-	@JsonIgnoreProperties({ "billingAccount" })
+	@JsonIgnoreProperties({ "identification","billingAccount","addressDetails" })
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;

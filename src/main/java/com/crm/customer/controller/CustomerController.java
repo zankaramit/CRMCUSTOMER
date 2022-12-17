@@ -118,10 +118,10 @@ public class CustomerController {
 
 	}
 
-	@GetMapping("customer-details")
-	public ResponseEntity<Object> getCustomerValues(@Nullable Long id, String callType) {
+	@GetMapping("customer-details/{customerId}/{billingAccountId}/{callType}")
+	public ResponseEntity<Object> getCustomerValues(@PathVariable Long customerId, @PathVariable Long billingAccountId, @PathVariable String callType) {
 		try {
-		Object obj = customerService.geatAllInfo(id, callType);
+		Object obj = customerService.geatAllInfo(customerId,billingAccountId, callType);
 
 		return new ResponseEntity<>(obj, HttpStatus.OK);
 	} catch (Exception e) {

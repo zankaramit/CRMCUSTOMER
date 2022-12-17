@@ -71,7 +71,7 @@ public class Identification {
 	@Column(name = "owner")
 	private String owner; 
 
-	@JsonIgnoreProperties({ "identification","billingAccount" })
+	@JsonIgnoreProperties({ "identification","billingAccount","addressDetails" })
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "customer_id")
 	private Customer customer;

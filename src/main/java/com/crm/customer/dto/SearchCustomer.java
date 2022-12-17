@@ -12,7 +12,7 @@ public class SearchCustomer {
 
 	private String msisdn;
 
-	@JsonIgnoreProperties({ "billingAccount", "parentAccount", "identification" })
+	@JsonIgnoreProperties({ "billingAccount", "parentAccount", "identification","addressDetails" })
 	private Customer customer;
 
 	@JsonIgnoreProperties({ "customer","invoiceDetails","creditCardPaymentDetails","bankDetails", })

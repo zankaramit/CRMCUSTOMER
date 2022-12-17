@@ -20,11 +20,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.client.RestTemplate;
 
-import com.crm.customer.dto.BillingAddressDTO;
-import com.crm.customer.dto.BillingDTO;
 import com.crm.customer.dto.Credentials;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.BillingAccount;
+import com.crm.customer.projection.BillingAddressDTO;
+import com.crm.customer.projection.BillingDTO;
 import com.crm.customer.repository.BillingAccountRepository;
 import com.crm.customer.util.AccessToken;
 

@@ -15,12 +15,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.crm.customer.dto.BillingAddressDTO;
-import com.crm.customer.dto.BillingDTO;
-import com.crm.customer.dto.CustomerDTO;
 import com.crm.customer.dto.SearchCustomer;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.Customer;
+import com.crm.customer.projection.BillingAddressDTO;
+import com.crm.customer.projection.BillingDTO;
+import com.crm.customer.projection.CustomerDTO;
 import com.crm.customer.repository.CustomerRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -176,12 +176,12 @@ public class CustomerService {
 
 	}
 
-	public Object geatAllInfo(Long id, String callType) {
+	public Object geatAllInfo(Long customerId, Long billingAccountId, String callType) {
 		Object obj = null;
 		switch (callType) {
 		case "CHANGE BASIC CUSTOMER PROFILE":
 			try {
-				CustomerDTO customerDTO = customerRepository.findByCustomerId(id);
+				CustomerDTO customerDTO = customerRepository.findByCustomerId(customerId);
 				obj = customerDTO;
 			} catch (Exception e) {
 				throw new ResourceNotFoundException("Customer Details not found ");
@@ -191,7 +191,7 @@ public class CustomerService {
 
 		case "CHANGE BILLING PROFILE":
 			try {
-				BillingDTO billingDTO = billingAccountService.getBilling(id);
+				BillingDTO billingDTO = billingAccountService.getBilling(billingAccountId);
 				obj = billingDTO;
 			} catch (Exception e) {
 				throw new ResourceNotFoundException("Customer Details not found ");
@@ -200,7 +200,7 @@ public class CustomerService {
 
 		case "CHANGE BILLING ADDRESS":
 			try {
-				BillingAddressDTO billingAddressDTO = billingAccountService.getBillingAddress(id);
+				BillingAddressDTO billingAddressDTO = billingAccountService.getBillingAddress(billingAccountId);
 				obj = billingAddressDTO;
 			} catch (Exception e) {
 				throw new ResourceNotFoundException("Customer Details not found ");
@@ -208,9 +208,16 @@ public class CustomerService {
 			break;
 
 		default:
+//			UNBILLED USAGE
+//			INVOICE DETAILS
+//			OUTSTANDING
+//			BROADBAND ACCESS
+//			IPTV ACCESS
+//			CHANGE SIM CARD
 			break;
 		}
 		return obj;
 	}
 
+	 
 }

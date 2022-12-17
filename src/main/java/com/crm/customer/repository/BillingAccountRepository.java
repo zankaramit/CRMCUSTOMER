@@ -9,9 +9,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.history.RevisionRepository;
 
-import com.crm.customer.dto.BillingAddressDTO;
-import com.crm.customer.dto.BillingDTO;
 import com.crm.customer.model.BillingAccount;
+import com.crm.customer.projection.BillingAddressDTO;
+import com.crm.customer.projection.BillingDTO;
 
 public interface BillingAccountRepository extends RevisionRepository<BillingAccount, Long, Long>,
 		JpaRepository<BillingAccount, Long>, PagingAndSortingRepository<BillingAccount, Long> {

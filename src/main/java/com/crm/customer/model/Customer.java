@@ -149,4 +149,8 @@ public class Customer {
 	@JsonIgnoreProperties({ "customer"})
 	@OneToOne(mappedBy="customer")
 	private Identification identification;
+	
+	@JsonIgnoreProperties({ "customer"})
+	@OneToOne(mappedBy="customer")
+	private AddressDetails addressDetails;
 }
