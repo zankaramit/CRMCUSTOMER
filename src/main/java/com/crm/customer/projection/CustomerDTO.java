@@ -27,41 +27,45 @@ public interface CustomerDTO {
 	String getNationality();
 
 	Boolean getPromotionalMessages();
+	
+	String getLineOfBusiness();
+	
+	String getMaritalStatus();
 
-	@Value("#{(target.identification.identificationId)==null?'':(target.identification.identificationId)}")
+	@Value("#{(target.identification)==null?null:(target.identification.identificationId)}")
 	String getIdentificationId();
 
-	@Value("#{target.identification.identificationNumber}")
+	@Value("#{(target.identification)==null?null:(target.identification.identificationNumber)}")
 	String getIdentificationNumber();
 
-	@Value("#{target.identification.identificationType}")
+	@Value("#{(target.identification)==null?null:(target.identification.identificationType)}")
 	String getIdentificationType();
 
-	@Value("#{target.identification.idExpiryDate}")
+	@Value("#{(target.identification)==null?null:(target.identification.idExpiryDate).toString()}")
 	LocalDate getIdExpiryDate();
 
-	@Value("#{(target.addressDetails.addressDetailsId)==null?'':(target.addressDetails.addressDetailsId)}")
+	@Value("#{(target.addressDetails)==null?null:(target.addressDetails.addressDetailsId)}")
 	Long getAddressDetailsId();
 
-	@Value("#{target.addressDetails.addressType}")
+	@Value("#{(target.addressDetails)==null?null:(target.addressDetails.addressType)}")
 	String getAddressType();
 
-	@Value("#{target.addressDetails.address1}")
+	@Value("#{(target.addressDetails)==null?null:(target.addressDetails.address1)}")
 	String getAddress1();
 
-	@Value("#{target.addressDetails.address2}")
+	@Value("#{(target.addressDetails)==null?null:(target.addressDetails.address2)}")
 	String getAddress2();
 
-	@Value("#{target.addressDetails.city}")
+	@Value("#{(target.addressDetails)==null?null:(target.addressDetails.city)}")
 	String getCity();
 
-	@Value("#{target.addressDetails.state}")
+	@Value("#{(target.addressDetails)==null?null:(target.addressDetails.state)}")
 	String getState();
 
-	@Value("#{target.addressDetails.postCode}")
+	@Value("#{(target.addressDetails)==null?null:(target.addressDetails.postCode)}")
 	String getPostCode();
 
-	@Value("#{target.addressDetails.country}")
+	@Value("#{(target.addressDetails)==null?null:(target.addressDetails.country)}")
 	String getCountry();
 
 }

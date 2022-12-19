@@ -18,40 +18,40 @@ public interface BillingDTO {
 
 	String getDetailedBilling();
 
-	@Value("#{target.invoiceDetails.invoiceDetailsId}")
+	@Value("#{(target.invoiceDetails)==null?null:(target.invoiceDetails.invoiceDetailsId)}")
 	Long getInvoiceDetailsId();
 
-	@Value("#{target.invoiceDetails.noOfCopies}")
+	@Value("#{(target.invoiceDetails)==null?null:(target.invoiceDetails.noOfCopies)}")
 	String getNoOfCopies();
 
-	@Value("#{target.invoiceDetails.prefferedLanguage}")
+	@Value("#{(target.invoiceDetails)==null?null:(target.invoiceDetails.prefferedLanguage)}")
 	String getPrefferedLanguage();
 
-	@Value("#{target.invoiceDetails.paymentMode}")
+	@Value("#{(target.invoiceDetails)==null?null:(target.invoiceDetails.paymentMode)}")
 	String getPaymentMode();
 
-	@Value("#{target.invoiceDetails.billMedia}")
+	@Value("#{(target.invoiceDetails)==null?null:(target.invoiceDetails.billMedia)}")
 	String getBillMedia();
 
-	@Value("#{target.creditCardPaymentDetails.creditCardPaymentId}")
+	@Value("#{(target.creditCardPaymentDetails)==null?null:(target.creditCardPaymentDetails.creditCardPaymentId)}")
 	Long getCreditCardPaymentId();
 
-	@Value("#{target.creditCardPaymentDetails.creditCardIssuer}")
+	@Value("#{(target.creditCardPaymentDetails)==null?null:(target.creditCardPaymentDetails.creditCardIssuer)}")
 	String getCreditCardIssuer();
 
-	@Value("#{target.creditCardPaymentDetails.creditCardNo}")
+	@Value("#{(target.creditCardPaymentDetails)==null?null:(target.creditCardPaymentDetails.creditCardNo)}")
 	String getCreditCardNo();
 
-	@Value("#{target.creditCardPaymentDetails.creditCardExpiry}")
+	@Value("#{(target.creditCardPaymentDetails)==null?null:(target.creditCardPaymentDetails.creditCardExpiry).toString()}")
 	LocalDate getCreditCardExpiry();
 
-	@Value("#{target.bankDetails.bankDetailsId}")
+	@Value("#{(target.bankDetails)==null?null:(target.bankDetails.bankDetailsId)}")
 	Long getBankDetailsId();
 
-	@Value("#{target.bankDetails.bankName}")
+	@Value("#{(target.bankDetails)==null?null:(target.bankDetails.bankName)}")
 	String getBankName();
 
-	@Value("#{target.bankDetails.bankAccountNumber}")
+	@Value("#{(target.bankDetails)==null?null:(target.bankDetails.bankAccountNumber)}")
 	String getBankAccountNumber();
 
 }

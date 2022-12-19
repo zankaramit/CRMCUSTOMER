@@ -70,7 +70,7 @@ public class CreditCardPaymentDetails {
 	@Column(name = "owner")
 	private String owner;
 	
-	@JsonIgnoreProperties({ "invoiceDetails","creditCardPaymentDetails","bankDetails","customer" })
+//	@JsonIgnoreProperties({ "invoiceDetails","creditCardPaymentDetails","bankDetails" })
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "billing_account_id")
 	private BillingAccount billingAccount;

@@ -2,12 +2,10 @@ C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\service\Coll
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\controller\IdentificationDetailsController.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\service\InvoiceDetailsService.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\service\UploadFileService.java
-C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\dto\CustomerDTO.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\repository\OccupationDetailsRepository.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\repository\AddressDetailsRepository.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\dto\DataTableMetadata.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\repository\CollateralsRepository.java
-C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\dto\BillingDTO.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\service\BillingAccountService.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\controller\DataTableMetadataController.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\controller\CollateralsController.java
@@ -22,6 +20,7 @@ C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\repository\C
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\repository\IdentificationDetailsRepository.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\controller\InvoiceDetailsController.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\controller\OccupationDetailsController.java
+C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\projection\BillingDTO.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\util\UploadFile.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\controller\ReferenceDetailsController.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\proxy\FileServerProxy.java
@@ -30,7 +29,7 @@ C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\Application.
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\dto\ColumnMetadata.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\controller\BillingContactDetailsController.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\controller\RestExceptionHandler.java
-C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\dto\BillingAddressDTO.java
+C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\projection\BillingAddressDTO.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\model\Customer.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\controller\BillingAccountController.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\service\AddressDetailsService.java
@@ -62,6 +61,7 @@ C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\service\Cred
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\controller\CustomerController.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\controller\ContactDetailsController.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\repository\CustomerRepository.java
+C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\projection\CustomerDTO.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\service\CustomerService.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\model\BankDetails.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\service\OccupationDetailsService.java
