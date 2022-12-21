@@ -14,7 +14,7 @@
 	<artifactId>CustomerService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>CRMCustomerService</name>
+	<name>CustomerService</name>
 	<description>Project for Customer managment</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

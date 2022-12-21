@@ -171,8 +171,8 @@ public class CustomerService {
 	}
 
 	public Page<SearchCustomer> searchCustomer(String searchType, String input, Pageable pageable) {
-
-		return customerRepository.searchByInput(false, input, searchType, pageable);
+		String documentTypeCollaterals = "COMPANY_REGISTRATION_NUMBER";
+		return customerRepository.searchByInput(false, documentTypeCollaterals, input, searchType, pageable);
 
 	}
 
@@ -219,5 +219,4 @@ public class CustomerService {
 		return obj;
 	}
 
-	 
 }

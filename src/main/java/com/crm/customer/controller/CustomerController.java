@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -119,13 +121,14 @@ public class CustomerController {
 	}
 
 	@GetMapping("customer-details/{customerId}/{billingAccountId}/{callType}")
-	public ResponseEntity<Object> getCustomerValues(@PathVariable Long customerId, @PathVariable Long billingAccountId, @PathVariable String callType) {
+	public ResponseEntity<Object> getCustomerValues(@PathVariable Long customerId, @PathVariable Long billingAccountId,
+			@PathVariable String callType) {
 		try {
-		Object obj = customerService.geatAllInfo(customerId,billingAccountId, callType);
+			Object obj = customerService.geatAllInfo(customerId, billingAccountId, callType);
 
-		return new ResponseEntity<>(obj, HttpStatus.OK);
-	} catch (Exception e) {
-		throw new PersistenceException(e.getMessage());
-	}
+			return new ResponseEntity<>(obj, HttpStatus.OK);
+		} catch (Exception e) {
+			throw new PersistenceException(e.getMessage());
+		}
 	}
 }

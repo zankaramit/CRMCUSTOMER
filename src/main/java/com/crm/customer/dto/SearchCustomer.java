@@ -1,5 +1,6 @@
 package com.crm.customer.dto;
 
+import com.crm.customer.model.AddressDetails;
 import com.crm.customer.model.BillingAccount;
 import com.crm.customer.model.Collaterals;
 import com.crm.customer.model.Customer;
@@ -12,25 +13,29 @@ public class SearchCustomer {
 
 	private String msisdn;
 
-	@JsonIgnoreProperties({ "billingAccount", "parentAccount", "identification","addressDetails" })
+	@JsonIgnoreProperties({ "billingAccount", "parentAccount", "identification", "addressDetails" })
 	private Customer customer;
 
-	@JsonIgnoreProperties({ "customer","invoiceDetails","creditCardPaymentDetails","bankDetails", })
+	@JsonIgnoreProperties({ "customer", "invoiceDetails", "creditCardPaymentDetails", "bankDetails", })
 	private BillingAccount billingAccount;
 
 	@JsonIgnoreProperties({ "customer" })
 	private Identification identification;
+	
+	@JsonIgnoreProperties({ "customer" })
+	private AddressDetails addressDetails;
 
 	private Collaterals collaterals;
 
 	public SearchCustomer(Customer customer, BillingAccount billingAccount, Identification identification,
-			Collaterals collaterals) {
+			AddressDetails addressDetails, Collaterals collaterals) {
 		super();
 		this.customer = customer;
 		this.billingAccount = billingAccount;
 		this.identification = identification;
 		this.collaterals = collaterals;
 		this.msisdn = customer.getMobileNumber();
+		this.addressDetails = addressDetails;
 
 	}
 
@@ -40,6 +45,14 @@ public class SearchCustomer {
 
 	public void setMsisdn() {
 		this.msisdn = customer.getMobileNumber();
+	}
+	
+	public AddressDetails getAddressDetails() {
+		return addressDetails;
+	}
+
+	public void setAddressDetails(AddressDetails addressDetails) {
+		this.addressDetails = addressDetails;
 	}
 
 	public Customer getCustomer() {
