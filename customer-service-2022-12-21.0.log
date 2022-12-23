@@ -1,0 +1,813 @@
+2022-12-21 10:58:20.278  INFO 30468 --- [main] com.crm.customer.Application             : Starting Application using Java 15.0.1 on DESKTOP-UQUBQ79 with PID 30468 (C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\target\classes started by User in C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER)
+2022-12-21 10:58:20.284  INFO 30468 --- [main] com.crm.customer.Application             : The following 1 profile is active: "dev"
+2022-12-21 10:58:21.714  INFO 30468 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-21 10:58:21.884  INFO 30468 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 163 ms. Found 12 JPA repository interfaces.
+2022-12-21 10:58:22.455  INFO 30468 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=58ad7dcc-25c5-3358-9216-d38c4dbc6ef9
+2022-12-21 10:58:22.987  INFO 30468 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2022-12-21 10:58:22.997  INFO 30468 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-21 10:58:22.997  INFO 30468 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-21 10:58:23.189  INFO 30468 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-21 10:58:23.190  INFO 30468 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2849 ms
+2022-12-21 10:58:23.379 DEBUG 30468 --- [main] k.a.t.AbstractKeycloakAuthenticatorValve : Using org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolverWrapper to resolve Keycloak configuration on a per-request basis.
+2022-12-21 10:58:23.459  INFO 30468 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-21 10:58:23.528  INFO 30468 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-12-21 10:58:23.759  INFO 30468 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-12-21 10:58:23.911  INFO 30468 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-21 10:58:24.198  INFO 30468 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-21 10:58:24.225  INFO 30468 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2022-12-21 10:58:24.271  INFO 30468 --- [main] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2022-12-21 10:58:26.558  INFO 30468 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-21 10:58:26.566  INFO 30468 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 10:58:27.159  WARN 30468 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-21 10:58:27.306  INFO 30468 --- [main] o.s.c.openfeign.FeignClientFactoryBean   : For 'KEYCLOAK' URL not provided. Will try picking an instance via load-balancing.
+2022-12-21 10:58:27.663  INFO 30468 --- [main] o.s.c.openfeign.FeignClientFactoryBean   : For 'EMAIL-SERVICE' URL not provided. Will try picking an instance via load-balancing.
+2022-12-21 10:58:30.550  INFO 30468 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-21 10:58:30.550  INFO 30468 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-21 10:58:31.747  INFO 30468 --- [main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses Jersey
+2022-12-21 10:58:31.760  INFO 30468 --- [RMI TCP Connection(3)-127.0.0.1] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-12-21 10:58:31.777  INFO 30468 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1227 ms
+2022-12-21 10:58:31.845  WARN 30468 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-21 10:58:31.968  INFO 30468 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2022-12-21 10:58:32.115  INFO 30468 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2022-12-21 10:58:32.727  INFO 30468 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2022-12-21 10:58:32.729  INFO 30468 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2022-12-21 10:58:33.197  INFO 30468 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2022-12-21 10:58:33.197  INFO 30468 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2022-12-21 10:58:33.717  INFO 30468 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 10:58:33.756  INFO 30468 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2022-12-21 10:58:33.757  INFO 30468 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2022-12-21 10:58:33.757  INFO 30468 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2022-12-21 10:58:33.757  INFO 30468 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2022-12-21 10:58:33.757  INFO 30468 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2022-12-21 10:58:33.758  INFO 30468 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2022-12-21 10:58:33.758  INFO 30468 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2022-12-21 10:58:34.079  INFO 30468 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2022-12-21 10:58:34.086  INFO 30468 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2022-12-21 10:58:34.098  INFO 30468 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-21 10:58:34.119  INFO 30468 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1671600514118 with initial instances count: 11
+2022-12-21 10:58:34.122  INFO 30468 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CUSTOMER-SERVICE with eureka with status UP
+2022-12-21 10:58:34.123  INFO 30468 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1671600514123, current=UP, previous=STARTING]
+2022-12-21 10:58:34.126  INFO 30468 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777: registering service...
+2022-12-21 10:58:34.163  INFO 30468 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - registration status: 204
+2022-12-21 10:58:34.177  INFO 30468 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2022-12-21 10:58:34.179  INFO 30468 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 7777
+2022-12-21 10:58:34.527  INFO 30468 --- [main] com.crm.customer.Application             : Started Application in 14.927 seconds (JVM running for 16.412)
+2022-12-21 10:59:16.238 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.adapters.PreAuthActionsHandler       : adminRequest http://localhost:7777/customer/7
+2022-12-21 10:59:16.246 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.a.ClientCredentialsProviderUtils   : Using provider 'secret' for authentication of client 'Reports-management'
+2022-12-21 10:59:16.250 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret
+2022-12-21 10:59:16.254 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider jwt
+2022-12-21 10:59:16.257 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret-jwt
+2022-12-21 10:59:16.259 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret
+2022-12-21 10:59:16.260 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider jwt
+2022-12-21 10:59:16.261 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret-jwt
+2022-12-21 10:59:16.269 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://localhost:7777/customer/7
+2022-12-21 10:59:16.285 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 10:59:16.286 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 10:59:16.297 DEBUG 30468 --- [http-nio-7777-exec-1] o.keycloak.adapters.KeycloakDeployment   : Resolving URLs from http://192.168.1.11:8080/auth/realms/Laboratory/.well-known/openid-configuration
+2022-12-21 10:59:16.359  INFO 30468 --- [http-nio-7777-exec-1] o.keycloak.adapters.KeycloakDeployment   : Loaded URLs from http://192.168.1.11:8080/auth/realms/Laboratory/.well-known/openid-configuration
+2022-12-21 10:59:16.589 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.rotation.JWKPublicKeyLocator       : Realm public keys successfully retrieved for client Reports-management. New kids: [RMpSmbpKe__Ad-YiVL-PEhJ0oiobbZfwhnJbTT_x0oU]
+2022-12-21 10:59:16.592 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.BearerTokenRequestAuthenticator    : successful authorized
+2022-12-21 10:59:16.601 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.adapters.RequestAuthenticator        : User '7513269c-e892-4e1c-8e39-d77f9601dcde' invoking 'http://localhost:7777/customer/7' on client 'Reports-management'
+2022-12-21 10:59:16.601 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.adapters.RequestAuthenticator        : Bearer AUTHENTICATED
+2022-12-21 10:59:16.602 DEBUG 30468 --- [http-nio-7777-exec-1] .k.a.t.AbstractAuthenticatedActionsValve : AuthenticatedActionsValve.invoke /customer/7
+2022-12-21 10:59:16.602 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.AuthenticatedActionsHandler        : AuthenticatedActionsValve.invoke http://localhost:7777/customer/7
+2022-12-21 10:59:16.638  INFO 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Paths provided in configuration.
+2022-12-21 10:59:16.638 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/customer/*] for path [/customer/*].
+2022-12-21 10:59:16.710 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/data-table-metadata/*] for path [/data-table-metadata/*].
+2022-12-21 10:59:16.736 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/address-details/*] for path [/address-details/*].
+2022-12-21 10:59:16.759 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/contact-details/*] for path [/contact-details/*].
+2022-12-21 10:59:16.780 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/reference-details/*] for path [/reference-details/*].
+2022-12-21 10:59:16.804 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/identification-details/*] for path [/identification-details/*].
+2022-12-21 10:59:16.825 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/occupation-details/*] for path [/occupation-details/*].
+2022-12-21 10:59:16.850 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/billing-account/*] for path [/billing-account/*].
+2022-12-21 10:59:16.875 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/invoice-details/*] for path [/invoice-details/*].
+2022-12-21 10:59:16.898 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/credit-card-payment/*] for path [/credit-card-payment/*].
+2022-12-21 10:59:16.924 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/bank-details/*] for path [/bank-details/*].
+2022-12-21 10:59:16.946 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/billing-contact-details/*] for path [/billing-contact-details/*].
+2022-12-21 10:59:16.968 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/collaterals/*] for path [/collaterals/*].
+2022-12-21 10:59:16.999 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/search-customer/*] for path [/search-customer/*].
+2022-12-21 10:59:17.024 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Initialization complete. Path configurations:
+2022-12-21 10:59:17.025 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}
+2022-12-21 10:59:17.025 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/data-table-metadata/*', scopes=[], id='bcf036df-1cf7-4542-a30b-083067ee9141', enforcerMode='ENFORCING'}
+2022-12-21 10:59:17.025 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/address-details/*', scopes=[], id='40a1ff17-2468-435e-8da3-deb58805fbdc', enforcerMode='ENFORCING'}
+2022-12-21 10:59:17.025 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/contact-details/*', scopes=[], id='271c42a5-63ee-4aa7-b47a-468ce8125860', enforcerMode='ENFORCING'}
+2022-12-21 10:59:17.025 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/reference-details/*', scopes=[], id='9e1c59d3-f836-453e-9fc0-799e1e3e8e82', enforcerMode='ENFORCING'}
+2022-12-21 10:59:17.025 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/identification-details/*', scopes=[], id='b55e6f2c-2930-4779-aec4-ca4426522fe3', enforcerMode='ENFORCING'}
+2022-12-21 10:59:17.025 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/occupation-details/*', scopes=[], id='0e5697ee-0567-46aa-89b6-f1c9ab3e683f', enforcerMode='ENFORCING'}
+2022-12-21 10:59:17.025 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/billing-account/*', scopes=[], id='60169f2e-7713-40d1-a182-f7c79745aa41', enforcerMode='ENFORCING'}
+2022-12-21 10:59:17.025 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/invoice-details/*', scopes=[], id='aced42cc-0e72-4890-b2cf-fc0131b078e3', enforcerMode='ENFORCING'}
+2022-12-21 10:59:17.025 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/credit-card-payment/*', scopes=[], id='c49f0659-a2c8-4a54-a2a8-9389de879d5b', enforcerMode='ENFORCING'}
+2022-12-21 10:59:17.025 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/bank-details/*', scopes=[], id='030b616f-b6cd-4861-bd6d-c1f4fd5b25d2', enforcerMode='ENFORCING'}
+2022-12-21 10:59:17.025 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/billing-contact-details/*', scopes=[], id='1fe97ce2-a3d5-4480-b342-f9944c8a45bd', enforcerMode='ENFORCING'}
+2022-12-21 10:59:17.025 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/collaterals/*', scopes=[], id='38d38e11-8fc9-4e0f-a4aa-592bbc462bc5', enforcerMode='ENFORCING'}
+2022-12-21 10:59:17.025 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/search-customer/*', scopes=[], id='c9ceea38-a3e5-4d6b-8af5-bdf4b6958a1b', enforcerMode='ENFORCING'}
+2022-12-21 10:59:17.028 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.AuthenticatedActionsHandler        : Origin: null uri: http://localhost:7777/customer/7
+2022-12-21 10:59:17.028 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.AuthenticatedActionsHandler        : cors validation not needed as we are not a secure session or origin header was null: http://localhost:7777/customer/7
+2022-12-21 10:59:17.028 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://localhost:7777/customer/7].
+2022-12-21 10:59:17.031 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.a.AbstractPolicyEnforcer           : Checking permissions for path [http://localhost:7777/customer/7] with config [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}].
+2022-12-21 10:59:17.033 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Obtaining authorization for authenticated user.
+2022-12-21 10:59:17.080 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.a.AbstractPolicyEnforcer           : Authorization GRANTED for path [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}]. Permissions [[Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}]].
+2022-12-21 10:59:17.081 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://localhost:7777/customer/7] is : GRANTED
+2022-12-21 10:59:17.081 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 10:59:17.081 DEBUG 30468 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}
+2022-12-21 11:01:15.938 DEBUG 30468 --- [http-nio-7777-exec-5] o.k.adapters.PreAuthActionsHandler       : adminRequest http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:01:15.938 DEBUG 30468 --- [http-nio-7777-exec-5] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:01:15.939 DEBUG 30468 --- [http-nio-7777-exec-5] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 11:01:15.939 DEBUG 30468 --- [http-nio-7777-exec-5] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 11:01:15.941 DEBUG 30468 --- [http-nio-7777-exec-5] o.k.a.BearerTokenRequestAuthenticator    : Failed to verify token
+2022-12-21 11:01:15.943 DEBUG 30468 --- [http-nio-7777-exec-5] o.k.adapters.RequestAuthenticator        : Bearer FAILED
+2022-12-21 11:01:15.943 DEBUG 30468 --- [http-nio-7777-exec-5] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE].
+2022-12-21 11:01:15.944 DEBUG 30468 --- [http-nio-7777-exec-5] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Sending challenge
+2022-12-21 11:01:15.944 DEBUG 30468 --- [http-nio-7777-exec-5] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] is : DENIED
+2022-12-21 11:01:15.944 DEBUG 30468 --- [http-nio-7777-exec-5] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 11:01:22.604 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.adapters.PreAuthActionsHandler       : adminRequest http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:01:22.605 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:01:22.606 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 11:01:22.607 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 11:01:22.610 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.a.BearerTokenRequestAuthenticator    : successful authorized
+2022-12-21 11:01:22.611 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.adapters.RequestAuthenticator        : User '7513269c-e892-4e1c-8e39-d77f9601dcde' invoking 'http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE' on client 'Reports-management'
+2022-12-21 11:01:22.611 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.adapters.RequestAuthenticator        : Bearer AUTHENTICATED
+2022-12-21 11:01:22.613 DEBUG 30468 --- [http-nio-7777-exec-6] .k.a.t.AbstractAuthenticatedActionsValve : AuthenticatedActionsValve.invoke /customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:01:22.613 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.a.AuthenticatedActionsHandler        : AuthenticatedActionsValve.invoke http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:01:22.614 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.a.AuthenticatedActionsHandler        : Origin: null uri: http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:01:22.614 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.a.AuthenticatedActionsHandler        : cors validation not needed as we are not a secure session or origin header was null: http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:01:22.614 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE].
+2022-12-21 11:01:22.614 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.a.a.AbstractPolicyEnforcer           : Checking permissions for path [http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] with config [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}].
+2022-12-21 11:01:22.616 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Obtaining authorization for authenticated user.
+2022-12-21 11:01:22.674 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.a.a.AbstractPolicyEnforcer           : Authorization GRANTED for path [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}]. Permissions [[Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}]].
+2022-12-21 11:01:22.674 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] is : GRANTED
+2022-12-21 11:01:22.674 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 11:01:22.674 DEBUG 30468 --- [http-nio-7777-exec-6] o.k.a.authorization.PolicyEnforcer       : Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}
+2022-12-21 11:01:22.781  WARN 30468 --- [http-nio-7777-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: EL1011E: Method call: Attempted to call method toString() on null context object; nested exception is com.fasterxml.jackson.databind.JsonMappingException: EL1011E: Method call: Attempted to call method toString() on null context object (through reference chain: com.sun.proxy.$Proxy253["idExpiryDate"])]
+2022-12-21 11:02:29.550  INFO 30468 --- [RMI TCP Connection(8)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-12-21 11:02:29.553  INFO 30468 --- [RMI TCP Connection(8)-127.0.0.1] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application CUSTOMER-SERVICE with eureka with status DOWN
+2022-12-21 11:02:29.554  INFO 30468 --- [RMI TCP Connection(8)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1671600749554, current=DOWN, previous=UP]
+2022-12-21 11:02:29.554  INFO 30468 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777: registering service...
+2022-12-21 11:02:29.570  INFO 30468 --- [RMI TCP Connection(8)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-12-21 11:02:29.574  INFO 30468 --- [RMI TCP Connection(8)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-12-21 11:02:29.583  INFO 30468 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - registration status: 204
+2022-12-21 11:02:29.605  INFO 30468 --- [RMI TCP Connection(8)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 11:02:29.607  INFO 30468 --- [RMI TCP Connection(8)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-12-21 11:02:29.610  INFO 30468 --- [RMI TCP Connection(8)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-12-21 11:02:29.612  INFO 30468 --- [RMI TCP Connection(8)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2022-12-21 11:02:32.621  INFO 30468 --- [RMI TCP Connection(8)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2022-12-21 11:02:32.660  INFO 30468 --- [RMI TCP Connection(8)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - deregister  status: 200
+2022-12-21 11:02:32.979  INFO 30468 --- [RMI TCP Connection(8)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2022-12-21 11:02:41.030  INFO 37952 --- [main] com.crm.customer.Application             : Starting Application using Java 15.0.1 on DESKTOP-UQUBQ79 with PID 37952 (C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\target\classes started by User in C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER)
+2022-12-21 11:02:41.033  INFO 37952 --- [main] com.crm.customer.Application             : The following 1 profile is active: "dev"
+2022-12-21 11:02:41.930  INFO 37952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-21 11:02:42.105  INFO 37952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 169 ms. Found 12 JPA repository interfaces.
+2022-12-21 11:02:42.695  INFO 37952 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=58ad7dcc-25c5-3358-9216-d38c4dbc6ef9
+2022-12-21 11:02:43.293  INFO 37952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2022-12-21 11:02:43.303  INFO 37952 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-21 11:02:43.304  INFO 37952 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-21 11:02:43.465  INFO 37952 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-21 11:02:43.465  INFO 37952 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2382 ms
+2022-12-21 11:02:43.669 DEBUG 37952 --- [main] k.a.t.AbstractKeycloakAuthenticatorValve : Using org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolverWrapper to resolve Keycloak configuration on a per-request basis.
+2022-12-21 11:02:43.769  INFO 37952 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-21 11:02:43.842  INFO 37952 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-12-21 11:02:44.041  INFO 37952 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-12-21 11:02:44.161  INFO 37952 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-21 11:02:44.331  INFO 37952 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-21 11:02:44.358  INFO 37952 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2022-12-21 11:02:44.405  INFO 37952 --- [main] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2022-12-21 11:02:46.440  INFO 37952 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-21 11:02:46.448  INFO 37952 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 11:02:46.902  WARN 37952 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-21 11:02:46.974  INFO 37952 --- [main] o.s.c.openfeign.FeignClientFactoryBean   : For 'KEYCLOAK' URL not provided. Will try picking an instance via load-balancing.
+2022-12-21 11:02:47.274  INFO 37952 --- [main] o.s.c.openfeign.FeignClientFactoryBean   : For 'EMAIL-SERVICE' URL not provided. Will try picking an instance via load-balancing.
+2022-12-21 11:02:48.824  INFO 37952 --- [main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses Jersey
+2022-12-21 11:02:48.880  WARN 37952 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-21 11:02:48.886  INFO 37952 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-12-21 11:02:48.963  INFO 37952 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2022-12-21 11:02:49.015  INFO 37952 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2022-12-21 11:02:49.214  INFO 37952 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2022-12-21 11:02:49.214  INFO 37952 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2022-12-21 11:02:49.403  INFO 37952 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2022-12-21 11:02:49.403  INFO 37952 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2022-12-21 11:02:49.760  INFO 37952 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 11:02:49.785  INFO 37952 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2022-12-21 11:02:49.785  INFO 37952 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2022-12-21 11:02:49.785  INFO 37952 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2022-12-21 11:02:49.786  INFO 37952 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2022-12-21 11:02:49.786  INFO 37952 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2022-12-21 11:02:49.786  INFO 37952 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2022-12-21 11:02:49.786  INFO 37952 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2022-12-21 11:02:49.997  INFO 37952 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2022-12-21 11:02:50.003  INFO 37952 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2022-12-21 11:02:50.011  INFO 37952 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-21 11:02:50.025  INFO 37952 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1671600770024 with initial instances count: 11
+2022-12-21 11:02:50.027  INFO 37952 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CUSTOMER-SERVICE with eureka with status UP
+2022-12-21 11:02:50.028  INFO 37952 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1671600770028, current=UP, previous=STARTING]
+2022-12-21 11:02:50.030  INFO 37952 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777: registering service...
+2022-12-21 11:02:50.060  INFO 37952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2022-12-21 11:02:50.061  INFO 37952 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 7777
+2022-12-21 11:02:50.069  INFO 37952 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - registration status: 204
+2022-12-21 11:02:50.326  INFO 37952 --- [main] com.crm.customer.Application             : Started Application in 9.936 seconds (JVM running for 11.092)
+2022-12-21 11:02:51.228  INFO 37952 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-21 11:02:51.229  INFO 37952 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-21 11:02:51.231  INFO 37952 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-12-21 11:03:51.264 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.adapters.PreAuthActionsHandler       : adminRequest http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:03:51.268 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.a.ClientCredentialsProviderUtils   : Using provider 'secret' for authentication of client 'Reports-management'
+2022-12-21 11:03:51.270 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret
+2022-12-21 11:03:51.271 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider jwt
+2022-12-21 11:03:51.271 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret-jwt
+2022-12-21 11:03:51.272 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret
+2022-12-21 11:03:51.273 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider jwt
+2022-12-21 11:03:51.273 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret-jwt
+2022-12-21 11:03:51.278 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:03:51.287 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 11:03:51.288 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 11:03:51.293 DEBUG 37952 --- [http-nio-7777-exec-1] o.keycloak.adapters.KeycloakDeployment   : Resolving URLs from http://192.168.1.11:8080/auth/realms/Laboratory/.well-known/openid-configuration
+2022-12-21 11:03:51.468  INFO 37952 --- [http-nio-7777-exec-1] o.keycloak.adapters.KeycloakDeployment   : Loaded URLs from http://192.168.1.11:8080/auth/realms/Laboratory/.well-known/openid-configuration
+2022-12-21 11:03:51.632 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.rotation.JWKPublicKeyLocator       : Realm public keys successfully retrieved for client Reports-management. New kids: [RMpSmbpKe__Ad-YiVL-PEhJ0oiobbZfwhnJbTT_x0oU]
+2022-12-21 11:03:51.635 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.BearerTokenRequestAuthenticator    : successful authorized
+2022-12-21 11:03:51.644 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.adapters.RequestAuthenticator        : User '7513269c-e892-4e1c-8e39-d77f9601dcde' invoking 'http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE' on client 'Reports-management'
+2022-12-21 11:03:51.645 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.adapters.RequestAuthenticator        : Bearer AUTHENTICATED
+2022-12-21 11:03:51.645 DEBUG 37952 --- [http-nio-7777-exec-1] .k.a.t.AbstractAuthenticatedActionsValve : AuthenticatedActionsValve.invoke /customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:03:51.649 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.AuthenticatedActionsHandler        : AuthenticatedActionsValve.invoke http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:03:51.723  INFO 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Paths provided in configuration.
+2022-12-21 11:03:51.723 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/customer/*] for path [/customer/*].
+2022-12-21 11:03:51.826 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/data-table-metadata/*] for path [/data-table-metadata/*].
+2022-12-21 11:03:51.847 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/address-details/*] for path [/address-details/*].
+2022-12-21 11:03:52.119 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/contact-details/*] for path [/contact-details/*].
+2022-12-21 11:03:52.142 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/reference-details/*] for path [/reference-details/*].
+2022-12-21 11:03:52.168 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/identification-details/*] for path [/identification-details/*].
+2022-12-21 11:03:52.191 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/occupation-details/*] for path [/occupation-details/*].
+2022-12-21 11:03:52.218 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/billing-account/*] for path [/billing-account/*].
+2022-12-21 11:03:52.241 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/invoice-details/*] for path [/invoice-details/*].
+2022-12-21 11:03:52.270 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/credit-card-payment/*] for path [/credit-card-payment/*].
+2022-12-21 11:03:52.292 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/bank-details/*] for path [/bank-details/*].
+2022-12-21 11:03:52.314 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/billing-contact-details/*] for path [/billing-contact-details/*].
+2022-12-21 11:03:52.338 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/collaterals/*] for path [/collaterals/*].
+2022-12-21 11:03:52.360 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/search-customer/*] for path [/search-customer/*].
+2022-12-21 11:03:52.388 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Initialization complete. Path configurations:
+2022-12-21 11:03:52.389 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}
+2022-12-21 11:03:52.389 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/data-table-metadata/*', scopes=[], id='bcf036df-1cf7-4542-a30b-083067ee9141', enforcerMode='ENFORCING'}
+2022-12-21 11:03:52.389 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/address-details/*', scopes=[], id='40a1ff17-2468-435e-8da3-deb58805fbdc', enforcerMode='ENFORCING'}
+2022-12-21 11:03:52.389 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/contact-details/*', scopes=[], id='271c42a5-63ee-4aa7-b47a-468ce8125860', enforcerMode='ENFORCING'}
+2022-12-21 11:03:52.389 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/reference-details/*', scopes=[], id='9e1c59d3-f836-453e-9fc0-799e1e3e8e82', enforcerMode='ENFORCING'}
+2022-12-21 11:03:52.389 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/identification-details/*', scopes=[], id='b55e6f2c-2930-4779-aec4-ca4426522fe3', enforcerMode='ENFORCING'}
+2022-12-21 11:03:52.389 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/occupation-details/*', scopes=[], id='0e5697ee-0567-46aa-89b6-f1c9ab3e683f', enforcerMode='ENFORCING'}
+2022-12-21 11:03:52.389 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/billing-account/*', scopes=[], id='60169f2e-7713-40d1-a182-f7c79745aa41', enforcerMode='ENFORCING'}
+2022-12-21 11:03:52.389 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/invoice-details/*', scopes=[], id='aced42cc-0e72-4890-b2cf-fc0131b078e3', enforcerMode='ENFORCING'}
+2022-12-21 11:03:52.389 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/credit-card-payment/*', scopes=[], id='c49f0659-a2c8-4a54-a2a8-9389de879d5b', enforcerMode='ENFORCING'}
+2022-12-21 11:03:52.389 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/bank-details/*', scopes=[], id='030b616f-b6cd-4861-bd6d-c1f4fd5b25d2', enforcerMode='ENFORCING'}
+2022-12-21 11:03:52.389 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/billing-contact-details/*', scopes=[], id='1fe97ce2-a3d5-4480-b342-f9944c8a45bd', enforcerMode='ENFORCING'}
+2022-12-21 11:03:52.389 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/collaterals/*', scopes=[], id='38d38e11-8fc9-4e0f-a4aa-592bbc462bc5', enforcerMode='ENFORCING'}
+2022-12-21 11:03:52.389 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/search-customer/*', scopes=[], id='c9ceea38-a3e5-4d6b-8af5-bdf4b6958a1b', enforcerMode='ENFORCING'}
+2022-12-21 11:03:52.394 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.AuthenticatedActionsHandler        : Origin: null uri: http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:03:52.394 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.AuthenticatedActionsHandler        : cors validation not needed as we are not a secure session or origin header was null: http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:03:52.394 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE].
+2022-12-21 11:03:52.398 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.a.AbstractPolicyEnforcer           : Checking permissions for path [http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] with config [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}].
+2022-12-21 11:03:52.400 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Obtaining authorization for authenticated user.
+2022-12-21 11:03:52.457 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.a.AbstractPolicyEnforcer           : Authorization GRANTED for path [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}]. Permissions [[Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}]].
+2022-12-21 11:03:52.458 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://localhost:7777/customer/customer-details/7/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] is : GRANTED
+2022-12-21 11:03:52.458 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 11:03:52.458 DEBUG 37952 --- [http-nio-7777-exec-1] o.k.a.authorization.PolicyEnforcer       : Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}
+2022-12-21 11:04:01.713 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.adapters.PreAuthActionsHandler       : adminRequest http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:01.714 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:01.715 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 11:04:01.715 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 11:04:01.717 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.a.BearerTokenRequestAuthenticator    : successful authorized
+2022-12-21 11:04:01.717 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.adapters.RequestAuthenticator        : User '7513269c-e892-4e1c-8e39-d77f9601dcde' invoking 'http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE' on client 'Reports-management'
+2022-12-21 11:04:01.717 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.adapters.RequestAuthenticator        : Bearer AUTHENTICATED
+2022-12-21 11:04:01.718 DEBUG 37952 --- [http-nio-7777-exec-3] .k.a.t.AbstractAuthenticatedActionsValve : AuthenticatedActionsValve.invoke /customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:01.718 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.a.AuthenticatedActionsHandler        : AuthenticatedActionsValve.invoke http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:01.718 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.a.AuthenticatedActionsHandler        : Origin: null uri: http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:01.718 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.a.AuthenticatedActionsHandler        : cors validation not needed as we are not a secure session or origin header was null: http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:01.718 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE].
+2022-12-21 11:04:01.718 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.a.a.AbstractPolicyEnforcer           : Checking permissions for path [http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] with config [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}].
+2022-12-21 11:04:01.719 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Obtaining authorization for authenticated user.
+2022-12-21 11:04:01.771 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.a.a.AbstractPolicyEnforcer           : Authorization GRANTED for path [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}]. Permissions [[Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}]].
+2022-12-21 11:04:01.771 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] is : GRANTED
+2022-12-21 11:04:01.772 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 11:04:01.772 DEBUG 37952 --- [http-nio-7777-exec-3] o.k.a.authorization.PolicyEnforcer       : Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}
+2022-12-21 11:04:09.401 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.adapters.PreAuthActionsHandler       : adminRequest http://localhost:7777/customer/customer-details/4/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:09.402 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://localhost:7777/customer/customer-details/4/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:09.403 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 11:04:09.403 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 11:04:09.406 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.a.BearerTokenRequestAuthenticator    : successful authorized
+2022-12-21 11:04:09.407 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.adapters.RequestAuthenticator        : User '7513269c-e892-4e1c-8e39-d77f9601dcde' invoking 'http://localhost:7777/customer/customer-details/4/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE' on client 'Reports-management'
+2022-12-21 11:04:09.408 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.adapters.RequestAuthenticator        : Bearer AUTHENTICATED
+2022-12-21 11:04:09.408 DEBUG 37952 --- [http-nio-7777-exec-4] .k.a.t.AbstractAuthenticatedActionsValve : AuthenticatedActionsValve.invoke /customer/customer-details/4/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:09.408 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.a.AuthenticatedActionsHandler        : AuthenticatedActionsValve.invoke http://localhost:7777/customer/customer-details/4/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:09.408 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.a.AuthenticatedActionsHandler        : Origin: null uri: http://localhost:7777/customer/customer-details/4/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:09.408 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.a.AuthenticatedActionsHandler        : cors validation not needed as we are not a secure session or origin header was null: http://localhost:7777/customer/customer-details/4/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:09.408 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://localhost:7777/customer/customer-details/4/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE].
+2022-12-21 11:04:09.408 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.a.a.AbstractPolicyEnforcer           : Checking permissions for path [http://localhost:7777/customer/customer-details/4/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] with config [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}].
+2022-12-21 11:04:09.409 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Obtaining authorization for authenticated user.
+2022-12-21 11:04:09.447 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.a.a.AbstractPolicyEnforcer           : Authorization GRANTED for path [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}]. Permissions [[Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}]].
+2022-12-21 11:04:09.447 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://localhost:7777/customer/customer-details/4/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] is : GRANTED
+2022-12-21 11:04:09.447 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 11:04:09.447 DEBUG 37952 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}
+2022-12-21 11:04:31.969 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.adapters.PreAuthActionsHandler       : adminRequest http://localhost:7777/customer/customer-details/1/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:31.969 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://localhost:7777/customer/customer-details/1/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:31.970 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 11:04:31.970 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 11:04:31.973 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.a.BearerTokenRequestAuthenticator    : successful authorized
+2022-12-21 11:04:31.974 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.adapters.RequestAuthenticator        : User '7513269c-e892-4e1c-8e39-d77f9601dcde' invoking 'http://localhost:7777/customer/customer-details/1/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE' on client 'Reports-management'
+2022-12-21 11:04:31.974 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.adapters.RequestAuthenticator        : Bearer AUTHENTICATED
+2022-12-21 11:04:31.974 DEBUG 37952 --- [http-nio-7777-exec-5] .k.a.t.AbstractAuthenticatedActionsValve : AuthenticatedActionsValve.invoke /customer/customer-details/1/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:31.974 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.a.AuthenticatedActionsHandler        : AuthenticatedActionsValve.invoke http://localhost:7777/customer/customer-details/1/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:31.974 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.a.AuthenticatedActionsHandler        : Origin: null uri: http://localhost:7777/customer/customer-details/1/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:31.974 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.a.AuthenticatedActionsHandler        : cors validation not needed as we are not a secure session or origin header was null: http://localhost:7777/customer/customer-details/1/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:04:31.974 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://localhost:7777/customer/customer-details/1/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE].
+2022-12-21 11:04:31.975 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.a.a.AbstractPolicyEnforcer           : Checking permissions for path [http://localhost:7777/customer/customer-details/1/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] with config [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}].
+2022-12-21 11:04:31.975 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Obtaining authorization for authenticated user.
+2022-12-21 11:04:32.011 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.a.a.AbstractPolicyEnforcer           : Authorization GRANTED for path [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}]. Permissions [[Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}]].
+2022-12-21 11:04:32.011 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://localhost:7777/customer/customer-details/1/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] is : GRANTED
+2022-12-21 11:04:32.011 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 11:04:32.011 DEBUG 37952 --- [http-nio-7777-exec-5] o.k.a.authorization.PolicyEnforcer       : Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}
+2022-12-21 11:06:49.815 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.adapters.PreAuthActionsHandler       : adminRequest http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:06:49.816 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:06:49.817 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 11:06:49.817 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 11:06:49.819 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.a.BearerTokenRequestAuthenticator    : successful authorized
+2022-12-21 11:06:49.820 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.adapters.RequestAuthenticator        : User '7513269c-e892-4e1c-8e39-d77f9601dcde' invoking 'http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE' on client 'Reports-management'
+2022-12-21 11:06:49.820 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.adapters.RequestAuthenticator        : Bearer AUTHENTICATED
+2022-12-21 11:06:49.820 DEBUG 37952 --- [http-nio-7777-exec-8] .k.a.t.AbstractAuthenticatedActionsValve : AuthenticatedActionsValve.invoke /customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:06:49.820 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.a.AuthenticatedActionsHandler        : AuthenticatedActionsValve.invoke http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:06:49.821 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.a.AuthenticatedActionsHandler        : Origin: null uri: http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:06:49.822 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.a.AuthenticatedActionsHandler        : cors validation not needed as we are not a secure session or origin header was null: http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:06:49.822 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE].
+2022-12-21 11:06:49.822 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.a.a.AbstractPolicyEnforcer           : Checking permissions for path [http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] with config [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}].
+2022-12-21 11:06:49.822 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Obtaining authorization for authenticated user.
+2022-12-21 11:06:49.912 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.a.a.AbstractPolicyEnforcer           : Authorization GRANTED for path [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}]. Permissions [[Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}]].
+2022-12-21 11:06:49.913 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://localhost:7777/customer/customer-details/2/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] is : GRANTED
+2022-12-21 11:06:49.913 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 11:06:49.913 DEBUG 37952 --- [http-nio-7777-exec-8] o.k.a.authorization.PolicyEnforcer       : Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}
+2022-12-21 11:07:00.067 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.adapters.PreAuthActionsHandler       : adminRequest http://localhost:7777/customer/customer-details/5/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:07:00.067 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://localhost:7777/customer/customer-details/5/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:07:00.068 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 11:07:00.068 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 11:07:00.070 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.a.BearerTokenRequestAuthenticator    : successful authorized
+2022-12-21 11:07:00.070 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.adapters.RequestAuthenticator        : User '7513269c-e892-4e1c-8e39-d77f9601dcde' invoking 'http://localhost:7777/customer/customer-details/5/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE' on client 'Reports-management'
+2022-12-21 11:07:00.070 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.adapters.RequestAuthenticator        : Bearer AUTHENTICATED
+2022-12-21 11:07:00.070 DEBUG 37952 --- [http-nio-7777-exec-9] .k.a.t.AbstractAuthenticatedActionsValve : AuthenticatedActionsValve.invoke /customer/customer-details/5/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:07:00.071 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.a.AuthenticatedActionsHandler        : AuthenticatedActionsValve.invoke http://localhost:7777/customer/customer-details/5/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:07:00.071 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.a.AuthenticatedActionsHandler        : Origin: null uri: http://localhost:7777/customer/customer-details/5/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:07:00.071 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.a.AuthenticatedActionsHandler        : cors validation not needed as we are not a secure session or origin header was null: http://localhost:7777/customer/customer-details/5/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE
+2022-12-21 11:07:00.071 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://localhost:7777/customer/customer-details/5/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE].
+2022-12-21 11:07:00.072 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.a.a.AbstractPolicyEnforcer           : Checking permissions for path [http://localhost:7777/customer/customer-details/5/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] with config [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}].
+2022-12-21 11:07:00.072 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Obtaining authorization for authenticated user.
+2022-12-21 11:07:00.118 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.a.a.AbstractPolicyEnforcer           : Authorization GRANTED for path [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}]. Permissions [[Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}]].
+2022-12-21 11:07:00.118 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://localhost:7777/customer/customer-details/5/39/CHANGE%20BASIC%20CUSTOMER%20PROFILE] is : GRANTED
+2022-12-21 11:07:00.118 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 11:07:00.118 DEBUG 37952 --- [http-nio-7777-exec-9] o.k.a.authorization.PolicyEnforcer       : Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}
+2022-12-21 11:07:49.802  INFO 37952 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 11:10:49.122  INFO 37952 --- [RMI TCP Connection(12)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-12-21 11:10:49.123  INFO 37952 --- [RMI TCP Connection(12)-127.0.0.1] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application CUSTOMER-SERVICE with eureka with status DOWN
+2022-12-21 11:10:49.123  INFO 37952 --- [RMI TCP Connection(12)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1671601249123, current=DOWN, previous=UP]
+2022-12-21 11:10:49.124  INFO 37952 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777: registering service...
+2022-12-21 11:10:49.144  INFO 37952 --- [RMI TCP Connection(12)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-12-21 11:10:49.145  INFO 37952 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - registration status: 204
+2022-12-21 11:10:49.145  INFO 37952 --- [RMI TCP Connection(12)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-12-21 11:10:49.161  INFO 37952 --- [RMI TCP Connection(12)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 11:10:49.163  INFO 37952 --- [RMI TCP Connection(12)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-12-21 11:10:49.166  INFO 37952 --- [RMI TCP Connection(12)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-12-21 11:10:49.168  INFO 37952 --- [RMI TCP Connection(12)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2022-12-21 11:10:52.182  WARN 37952 --- [DiscoveryClient-0] c.netflix.discovery.TimedSupervisorTask  : task supervisor shutting down, can't accept the task
+2022-12-21 11:10:52.198  INFO 37952 --- [RMI TCP Connection(12)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2022-12-21 11:10:52.218  INFO 37952 --- [RMI TCP Connection(12)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - deregister  status: 200
+2022-12-21 11:10:52.483  INFO 37952 --- [RMI TCP Connection(12)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2022-12-21 11:10:59.038  INFO 9480 --- [main] com.crm.customer.Application             : Starting Application using Java 15.0.1 on DESKTOP-UQUBQ79 with PID 9480 (C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\target\classes started by User in C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER)
+2022-12-21 11:10:59.042  INFO 9480 --- [main] com.crm.customer.Application             : The following 1 profile is active: "dev"
+2022-12-21 11:10:59.861  INFO 9480 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-21 11:11:00.080  INFO 9480 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 211 ms. Found 12 JPA repository interfaces.
+2022-12-21 11:11:00.744  INFO 9480 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=58ad7dcc-25c5-3358-9216-d38c4dbc6ef9
+2022-12-21 11:11:01.375  INFO 9480 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2022-12-21 11:11:01.388  INFO 9480 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-21 11:11:01.389  INFO 9480 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-21 11:11:01.565  INFO 9480 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-21 11:11:01.565  INFO 9480 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2472 ms
+2022-12-21 11:11:01.767 DEBUG 9480 --- [main] k.a.t.AbstractKeycloakAuthenticatorValve : Using org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolverWrapper to resolve Keycloak configuration on a per-request basis.
+2022-12-21 11:11:01.869  INFO 9480 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-21 11:11:01.935  INFO 9480 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-12-21 11:11:02.142  INFO 9480 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-12-21 11:11:02.281  INFO 9480 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-21 11:11:02.457  INFO 9480 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-21 11:11:02.482  INFO 9480 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2022-12-21 11:11:02.528  INFO 9480 --- [main] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2022-12-21 11:11:04.908  INFO 9480 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-21 11:11:04.919  INFO 9480 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 11:11:05.638  WARN 9480 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-21 11:11:05.759  INFO 9480 --- [main] o.s.c.openfeign.FeignClientFactoryBean   : For 'KEYCLOAK' URL not provided. Will try picking an instance via load-balancing.
+2022-12-21 11:11:06.093  INFO 9480 --- [main] o.s.c.openfeign.FeignClientFactoryBean   : For 'EMAIL-SERVICE' URL not provided. Will try picking an instance via load-balancing.
+2022-12-21 11:11:08.059  INFO 9480 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-21 11:11:08.059  INFO 9480 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-21 11:11:08.310  INFO 9480 --- [RMI TCP Connection(3)-127.0.0.1] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-12-21 11:11:08.321  INFO 9480 --- [main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses Jersey
+2022-12-21 11:11:08.338  INFO 9480 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 279 ms
+2022-12-21 11:11:08.450  WARN 9480 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-21 11:11:08.624  INFO 9480 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2022-12-21 11:11:08.736  INFO 9480 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2022-12-21 11:11:08.957  INFO 9480 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2022-12-21 11:11:08.958  INFO 9480 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2022-12-21 11:11:09.272  INFO 9480 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2022-12-21 11:11:09.274  INFO 9480 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2022-12-21 11:11:10.056  INFO 9480 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 11:11:10.129  INFO 9480 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2022-12-21 11:11:10.131  INFO 9480 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2022-12-21 11:11:10.132  INFO 9480 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2022-12-21 11:11:10.132  INFO 9480 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2022-12-21 11:11:10.132  INFO 9480 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2022-12-21 11:11:10.132  INFO 9480 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2022-12-21 11:11:10.132  INFO 9480 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2022-12-21 11:11:10.858  INFO 9480 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2022-12-21 11:11:10.866  INFO 9480 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2022-12-21 11:11:10.904  INFO 9480 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-21 11:11:10.941  INFO 9480 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1671601270939 with initial instances count: 12
+2022-12-21 11:11:10.944  INFO 9480 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CUSTOMER-SERVICE with eureka with status UP
+2022-12-21 11:11:10.945  INFO 9480 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1671601270945, current=UP, previous=STARTING]
+2022-12-21 11:11:10.949  INFO 9480 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777: registering service...
+2022-12-21 11:11:11.074  INFO 9480 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - registration status: 204
+2022-12-21 11:11:11.079  INFO 9480 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2022-12-21 11:11:11.081  INFO 9480 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 7777
+2022-12-21 11:11:11.818 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.adapters.PreAuthActionsHandler       : adminRequest http://localhost:7777/customer/7
+2022-12-21 11:11:11.822 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.a.ClientCredentialsProviderUtils   : Using provider 'secret' for authentication of client 'Reports-management'
+2022-12-21 11:11:11.827 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret
+2022-12-21 11:11:11.830 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider jwt
+2022-12-21 11:11:11.833 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret-jwt
+2022-12-21 11:11:11.835 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret
+2022-12-21 11:11:11.836 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider jwt
+2022-12-21 11:11:11.837 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret-jwt
+2022-12-21 11:11:11.847 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://localhost:7777/customer/7
+2022-12-21 11:11:11.867 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 11:11:11.869 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 11:11:11.876  INFO 9480 --- [main] com.crm.customer.Application             : Started Application in 13.479 seconds (JVM running for 14.294)
+2022-12-21 11:11:11.881 DEBUG 9480 --- [http-nio-7777-exec-4] o.keycloak.adapters.KeycloakDeployment   : Resolving URLs from http://192.168.1.11:8080/auth/realms/Laboratory/.well-known/openid-configuration
+2022-12-21 11:11:11.993  INFO 9480 --- [http-nio-7777-exec-4] o.keycloak.adapters.KeycloakDeployment   : Loaded URLs from http://192.168.1.11:8080/auth/realms/Laboratory/.well-known/openid-configuration
+2022-12-21 11:11:12.266 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.rotation.JWKPublicKeyLocator       : Realm public keys successfully retrieved for client Reports-management. New kids: [RMpSmbpKe__Ad-YiVL-PEhJ0oiobbZfwhnJbTT_x0oU]
+2022-12-21 11:11:12.268 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.BearerTokenRequestAuthenticator    : successful authorized
+2022-12-21 11:11:12.284 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.adapters.RequestAuthenticator        : User '7513269c-e892-4e1c-8e39-d77f9601dcde' invoking 'http://localhost:7777/customer/7' on client 'Reports-management'
+2022-12-21 11:11:12.284 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.adapters.RequestAuthenticator        : Bearer AUTHENTICATED
+2022-12-21 11:11:12.284 DEBUG 9480 --- [http-nio-7777-exec-4] .k.a.t.AbstractAuthenticatedActionsValve : AuthenticatedActionsValve.invoke /customer/7
+2022-12-21 11:11:12.286 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.AuthenticatedActionsHandler        : AuthenticatedActionsValve.invoke http://localhost:7777/customer/7
+2022-12-21 11:11:12.337  INFO 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Paths provided in configuration.
+2022-12-21 11:11:12.337 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/customer/*] for path [/customer/*].
+2022-12-21 11:11:12.408 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/data-table-metadata/*] for path [/data-table-metadata/*].
+2022-12-21 11:11:12.431 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/address-details/*] for path [/address-details/*].
+2022-12-21 11:11:12.470 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/contact-details/*] for path [/contact-details/*].
+2022-12-21 11:11:12.491 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/reference-details/*] for path [/reference-details/*].
+2022-12-21 11:11:12.516 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/identification-details/*] for path [/identification-details/*].
+2022-12-21 11:11:12.541 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/occupation-details/*] for path [/occupation-details/*].
+2022-12-21 11:11:12.565 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/billing-account/*] for path [/billing-account/*].
+2022-12-21 11:11:12.589 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/invoice-details/*] for path [/invoice-details/*].
+2022-12-21 11:11:12.614 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/credit-card-payment/*] for path [/credit-card-payment/*].
+2022-12-21 11:11:12.644 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/bank-details/*] for path [/bank-details/*].
+2022-12-21 11:11:12.668 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/billing-contact-details/*] for path [/billing-contact-details/*].
+2022-12-21 11:11:12.692 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/collaterals/*] for path [/collaterals/*].
+2022-12-21 11:11:12.718 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/search-customer/*] for path [/search-customer/*].
+2022-12-21 11:11:12.754 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Initialization complete. Path configurations:
+2022-12-21 11:11:12.754 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}
+2022-12-21 11:11:12.754 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/data-table-metadata/*', scopes=[], id='bcf036df-1cf7-4542-a30b-083067ee9141', enforcerMode='ENFORCING'}
+2022-12-21 11:11:12.754 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/address-details/*', scopes=[], id='40a1ff17-2468-435e-8da3-deb58805fbdc', enforcerMode='ENFORCING'}
+2022-12-21 11:11:12.754 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/contact-details/*', scopes=[], id='271c42a5-63ee-4aa7-b47a-468ce8125860', enforcerMode='ENFORCING'}
+2022-12-21 11:11:12.754 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/reference-details/*', scopes=[], id='9e1c59d3-f836-453e-9fc0-799e1e3e8e82', enforcerMode='ENFORCING'}
+2022-12-21 11:11:12.754 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/identification-details/*', scopes=[], id='b55e6f2c-2930-4779-aec4-ca4426522fe3', enforcerMode='ENFORCING'}
+2022-12-21 11:11:12.754 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/occupation-details/*', scopes=[], id='0e5697ee-0567-46aa-89b6-f1c9ab3e683f', enforcerMode='ENFORCING'}
+2022-12-21 11:11:12.755 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/billing-account/*', scopes=[], id='60169f2e-7713-40d1-a182-f7c79745aa41', enforcerMode='ENFORCING'}
+2022-12-21 11:11:12.755 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/invoice-details/*', scopes=[], id='aced42cc-0e72-4890-b2cf-fc0131b078e3', enforcerMode='ENFORCING'}
+2022-12-21 11:11:12.755 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/credit-card-payment/*', scopes=[], id='c49f0659-a2c8-4a54-a2a8-9389de879d5b', enforcerMode='ENFORCING'}
+2022-12-21 11:11:12.755 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/bank-details/*', scopes=[], id='030b616f-b6cd-4861-bd6d-c1f4fd5b25d2', enforcerMode='ENFORCING'}
+2022-12-21 11:11:12.755 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/billing-contact-details/*', scopes=[], id='1fe97ce2-a3d5-4480-b342-f9944c8a45bd', enforcerMode='ENFORCING'}
+2022-12-21 11:11:12.755 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/collaterals/*', scopes=[], id='38d38e11-8fc9-4e0f-a4aa-592bbc462bc5', enforcerMode='ENFORCING'}
+2022-12-21 11:11:12.755 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/search-customer/*', scopes=[], id='c9ceea38-a3e5-4d6b-8af5-bdf4b6958a1b', enforcerMode='ENFORCING'}
+2022-12-21 11:11:12.758 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.AuthenticatedActionsHandler        : Origin: null uri: http://localhost:7777/customer/7
+2022-12-21 11:11:12.758 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.AuthenticatedActionsHandler        : cors validation not needed as we are not a secure session or origin header was null: http://localhost:7777/customer/7
+2022-12-21 11:11:12.758 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://localhost:7777/customer/7].
+2022-12-21 11:11:12.768 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.a.AbstractPolicyEnforcer           : Checking permissions for path [http://localhost:7777/customer/7] with config [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}].
+2022-12-21 11:11:12.770 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Obtaining authorization for authenticated user.
+2022-12-21 11:11:12.827 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.a.AbstractPolicyEnforcer           : Authorization GRANTED for path [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}]. Permissions [[Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}]].
+2022-12-21 11:11:12.828 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://localhost:7777/customer/7] is : GRANTED
+2022-12-21 11:11:12.828 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 11:11:12.828 DEBUG 9480 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}
+2022-12-21 11:11:28.855 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.adapters.PreAuthActionsHandler       : adminRequest http://localhost:7777/customer/1
+2022-12-21 11:11:28.856 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://localhost:7777/customer/1
+2022-12-21 11:11:28.857 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 11:11:28.857 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 11:11:28.859 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.a.BearerTokenRequestAuthenticator    : successful authorized
+2022-12-21 11:11:28.860 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.adapters.RequestAuthenticator        : User '7513269c-e892-4e1c-8e39-d77f9601dcde' invoking 'http://localhost:7777/customer/1' on client 'Reports-management'
+2022-12-21 11:11:28.860 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.adapters.RequestAuthenticator        : Bearer AUTHENTICATED
+2022-12-21 11:11:28.860 DEBUG 9480 --- [http-nio-7777-exec-7] .k.a.t.AbstractAuthenticatedActionsValve : AuthenticatedActionsValve.invoke /customer/1
+2022-12-21 11:11:28.861 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.a.AuthenticatedActionsHandler        : AuthenticatedActionsValve.invoke http://localhost:7777/customer/1
+2022-12-21 11:11:28.861 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.a.AuthenticatedActionsHandler        : Origin: null uri: http://localhost:7777/customer/1
+2022-12-21 11:11:28.861 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.a.AuthenticatedActionsHandler        : cors validation not needed as we are not a secure session or origin header was null: http://localhost:7777/customer/1
+2022-12-21 11:11:28.861 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://localhost:7777/customer/1].
+2022-12-21 11:11:28.861 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.a.a.AbstractPolicyEnforcer           : Checking permissions for path [http://localhost:7777/customer/1] with config [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}].
+2022-12-21 11:11:28.862 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Obtaining authorization for authenticated user.
+2022-12-21 11:11:28.901 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.a.a.AbstractPolicyEnforcer           : Authorization GRANTED for path [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}]. Permissions [[Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}]].
+2022-12-21 11:11:28.901 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://localhost:7777/customer/1] is : GRANTED
+2022-12-21 11:11:28.901 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 11:11:28.901 DEBUG 9480 --- [http-nio-7777-exec-7] o.k.a.authorization.PolicyEnforcer       : Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}
+2022-12-21 11:12:28.915 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.adapters.PreAuthActionsHandler       : adminRequest http://localhost:7777/customer/1
+2022-12-21 11:12:28.915 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://localhost:7777/customer/1
+2022-12-21 11:12:28.916 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 11:12:28.916 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 11:12:28.918 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.a.BearerTokenRequestAuthenticator    : successful authorized
+2022-12-21 11:12:28.918 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.adapters.RequestAuthenticator        : User '7513269c-e892-4e1c-8e39-d77f9601dcde' invoking 'http://localhost:7777/customer/1' on client 'Reports-management'
+2022-12-21 11:12:28.918 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.adapters.RequestAuthenticator        : Bearer AUTHENTICATED
+2022-12-21 11:12:28.919 DEBUG 9480 --- [http-nio-7777-exec-8] .k.a.t.AbstractAuthenticatedActionsValve : AuthenticatedActionsValve.invoke /customer/1
+2022-12-21 11:12:28.919 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.a.AuthenticatedActionsHandler        : AuthenticatedActionsValve.invoke http://localhost:7777/customer/1
+2022-12-21 11:12:28.919 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.a.AuthenticatedActionsHandler        : Origin: null uri: http://localhost:7777/customer/1
+2022-12-21 11:12:28.919 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.a.AuthenticatedActionsHandler        : cors validation not needed as we are not a secure session or origin header was null: http://localhost:7777/customer/1
+2022-12-21 11:12:28.919 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://localhost:7777/customer/1].
+2022-12-21 11:12:28.919 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.a.a.AbstractPolicyEnforcer           : Checking permissions for path [http://localhost:7777/customer/1] with config [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}].
+2022-12-21 11:12:28.920 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Obtaining authorization for authenticated user.
+2022-12-21 11:12:28.957 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.a.a.AbstractPolicyEnforcer           : Authorization GRANTED for path [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}]. Permissions [[Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}]].
+2022-12-21 11:12:28.957 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://localhost:7777/customer/1] is : GRANTED
+2022-12-21 11:12:28.957 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 11:12:28.957 DEBUG 9480 --- [http-nio-7777-exec-8] o.k.a.authorization.PolicyEnforcer       : Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}
+2022-12-21 11:13:16.165  INFO 9480 --- [RMI TCP Connection(7)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-12-21 11:13:16.166  INFO 9480 --- [RMI TCP Connection(7)-127.0.0.1] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application CUSTOMER-SERVICE with eureka with status DOWN
+2022-12-21 11:13:16.166  INFO 9480 --- [RMI TCP Connection(7)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1671601396166, current=DOWN, previous=UP]
+2022-12-21 11:13:16.166  INFO 9480 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777: registering service...
+2022-12-21 11:13:16.186  INFO 9480 --- [RMI TCP Connection(7)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-12-21 11:13:16.188  INFO 9480 --- [RMI TCP Connection(7)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-12-21 11:13:16.213  INFO 9480 --- [RMI TCP Connection(7)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 11:13:16.216  INFO 9480 --- [RMI TCP Connection(7)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-12-21 11:13:16.220  INFO 9480 --- [RMI TCP Connection(7)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-12-21 11:13:16.221  INFO 9480 --- [RMI TCP Connection(7)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2022-12-21 11:13:16.266  INFO 9480 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - registration status: 204
+2022-12-21 11:13:16.278  INFO 9480 --- [RMI TCP Connection(7)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2022-12-21 11:13:16.297  INFO 9480 --- [RMI TCP Connection(7)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - deregister  status: 200
+2022-12-21 11:13:16.551  INFO 9480 --- [RMI TCP Connection(7)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2022-12-21 11:36:53.557  INFO 39912 --- [main] com.crm.customer.Application             : Starting Application using Java 15.0.1 on DESKTOP-UQUBQ79 with PID 39912 (C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\target\classes started by User in C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER)
+2022-12-21 11:36:53.560  INFO 39912 --- [main] com.crm.customer.Application             : The following 1 profile is active: "dev"
+2022-12-21 11:36:54.195  INFO 39912 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-21 11:36:54.359  INFO 39912 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 158 ms. Found 12 JPA repository interfaces.
+2022-12-21 11:36:54.825  INFO 39912 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=58ad7dcc-25c5-3358-9216-d38c4dbc6ef9
+2022-12-21 11:36:55.293  INFO 39912 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2022-12-21 11:36:55.301  INFO 39912 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-21 11:36:55.302  INFO 39912 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-21 11:36:55.446  INFO 39912 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-21 11:36:55.447  INFO 39912 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1843 ms
+2022-12-21 11:36:55.612 DEBUG 39912 --- [main] k.a.t.AbstractKeycloakAuthenticatorValve : Using org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolverWrapper to resolve Keycloak configuration on a per-request basis.
+2022-12-21 11:36:55.686  INFO 39912 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-21 11:36:55.738  INFO 39912 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-12-21 11:36:55.900  INFO 39912 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-12-21 11:36:56.000  INFO 39912 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-21 11:36:56.157  INFO 39912 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-21 11:36:56.174  INFO 39912 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2022-12-21 11:36:56.207  INFO 39912 --- [main] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2022-12-21 11:36:58.142  INFO 39912 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-21 11:36:58.150  INFO 39912 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 11:36:58.605  WARN 39912 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-21 11:36:58.695  INFO 39912 --- [main] o.s.c.openfeign.FeignClientFactoryBean   : For 'KEYCLOAK' URL not provided. Will try picking an instance via load-balancing.
+2022-12-21 11:36:58.953  INFO 39912 --- [main] o.s.c.openfeign.FeignClientFactoryBean   : For 'EMAIL-SERVICE' URL not provided. Will try picking an instance via load-balancing.
+2022-12-21 11:37:00.425  INFO 39912 --- [main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses Jersey
+2022-12-21 11:37:00.483  WARN 39912 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-21 11:37:00.491  INFO 39912 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-12-21 11:37:00.514  INFO 39912 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-21 11:37:00.514  INFO 39912 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-21 11:37:00.516  INFO 39912 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-21 11:37:00.573  INFO 39912 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2022-12-21 11:37:00.641  INFO 39912 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2022-12-21 11:37:00.882  INFO 39912 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2022-12-21 11:37:00.883  INFO 39912 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2022-12-21 11:37:01.083  INFO 39912 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2022-12-21 11:37:01.083  INFO 39912 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2022-12-21 11:37:01.412  INFO 39912 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 11:37:01.435  INFO 39912 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2022-12-21 11:37:01.436  INFO 39912 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2022-12-21 11:37:01.436  INFO 39912 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2022-12-21 11:37:01.436  INFO 39912 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2022-12-21 11:37:01.436  INFO 39912 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2022-12-21 11:37:01.437  INFO 39912 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2022-12-21 11:37:01.437  INFO 39912 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2022-12-21 11:37:01.607  INFO 39912 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2022-12-21 11:37:01.614  INFO 39912 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2022-12-21 11:37:01.618  INFO 39912 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-21 11:37:01.630  INFO 39912 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1671602821629 with initial instances count: 11
+2022-12-21 11:37:01.632  INFO 39912 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CUSTOMER-SERVICE with eureka with status UP
+2022-12-21 11:37:01.632  INFO 39912 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1671602821632, current=UP, previous=STARTING]
+2022-12-21 11:37:01.634  INFO 39912 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777: registering service...
+2022-12-21 11:37:01.659  INFO 39912 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2022-12-21 11:37:01.660  INFO 39912 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 7777
+2022-12-21 11:37:01.662  INFO 39912 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - registration status: 204
+2022-12-21 11:37:01.868  INFO 39912 --- [main] com.crm.customer.Application             : Started Application in 8.897 seconds (JVM running for 9.602)
+2022-12-21 11:37:03.585  INFO 39912 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-12-21 11:37:03.586  INFO 39912 --- [RMI TCP Connection(2)-127.0.0.1] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application CUSTOMER-SERVICE with eureka with status DOWN
+2022-12-21 11:37:03.586  INFO 39912 --- [RMI TCP Connection(2)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1671602823586, current=DOWN, previous=UP]
+2022-12-21 11:37:03.587  INFO 39912 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777: registering service...
+2022-12-21 11:37:03.605  INFO 39912 --- [RMI TCP Connection(2)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-12-21 11:37:03.606  INFO 39912 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - registration status: 204
+2022-12-21 11:37:03.607  INFO 39912 --- [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-12-21 11:37:03.624  INFO 39912 --- [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 11:37:03.626  INFO 39912 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-12-21 11:37:03.630  INFO 39912 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-12-21 11:37:03.632  INFO 39912 --- [RMI TCP Connection(2)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2022-12-21 11:37:06.651  INFO 39912 --- [RMI TCP Connection(2)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2022-12-21 11:37:06.669  INFO 39912 --- [RMI TCP Connection(2)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - deregister  status: 200
+2022-12-21 11:37:06.909  INFO 39912 --- [RMI TCP Connection(2)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2022-12-21 15:06:29.545  INFO 34468 --- [main] com.crm.customer.Application             : Starting Application using Java 15.0.1 on DESKTOP-UQUBQ79 with PID 34468 (C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\target\classes started by User in C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER)
+2022-12-21 15:06:29.548  INFO 34468 --- [main] com.crm.customer.Application             : The following 1 profile is active: "dev"
+2022-12-21 15:06:30.405  INFO 34468 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-21 15:06:30.588  INFO 34468 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 176 ms. Found 12 JPA repository interfaces.
+2022-12-21 15:06:31.102  INFO 34468 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=58ad7dcc-25c5-3358-9216-d38c4dbc6ef9
+2022-12-21 15:06:31.661  INFO 34468 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2022-12-21 15:06:31.670  INFO 34468 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-21 15:06:31.671  INFO 34468 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-21 15:06:31.839  INFO 34468 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-21 15:06:31.840  INFO 34468 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2236 ms
+2022-12-21 15:06:32.031 DEBUG 34468 --- [main] k.a.t.AbstractKeycloakAuthenticatorValve : Using org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolverWrapper to resolve Keycloak configuration on a per-request basis.
+2022-12-21 15:06:32.112  INFO 34468 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-21 15:06:32.174  INFO 34468 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-12-21 15:06:32.383  INFO 34468 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-12-21 15:06:32.522  INFO 34468 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-21 15:06:32.727  INFO 34468 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-21 15:06:32.763  INFO 34468 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2022-12-21 15:06:32.830  INFO 34468 --- [main] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2022-12-21 15:06:35.220  INFO 34468 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-21 15:06:35.232  INFO 34468 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 15:06:35.724  WARN 34468 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-21 15:06:35.810  INFO 34468 --- [main] o.s.c.openfeign.FeignClientFactoryBean   : For 'KEYCLOAK' URL not provided. Will try picking an instance via load-balancing.
+2022-12-21 15:06:36.113  INFO 34468 --- [main] o.s.c.openfeign.FeignClientFactoryBean   : For 'EMAIL-SERVICE' URL not provided. Will try picking an instance via load-balancing.
+2022-12-21 15:06:37.768  INFO 34468 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-21 15:06:37.769  INFO 34468 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-21 15:06:37.796  INFO 34468 --- [main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses Jersey
+2022-12-21 15:06:37.815  INFO 34468 --- [RMI TCP Connection(3)-127.0.0.1] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-12-21 15:06:37.825  INFO 34468 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 56 ms
+2022-12-21 15:06:37.863  WARN 34468 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-21 15:06:37.937  INFO 34468 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2022-12-21 15:06:37.993  INFO 34468 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2022-12-21 15:06:38.181  INFO 34468 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2022-12-21 15:06:38.181  INFO 34468 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2022-12-21 15:06:38.505  INFO 34468 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2022-12-21 15:06:38.506  INFO 34468 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2022-12-21 15:06:38.901  INFO 34468 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 15:06:38.928  INFO 34468 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2022-12-21 15:06:38.929  INFO 34468 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2022-12-21 15:06:38.929  INFO 34468 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2022-12-21 15:06:38.929  INFO 34468 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2022-12-21 15:06:38.929  INFO 34468 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2022-12-21 15:06:38.929  INFO 34468 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2022-12-21 15:06:38.929  INFO 34468 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2022-12-21 15:06:39.110  INFO 34468 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2022-12-21 15:06:39.116  INFO 34468 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2022-12-21 15:06:39.123  INFO 34468 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-12-21 15:06:39.135  INFO 34468 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1671615399134 with initial instances count: 11
+2022-12-21 15:06:39.139  INFO 34468 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CUSTOMER-SERVICE with eureka with status UP
+2022-12-21 15:06:39.139  INFO 34468 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1671615399139, current=UP, previous=STARTING]
+2022-12-21 15:06:39.141  INFO 34468 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777: registering service...
+2022-12-21 15:06:39.168  INFO 34468 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2022-12-21 15:06:39.168  INFO 34468 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 7777
+2022-12-21 15:06:39.182  INFO 34468 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - registration status: 204
+2022-12-21 15:06:39.419  INFO 34468 --- [main] com.crm.customer.Application             : Started Application in 10.567 seconds (JVM running for 11.454)
+2022-12-21 15:06:48.909 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.adapters.PreAuthActionsHandler       : adminRequest http://localhost:7777/customer/create
+2022-12-21 15:06:48.913 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.a.ClientCredentialsProviderUtils   : Using provider 'secret' for authentication of client 'Reports-management'
+2022-12-21 15:06:48.915 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret
+2022-12-21 15:06:48.916 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider jwt
+2022-12-21 15:06:48.918 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret-jwt
+2022-12-21 15:06:48.919 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret
+2022-12-21 15:06:48.919 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider jwt
+2022-12-21 15:06:48.919 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.a.ClientCredentialsProviderUtils   : Loaded clientCredentialsProvider secret-jwt
+2022-12-21 15:06:48.925 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://localhost:7777/customer/create
+2022-12-21 15:06:48.936 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 15:06:48.938 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 15:06:48.945 DEBUG 34468 --- [http-nio-7777-exec-2] o.keycloak.adapters.KeycloakDeployment   : Resolving URLs from http://192.168.1.11:8080/auth/realms/Laboratory/.well-known/openid-configuration
+2022-12-21 15:06:48.997  INFO 34468 --- [http-nio-7777-exec-2] o.keycloak.adapters.KeycloakDeployment   : Loaded URLs from http://192.168.1.11:8080/auth/realms/Laboratory/.well-known/openid-configuration
+2022-12-21 15:06:49.174 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.rotation.JWKPublicKeyLocator       : Realm public keys successfully retrieved for client Reports-management. New kids: [RMpSmbpKe__Ad-YiVL-PEhJ0oiobbZfwhnJbTT_x0oU]
+2022-12-21 15:06:49.176 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.BearerTokenRequestAuthenticator    : successful authorized
+2022-12-21 15:06:49.185 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.adapters.RequestAuthenticator        : User '7513269c-e892-4e1c-8e39-d77f9601dcde' invoking 'http://localhost:7777/customer/create' on client 'Reports-management'
+2022-12-21 15:06:49.185 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.adapters.RequestAuthenticator        : Bearer AUTHENTICATED
+2022-12-21 15:06:49.185 DEBUG 34468 --- [http-nio-7777-exec-2] .k.a.t.AbstractAuthenticatedActionsValve : AuthenticatedActionsValve.invoke /customer/create
+2022-12-21 15:06:49.186 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.AuthenticatedActionsHandler        : AuthenticatedActionsValve.invoke http://localhost:7777/customer/create
+2022-12-21 15:06:49.230  INFO 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Paths provided in configuration.
+2022-12-21 15:06:49.231 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/customer/*] for path [/customer/*].
+2022-12-21 15:06:49.301 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/data-table-metadata/*] for path [/data-table-metadata/*].
+2022-12-21 15:06:49.329 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/address-details/*] for path [/address-details/*].
+2022-12-21 15:06:49.351 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/contact-details/*] for path [/contact-details/*].
+2022-12-21 15:06:49.373 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/reference-details/*] for path [/reference-details/*].
+2022-12-21 15:06:49.396 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/identification-details/*] for path [/identification-details/*].
+2022-12-21 15:06:49.420 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/occupation-details/*] for path [/occupation-details/*].
+2022-12-21 15:06:49.442 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/billing-account/*] for path [/billing-account/*].
+2022-12-21 15:06:49.465 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/invoice-details/*] for path [/invoice-details/*].
+2022-12-21 15:06:49.484 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/credit-card-payment/*] for path [/credit-card-payment/*].
+2022-12-21 15:06:49.504 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/bank-details/*] for path [/bank-details/*].
+2022-12-21 15:06:49.532 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/billing-contact-details/*] for path [/billing-contact-details/*].
+2022-12-21 15:06:49.553 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/collaterals/*] for path [/collaterals/*].
+2022-12-21 15:06:49.577 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Trying to find resource with uri [/search-customer/*] for path [/search-customer/*].
+2022-12-21 15:06:49.601 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Initialization complete. Path configurations:
+2022-12-21 15:06:49.602 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}
+2022-12-21 15:06:49.602 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/data-table-metadata/*', scopes=[], id='bcf036df-1cf7-4542-a30b-083067ee9141', enforcerMode='ENFORCING'}
+2022-12-21 15:06:49.602 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/address-details/*', scopes=[], id='40a1ff17-2468-435e-8da3-deb58805fbdc', enforcerMode='ENFORCING'}
+2022-12-21 15:06:49.602 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/contact-details/*', scopes=[], id='271c42a5-63ee-4aa7-b47a-468ce8125860', enforcerMode='ENFORCING'}
+2022-12-21 15:06:49.602 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/reference-details/*', scopes=[], id='9e1c59d3-f836-453e-9fc0-799e1e3e8e82', enforcerMode='ENFORCING'}
+2022-12-21 15:06:49.602 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/identification-details/*', scopes=[], id='b55e6f2c-2930-4779-aec4-ca4426522fe3', enforcerMode='ENFORCING'}
+2022-12-21 15:06:49.602 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/occupation-details/*', scopes=[], id='0e5697ee-0567-46aa-89b6-f1c9ab3e683f', enforcerMode='ENFORCING'}
+2022-12-21 15:06:49.602 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/billing-account/*', scopes=[], id='60169f2e-7713-40d1-a182-f7c79745aa41', enforcerMode='ENFORCING'}
+2022-12-21 15:06:49.602 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/invoice-details/*', scopes=[], id='aced42cc-0e72-4890-b2cf-fc0131b078e3', enforcerMode='ENFORCING'}
+2022-12-21 15:06:49.602 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/credit-card-payment/*', scopes=[], id='c49f0659-a2c8-4a54-a2a8-9389de879d5b', enforcerMode='ENFORCING'}
+2022-12-21 15:06:49.602 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/bank-details/*', scopes=[], id='030b616f-b6cd-4861-bd6d-c1f4fd5b25d2', enforcerMode='ENFORCING'}
+2022-12-21 15:06:49.602 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/billing-contact-details/*', scopes=[], id='1fe97ce2-a3d5-4480-b342-f9944c8a45bd', enforcerMode='ENFORCING'}
+2022-12-21 15:06:49.602 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/collaterals/*', scopes=[], id='38d38e11-8fc9-4e0f-a4aa-592bbc462bc5', enforcerMode='ENFORCING'}
+2022-12-21 15:06:49.602 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : PathConfig{name='null', type='null', path='/search-customer/*', scopes=[], id='c9ceea38-a3e5-4d6b-8af5-bdf4b6958a1b', enforcerMode='ENFORCING'}
+2022-12-21 15:06:49.605 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.AuthenticatedActionsHandler        : Origin: null uri: http://localhost:7777/customer/create
+2022-12-21 15:06:49.605 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.AuthenticatedActionsHandler        : cors validation not needed as we are not a secure session or origin header was null: http://localhost:7777/customer/create
+2022-12-21 15:06:49.605 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://localhost:7777/customer/create].
+2022-12-21 15:06:49.608 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.a.AbstractPolicyEnforcer           : Checking permissions for path [http://localhost:7777/customer/create] with config [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}].
+2022-12-21 15:06:49.609 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Obtaining authorization for authenticated user.
+2022-12-21 15:06:49.660 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.a.AbstractPolicyEnforcer           : Authorization GRANTED for path [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}]. Permissions [[Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[create]}]].
+2022-12-21 15:06:49.660 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://localhost:7777/customer/create] is : GRANTED
+2022-12-21 15:06:49.660 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 15:06:49.660 DEBUG 34468 --- [http-nio-7777-exec-2] o.k.a.authorization.PolicyEnforcer       : Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[create]}
+2022-12-21 15:11:38.946  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 15:16:38.959  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 15:21:38.968  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 15:26:38.979  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 15:31:38.994  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 15:36:39.006  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 15:41:39.021  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 15:46:39.033  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 15:51:39.041  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 15:52:09.516 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.adapters.PreAuthActionsHandler       : adminRequest http://DESKTOP-UQUBQ79:7777/customer/7
+2022-12-21 15:52:09.516 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://DESKTOP-UQUBQ79:7777/customer/7
+2022-12-21 15:52:09.519 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 15:52:09.520 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 15:52:09.527 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.a.BearerTokenRequestAuthenticator    : successful authorized
+2022-12-21 15:52:09.529 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.adapters.RequestAuthenticator        : User '225590a2-e47e-487f-8e9d-72c7edfaa354' invoking 'http://DESKTOP-UQUBQ79:7777/customer/7' on client 'Reports-management'
+2022-12-21 15:52:09.530 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.adapters.RequestAuthenticator        : Bearer AUTHENTICATED
+2022-12-21 15:52:09.531 DEBUG 34468 --- [http-nio-7777-exec-4] .k.a.t.AbstractAuthenticatedActionsValve : AuthenticatedActionsValve.invoke /customer/7
+2022-12-21 15:52:09.531 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.a.AuthenticatedActionsHandler        : AuthenticatedActionsValve.invoke http://DESKTOP-UQUBQ79:7777/customer/7
+2022-12-21 15:52:09.532 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.a.AuthenticatedActionsHandler        : Origin: null uri: http://DESKTOP-UQUBQ79:7777/customer/7
+2022-12-21 15:52:09.532 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.a.AuthenticatedActionsHandler        : cors validation not needed as we are not a secure session or origin header was null: http://DESKTOP-UQUBQ79:7777/customer/7
+2022-12-21 15:52:09.532 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://DESKTOP-UQUBQ79:7777/customer/7].
+2022-12-21 15:52:09.532 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.a.a.AbstractPolicyEnforcer           : Checking permissions for path [http://DESKTOP-UQUBQ79:7777/customer/7] with config [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}].
+2022-12-21 15:52:09.533 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Obtaining authorization for authenticated user.
+2022-12-21 15:52:09.619 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.a.a.AbstractPolicyEnforcer           : Authorization GRANTED for path [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}]. Permissions [[Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}]].
+2022-12-21 15:52:09.619 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://DESKTOP-UQUBQ79:7777/customer/7] is : GRANTED
+2022-12-21 15:52:09.619 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 15:52:09.619 DEBUG 34468 --- [http-nio-7777-exec-4] o.k.a.authorization.PolicyEnforcer       : Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}
+2022-12-21 15:55:58.104 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.adapters.PreAuthActionsHandler       : adminRequest http://DESKTOP-UQUBQ79:7777/customer/7
+2022-12-21 15:55:58.105 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.adapters.PreAuthActionsHandler       : checkCorsPreflight http://DESKTOP-UQUBQ79:7777/customer/7
+2022-12-21 15:55:58.105 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.a.BearerTokenRequestAuthenticator    : Found [1] values in authorization header, selecting the first value for Bearer.
+2022-12-21 15:55:58.105 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.a.BearerTokenRequestAuthenticator    : Verifying access_token
+2022-12-21 15:55:58.106 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.a.BearerTokenRequestAuthenticator    : successful authorized
+2022-12-21 15:55:58.107 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.adapters.RequestAuthenticator        : User '225590a2-e47e-487f-8e9d-72c7edfaa354' invoking 'http://DESKTOP-UQUBQ79:7777/customer/7' on client 'Reports-management'
+2022-12-21 15:55:58.107 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.adapters.RequestAuthenticator        : Bearer AUTHENTICATED
+2022-12-21 15:55:58.108 DEBUG 34468 --- [http-nio-7777-exec-5] .k.a.t.AbstractAuthenticatedActionsValve : AuthenticatedActionsValve.invoke /customer/7
+2022-12-21 15:55:58.108 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.a.AuthenticatedActionsHandler        : AuthenticatedActionsValve.invoke http://DESKTOP-UQUBQ79:7777/customer/7
+2022-12-21 15:55:58.108 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.a.AuthenticatedActionsHandler        : Origin: null uri: http://DESKTOP-UQUBQ79:7777/customer/7
+2022-12-21 15:55:58.108 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.a.AuthenticatedActionsHandler        : cors validation not needed as we are not a secure session or origin header was null: http://DESKTOP-UQUBQ79:7777/customer/7
+2022-12-21 15:55:58.108 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.a.authorization.PolicyEnforcer       : Policy enforcement is enabled. Enforcing policy decisions for path [http://DESKTOP-UQUBQ79:7777/customer/7].
+2022-12-21 15:55:58.109 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.a.a.AbstractPolicyEnforcer           : Checking permissions for path [http://DESKTOP-UQUBQ79:7777/customer/7] with config [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}].
+2022-12-21 15:55:58.109 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.a.a.KeycloakAdapterPolicyEnforcer    : Obtaining authorization for authenticated user.
+2022-12-21 15:55:58.149 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.a.a.AbstractPolicyEnforcer           : Authorization GRANTED for path [PathConfig{name='null', type='null', path='/customer/*', scopes=[], id='fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec', enforcerMode='ENFORCING'}]. Permissions [[Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}]].
+2022-12-21 15:55:58.150 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.a.authorization.PolicyEnforcer       : Policy enforcement result for path [http://DESKTOP-UQUBQ79:7777/customer/7] is : GRANTED
+2022-12-21 15:55:58.150 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.a.authorization.PolicyEnforcer       : Returning authorization context with permissions:
+2022-12-21 15:55:58.150 DEBUG 34468 --- [http-nio-7777-exec-5] o.k.a.authorization.PolicyEnforcer       : Permission {id=fa82c3a9-c14a-4ea1-b782-7ad14aa8f4ec, name=Customer, scopes=[view]}
+2022-12-21 15:56:39.045  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 16:01:39.059  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 16:06:39.073  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 16:11:39.077  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 16:16:39.085  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 16:21:39.088  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 16:26:39.094  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 16:31:39.106  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 16:36:39.119  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 16:41:39.129  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 16:46:39.140  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 16:51:39.142  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 16:56:39.149  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 17:01:39.163  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 17:06:39.172  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 17:11:39.208  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 17:16:39.221  INFO 34468 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-12-21 17:18:44.716  INFO 34468 --- [RMI TCP Connection(137)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-12-21 17:18:44.759  INFO 34468 --- [RMI TCP Connection(137)-127.0.0.1] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application CUSTOMER-SERVICE with eureka with status DOWN
+2022-12-21 17:18:44.761  INFO 34468 --- [RMI TCP Connection(137)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1671623324761, current=DOWN, previous=UP]
+2022-12-21 17:18:44.763  INFO 34468 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777: registering service...
+2022-12-21 17:18:44.790  INFO 34468 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - registration status: 204
+2022-12-21 17:18:44.921  INFO 34468 --- [RMI TCP Connection(137)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-12-21 17:18:44.942  INFO 34468 --- [RMI TCP Connection(137)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-12-21 17:18:44.993  WARN 34468 --- [RMI TCP Connection(137)-127.0.0.1] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [boundedElastic-evictor-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@15.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@15.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@15.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1661)
+ java.base@15.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@15.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1056)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1116)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+ java.base@15.0.1/java.lang.Thread.run(Thread.java:832)
+2022-12-21 17:18:44.998  WARN 34468 --- [RMI TCP Connection(137)-127.0.0.1] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [pool-11-thread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@15.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@15.0.1/java.util.concurrent.locks.LockSupport.park(LockSupport.java:341)
+ java.base@15.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:505)
+ java.base@15.0.1/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3137)
+ java.base@15.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1614)
+ java.base@15.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1170)
+ java.base@15.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1056)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1116)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+ java.base@15.0.1/java.lang.Thread.run(Thread.java:832)
+2022-12-21 17:18:45.114  INFO 34468 --- [RMI TCP Connection(137)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-21 17:18:45.161  INFO 34468 --- [RMI TCP Connection(137)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-12-21 17:18:45.168  INFO 34468 --- [RMI TCP Connection(137)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-12-21 17:18:45.171  INFO 34468 --- [RMI TCP Connection(137)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2022-12-21 17:18:48.201  INFO 34468 --- [RMI TCP Connection(137)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2022-12-21 17:18:48.226  INFO 34468 --- [RMI TCP Connection(137)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUSTOMER-SERVICE/DESKTOP-UQUBQ79:customer-service:7777 - deregister  status: 200
+2022-12-21 17:18:48.485  INFO 34468 --- [RMI TCP Connection(137)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient

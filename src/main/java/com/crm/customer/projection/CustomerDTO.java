@@ -68,4 +68,12 @@ public interface CustomerDTO {
 	@Value("#{(target.addressDetails)==null?null:(target.addressDetails.country)}")
 	String getCountry();
 
+	@Value("#{(target.addressDetails)==null?null:(target.addressDetails.addressTenureMonth)}")
+	Long getAddressTenureMonth();
+	
+	@Value("#{(target.addressDetails)==null?null:(target.addressDetails.addressTenureYears)}")
+	Long getAddressTenureYears();
+	
+	@Value("#{(target.addressDetails)==null?null:(target.addressDetails.ownershipStatus)}")
+	String getOwnershipStatus();
 }
