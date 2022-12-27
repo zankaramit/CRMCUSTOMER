@@ -76,4 +76,7 @@ public interface CustomerDTO {
 	
 	@Value("#{(target.addressDetails)==null?null:(target.addressDetails.ownershipStatus)}")
 	String getOwnershipStatus();
+	
+	@Value("#{(target.addressDetails)==null?null:(target.addressDetails.contactNumber)}")
+	String getContactNumber();
 }

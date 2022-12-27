@@ -31,7 +31,7 @@ public class AddressDetailsService {
 		List<String> checkAccessApi = userService.checkAccessApi(owner);
 		if (!ObjectUtils.isEmpty(name)) {
 			addressList = addressDetailsRepository
-					.findByIsDeletedAndOwnerInAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndCityLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndContactAddressLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndStateLikeIgnoreCase(
+					.findByIsDeletedAndOwnerInAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndCityLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndContactNumberLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndStateLikeIgnoreCase(
 							false, checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId,
 							"%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%",
 							false, checkAccessApi, customerId, "%" + name + "%", false, checkAccessApi, customerId, "%" + name + "%", pageable);
@@ -69,7 +69,7 @@ public class AddressDetailsService {
 		existingAddress.setAddressType(addressDetails.getAddressType());
 		existingAddress.setIdentificationType(addressDetails.getIdentificationType());
 		existingAddress.setCity(addressDetails.getCity());
-		existingAddress.setContactAddress(addressDetails.getContactAddress());
+		existingAddress.setContactNumber(addressDetails.getContactNumber());
 		existingAddress.setCountry(addressDetails.getCountry());
 		existingAddress.setOwnershipStatus(addressDetails.getOwnershipStatus());
 		existingAddress.setPostCode(addressDetails.getPostCode());

@@ -16,16 +16,18 @@ public interface AddressDetailsRepository extends RevisionRepository<AddressDeta
 
 	Optional<AddressDetails> findByCustomerCustomerIdAndIsDeleted(Long id, boolean b);
 
-	Page<AddressDetails> findByIsDeletedAndOwnerInAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndCityLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndContactAddressLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndStateLikeIgnoreCase(
+	
+
+	Page<AddressDetails> findByIsDeletedAndOwnerInAndCustomerCustomerId(boolean b, List<String> checkAccessApi,
+			Long customerId, Pageable pageable);
+
+	Page<AddressDetails> findByIsDeletedAndOwnerInAndCustomerCustomerIdAndAddress1LikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddress2LikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndAddressTypeLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndCityLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndContactNumberLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndCountryLikeIgnoreCaseOrIsDeletedAndOwnerInAndCustomerCustomerIdAndStateLikeIgnoreCase(
 			boolean b, List<String> checkAccessApi, Long customerId, String string, boolean c,
 			List<String> checkAccessApi2, Long customerId2, String string2, boolean d, List<String> checkAccessApi3,
 			Long customerId3, String string3, boolean e, List<String> checkAccessApi4, Long customerId4, String string4,
 			boolean f, List<String> checkAccessApi5, Long customerId5, String string5, boolean g,
 			List<String> checkAccessApi6, Long customerId6, String string6, boolean h, List<String> checkAccessApi7,
 			Long customerId7, String string7, Pageable pageable);
-
-	Page<AddressDetails> findByIsDeletedAndOwnerInAndCustomerCustomerId(boolean b, List<String> checkAccessApi,
-			Long customerId, Pageable pageable);
 
 	
 

@@ -52,8 +52,8 @@ public class AddressDetails {
 	@Column(name = "city")
 	private String city;
 
-	@Column(name = "contact_address")
-	private String contactAddress;
+	@Column(name = "contact_number")
+	private String contactNumber;
 
 	@Column(name = "state")
 	private String state;
