@@ -20,5 +20,7 @@ public interface UserAccessTokenProxy {
 	
 	@PostMapping("/token/accessToken")
 	public AccessTokenResponse accessToken(@RequestBody Credentials cred);
+	
+	
 
 }

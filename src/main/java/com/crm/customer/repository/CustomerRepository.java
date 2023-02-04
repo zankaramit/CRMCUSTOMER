@@ -57,4 +57,49 @@ public interface CustomerRepository extends RevisionRepository<Customer, Long, L
 
 	CustomerDTO findByCustomerId(Long id);
 
+	Optional<Customer> findByIsDeletedAndUserId(boolean b, String userid);
+
+	@Query(value = "select new com.crm.customer.dto.SearchCustomer(cust,billingAccount,identi,adds,cola) "
+			+ "from Customer cust left join BillingAccount billingAccount ON cust.customerId =billingAccount.customer.customerId "
+			+ " left join Identification identi ON cust.customerId=identi.customer.customerId "
+			+ " left join AddressDetails adds ON cust.customerId=adds.customer.customerId "
+			+ "left join Collaterals cola ON cust.customerId=cola.referenceId and cola.isDeleted = :f and cola.documentType = :doctyp  "
+			+ "where cust.isDeleted = :f and  billingAccount.isDeleted = :f and"
+			+ "(lower(cust.firstName) like lower(concat('%', :name,'%'))"
+			+ "or (lower(cust.middelName) like lower(concat('%', :name,'%')))"
+			+ "or (lower(cust.lastName) like lower(concat('%', :name,'%')))"
+			+ "or (lower(cust.mobileNumber) like lower(concat('%', :name,'%'))))")
+	Page<SearchCustomer> searchByConsumerName(@Param("f") boolean b, @Param("doctyp") String documentTypeCollaterals, @Param("name") String input,
+			Pageable pageable);
+
+	@Query(value = "select new com.crm.customer.dto.SearchCustomer(cust,billingAccount,identi,adds,cola) "
+			+ "from Customer cust left join BillingAccount billingAccount ON cust.customerId =billingAccount.customer.customerId "
+			+ " left join Identification identi ON cust.customerId=identi.customer.customerId "
+			+ " left join AddressDetails adds ON cust.customerId=adds.customer.customerId "
+			+ "left join Collaterals cola ON cust.customerId=cola.referenceId and cola.isDeleted = :f and cola.documentType = :doctyp  "
+			+ "where cust.isDeleted = :f and  billingAccount.isDeleted = :f and"
+			+ "(lower(cust.mobileNumber) like lower(concat('%', :name,'%'))"
+			+ "or (lower(cust.accountName) like lower(concat('%', :name,'%'))))")
+	Page<SearchCustomer> searchByCorporateName(@Param("f") boolean b, @Param("doctyp")  String documentTypeCollaterals, @Param("name") String input,
+			Pageable pageable);
+
+	@Query(value = "select new com.crm.customer.dto.SearchCustomer(cust,billingAccount,identi,adds,cola) "
+			+ "from Customer cust left join BillingAccount billingAccount ON cust.customerId =billingAccount.customer.customerId "
+			+ " left join Identification identi ON cust.customerId=identi.customer.customerId "
+			+ " left join AddressDetails adds ON cust.customerId=adds.customer.customerId "
+			+ "left join Collaterals cola ON cust.customerId=cola.referenceId and cola.isDeleted = :f and cola.documentType = :doctyp  "
+			+ "where cust.isDeleted = :f and  billingAccount.isDeleted = :f and"
+			+ "((lower(billingAccount.billingAccount) like lower(concat('%', :name,'%'))))")
+	Page<SearchCustomer> searchByBillingAccount(@Param("f") boolean b, @Param("doctyp") String documentTypeCollaterals, @Param("name") String input,
+			Pageable pageable);
+
+	@Query(value = "select new com.crm.customer.dto.SearchCustomer(cust,billingAccount,identi,adds,cola) "
+			+ "from Customer cust left join BillingAccount billingAccount ON cust.customerId =billingAccount.customer.customerId "
+			+ " left join Identification identi ON cust.customerId=identi.customer.customerId "
+			+ " left join AddressDetails adds ON cust.customerId=adds.customer.customerId "
+			+ "left join Collaterals cola ON cust.customerId=cola.referenceId and cola.isDeleted = :f and cola.documentType = :doctyp  "
+			+ "where cust.isDeleted = :f and  billingAccount.isDeleted = :f and"
+			+ "((lower(cola.documentInfo) like lower(concat('%',:name,'%'))))")
+	Page<SearchCustomer> searchByID(@Param("f") boolean b, @Param("doctyp") String documentTypeCollaterals, @Param("name") String input, Pageable pageable);
+
 }

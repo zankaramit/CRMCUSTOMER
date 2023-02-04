@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.crm.customer.dto.CustomerServiceRequest;
 import com.crm.customer.dto.SearchCustomer;
 import com.crm.customer.exception.ResourceNotFoundException;
 import com.crm.customer.model.Customer;
@@ -113,9 +114,9 @@ public class CustomerController {
 	}
 
 	@GetMapping("search-customer")
-	public ResponseEntity<Page<SearchCustomer>> getCustomer(String searchType, String input, Pageable pageable) {
+	public ResponseEntity<Page<SearchCustomer>> getCustomer(String searchType, String name, Pageable pageable) {
 
-		Page<SearchCustomer> customerPage = customerService.searchCustomer(searchType, input, pageable);
+		Page<SearchCustomer> customerPage = customerService.searchCustomer(searchType, name, pageable);
 		return new ResponseEntity<>(customerPage, HttpStatus.OK);
 
 	}
@@ -130,5 +131,29 @@ public class CustomerController {
 		} catch (Exception e) {
 			throw new PersistenceException(e.getMessage());
 		}
+	}
+
+	@GetMapping("customer-billing/{customerId}/{billingAccountId}")
+	public ResponseEntity<Object> getCutomerAndBillingById(@PathVariable Long customerId,
+			@PathVariable Long billingAccountId) {
+		try {
+			Object customerBilling = customerService.getCutomerAndBilling(customerId, billingAccountId);
+			return new ResponseEntity<>(customerBilling, HttpStatus.OK);
+		} catch (Exception e) {
+			throw new PersistenceException(e.getMessage());
+		}
+
+	}
+	
+	@GetMapping("get-by-userid/{userid}")
+	public ResponseEntity<Customer> getByUserId(@PathVariable(value = "userid") String userid) {
+		Optional<Customer> customerOptional = customerService.findUserId(userid);
+
+		if (customerOptional.isPresent()) {
+			return new ResponseEntity<>(customerOptional.get(), HttpStatus.OK);
+		} else {
+			throw new ResourceNotFoundException("Customer not found.");
+		}
+
 	}
 }

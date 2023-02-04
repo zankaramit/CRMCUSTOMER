@@ -51,6 +51,7 @@ C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\dto\SearchCu
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\model\AddressDetails.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\exception\ResourceNotFoundException.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\repository\InvoiceDetailsRepository.java
+C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\dto\CustomerServiceRequest.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\model\BillingContactDetails.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\model\ReferenceDetails.java
 C:\CRM_AVISYS_22_09_2022\CRMCUSTOMER\src\main\java\com\crm\customer\model\Collaterals.java

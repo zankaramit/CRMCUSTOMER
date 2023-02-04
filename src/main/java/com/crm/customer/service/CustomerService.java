@@ -1,6 +1,7 @@
 package com.crm.customer.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
@@ -15,8 +16,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.crm.customer.dto.CustomerServiceRequest;
 import com.crm.customer.dto.SearchCustomer;
 import com.crm.customer.exception.ResourceNotFoundException;
+import com.crm.customer.model.BillingAccount;
+import com.crm.customer.model.Collaterals;
 import com.crm.customer.model.Customer;
 import com.crm.customer.projection.BillingAddressDTO;
 import com.crm.customer.projection.BillingDTO;
@@ -39,6 +43,9 @@ public class CustomerService {
 
 	@Autowired
 	BillingAccountService billingAccountService;
+
+	@Autowired
+	CollateralsService collateralsService;
 
 	public Page<Customer> getByNameCustomerAndPagination(String name, String owner, Pageable pageable) {
 
@@ -171,7 +178,22 @@ public class CustomerService {
 	}
 
 	public Page<SearchCustomer> searchCustomer(String searchType, String input, Pageable pageable) {
+
 		String documentTypeCollaterals = "COMPANY_REGISTRATION_NUMBER";
+
+		if (searchType.equals("Customer Account")) {
+			return customerRepository.searchByConsumerName(false, documentTypeCollaterals, input, pageable);
+		}
+		if (searchType.equals("Account Name")) {
+			return customerRepository.searchByCorporateName(false, documentTypeCollaterals, input, pageable);
+		}
+		if (searchType.equals("Billing Account")) {
+			return customerRepository.searchByBillingAccount(false, documentTypeCollaterals, input, pageable);
+		}
+		if (searchType.equals("ID Type")) {
+			return customerRepository.searchByID(false, documentTypeCollaterals, input, pageable);
+		}
+
 		return customerRepository.searchByInput(false, documentTypeCollaterals, input, searchType, pageable);
 
 	}
@@ -217,6 +239,40 @@ public class CustomerService {
 			break;
 		}
 		return obj;
+	}
+
+	public CustomerServiceRequest getCutomerAndBilling(Long customerId, Long billingAccountId) {
+
+		CustomerServiceRequest customerAllDetails = new CustomerServiceRequest();
+
+		Customer customer = null;
+		Optional<Customer> byId = getById(customerId);
+		customer = byId.get();
+		customer.setParentAccount(null);
+
+		List<BillingAccount> billingList = new ArrayList<BillingAccount>();
+		BillingAccount billingAccount = null;
+		Optional<BillingAccount> byId2 = billingAccountService.getById(billingAccountId);
+		billingAccount = byId2.get();
+		billingList.add(billingAccount);
+		customer.setBillingAccount(billingList);
+
+		customerAllDetails.setCustomer(customer);
+
+		Optional<Collaterals> collateralsOptional = collateralsService.getCollateralsByCustomer(customerId);
+		Collaterals collaterals = null;
+		if (collateralsOptional.isPresent()) {
+			collaterals = collateralsOptional.get();
+		}
+
+		customerAllDetails.setCollaterals(collaterals);
+
+		return customerAllDetails;
+	}
+
+	public Optional<Customer> findUserId(String userid) {
+
+		return customerRepository.findByIsDeletedAndUserId(false, userid);
 	}
 
 }

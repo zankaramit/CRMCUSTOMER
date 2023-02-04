@@ -48,7 +48,7 @@ public class CollateralsService {
 		if (findById.isEmpty()) {
 			throw new ResourceNotFoundException("Documents not found and ID :" + id);
 		}
-		existingCollaterals =findById.get();
+		existingCollaterals = findById.get();
 		Boolean b = existingCollaterals.getIsDeleted();
 		if (Boolean.TRUE.equals(b)) {
 			throw new PersistenceException("Documents already Deleted and ID :" + id);
@@ -57,6 +57,12 @@ public class CollateralsService {
 		existingCollaterals.setUpdatedBy(updatedBy);
 		existingCollaterals.setUpdatedDate(dateTime);
 		return collateralsRepository.save(existingCollaterals);
+	}
+
+	public Optional<Collaterals> getCollateralsByCustomer(Long customerId) {
+
+		return collateralsRepository.findByReferenceIdAndIsDeletedAndDocumentType(customerId, false,
+				"COMPANY_REGISTRATION_NUMBER");
 	}
 
 }
